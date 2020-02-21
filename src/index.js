@@ -10,21 +10,8 @@ import 'normalize.css/normalize.css'
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 
-import moment from 'moment'
-
 
 const store = configureStore();
-// const unsubscribe = store.subscribe(() => {
-//   const state = store.getState();
-//   const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-//   console.log(visibleExpenses)
-// });
-
-
-store.dispatch(addExpense({description: 'Water Bill', amount: 200, createdAt: 1580588162056}));
-store.dispatch(addExpense({description: 'Gas Bill', amount: 50, createdAt: 1580933872927}));
-store.dispatch(addExpense({description: 'Rent', amount: 1095, createdAt: 1581797888950}))
-
 
 const jsx = (
   <Provider store={store}>
