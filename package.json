@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Shane Sloan",
   "license": "MIT",
+  "engines": {
+    "node": "13.5.x"
+  },
   "scripts": {
     "serve": "live-server Public/",
     "dev-server": "webpack-dev-server --mode development",
