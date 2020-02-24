@@ -1,42 +1,51 @@
 const path = require('path');
+const ExtractTextPlugin = require('mini-css-extract-plugin')
 
 module.exports = (env) => {
   const isProduction = env ==='production';
+
   return {
-    entry: ['./src/index.js'],
+    entry: './src/index.js',
     output: {
-      path: path.resolve(__dirname, 'Public'),
+      path: path.resolve(__dirname, 'Public/scripts'),
       filename: 'bundle.js'
     },
+    plugins:[
+      new ExtractTextPlugin({
+        filename: 'styles.css'
+      })
+    ],
     module: {
       rules: [{
+        loader: 'babel-loader',
         test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env','@babel/preset-react'],
-            plugins: [
-              'transform-class-properties',
-              'transform-object-rest-spread'
-            ]
-          }
-        }
-      },
-      {
-        test:/\.s?css$/,
-        //exclude: /node_modules/,
+        exclude: /node_modules/
+      }, {
+        test: /\.s?css$/,
         use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
+          {
+            loader: ExtractTextPlugin.loader,
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
         ]
       }]
     },
-    devtool: isProduction ? 'source-map':'cheap-module-evalsource-map',
+    devtool: isProduction ? 'source-map':'inline-source-map',
     devServer: {
       contentBase: path.join(__dirname, 'Public'),
-      publicPath: '/Public/',
+      publicPath: '/scripts',
+      historyApiFallback: true,
       watchOptions: {
         poll: true
       }
