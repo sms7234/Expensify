@@ -7,7 +7,7 @@ module.exports = (env) => {
   return {
     entry: './src/index.js',
     output: {
-      path: path.resolve(__dirname, 'Public/scripts'),
+      path: path.resolve(__dirname, 'public/scripts'),
       filename: 'bundle.js'
     },
     plugins:[
@@ -43,7 +43,7 @@ module.exports = (env) => {
     },
     devtool: isProduction ? 'source-map':'inline-source-map',
     devServer: {
-      contentBase: path.join(__dirname, 'Public'),
+      contentBase: path.join(__dirname, 'public'),
       publicPath: '/scripts',
       historyApiFallback: true,
       watchOptions: {

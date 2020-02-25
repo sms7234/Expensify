@@ -8,7 +8,7 @@
     "node": "13.5.x"
   },
   "scripts": {
-    "serve": "live-server Public/",
+    "serve": "live-server public/",
     "dev-server": "webpack-dev-server --mode development",
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
