@@ -5,7 +5,7 @@ export default (state = expensesReducersDefaultState, action) => {
     case 'ADD_EXPENSE':
       return state.concat(action.expense);
     case 'REMOVE_EXPENSE':
-      return state.filter((item)=> action.id!==item.id);
+      return state.filter(({id})=> id!==action.id);
     case 'EDIT_EXPENSE':
       return state.map((item) => {
         if (item.id === action.id){
