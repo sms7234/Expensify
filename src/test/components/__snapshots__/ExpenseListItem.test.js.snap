@@ -13,7 +13,7 @@ exports[`render ExpenseListItem with one item 1`] = `
   <ul>
     <li>
       Amount: 
-      195
+      $1.95
     </li>
     <li>
       Date Created: 
