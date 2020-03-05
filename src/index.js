@@ -10,9 +10,9 @@ import 'normalize.css/normalize.css'
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 
+import './firebase/firebase';
 
 const store = configureStore();
-console.log('message');
 const jsx = (
   <Provider store={store}>
     <AppRouter />

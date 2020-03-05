@@ -1,2 +1,4 @@
 node_modules/
 public/scripts
+.env.test
+.env.development
