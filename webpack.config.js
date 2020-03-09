@@ -14,7 +14,7 @@ module.exports = (env) => {
   const isProduction = env ==='production';
 
   return {
-    entry: './src/index.js',
+    entry: ['@babel/polyfill', './src/index.js'],
     output: {
       path: path.resolve(__dirname, 'public/scripts'),
       filename: 'bundle.js'
@@ -28,7 +28,7 @@ module.exports = (env) => {
         test: /\.s?css$/,
         use: [
           {
-            loader: ExtractTextPlugin.loader,
+            loader: ExtractTextPlugin.loader
           },
           {
             loader: 'css-loader',
@@ -47,7 +47,8 @@ module.exports = (env) => {
     },
     plugins: [
       new ExtractTextPlugin({
-        filename: 'styles.css'
+        filename: 'styles.css',
+        path: path.resolve(__dirname, 'public/scripts')
       }),
       new webpack.DefinePlugin({
         'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
