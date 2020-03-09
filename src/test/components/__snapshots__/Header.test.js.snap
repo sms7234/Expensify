@@ -7,24 +7,15 @@ exports[`should render Header correctly 1`] = `
   </h1>
   <NavLink
     activeClassName="is-active"
-    exact={true}
-    to="/"
+    to="/dashboard"
   >
-    Home Page 
+    Dashboard 
   </NavLink>
   <NavLink
     activeClassName="is-active"
-    exact={true}
     to="/create"
   >
-    Create Page 
-  </NavLink>
-  <NavLink
-    activeClassName="is-active"
-    exact={true}
-    to="/help"
-  >
-    Help Page 
+    Create Expense 
   </NavLink>
   <button
     onClick={[MockFunction]}
