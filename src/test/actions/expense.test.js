@@ -19,8 +19,8 @@ const createMockStore = configureMockStore([thunk]);
 
 beforeEach((done)=>{
   const expensesData = {};
-  expenses.forEach(({id, description, note, amount, createdAt})=>{
-    expensesData[id] = {description, note, amount, createdAt}
+  expenses.forEach(({id, category, business, note, amount, createdAt})=>{
+    expensesData[id] = {category, business, note, amount, createdAt}
   });
   database.ref(`users/${uid}/expenses`).set(expensesData).then(()=>done());
 });
@@ -36,7 +36,8 @@ test('should setup add expense action object with provided values', () => {
 test('should add expense 0 to db and store', (done) => {
   const store = createMockStore(defaultAuthState);
   const expenseData = {
-    description: 'Mouse',
+    category: 'Mouse',
+    business: '',
     amount: 3000,
     note: 'this note',
     createdAt: 1000
@@ -60,7 +61,8 @@ test('should add expense 0 to db and store', (done) => {
 test('should add expense with defaults to db and store', (done) => {
   const store = createMockStore(defaultAuthState);
   const expenseDefault = {
-    description: '',
+    category: '',
+    business: '',
     note: '',
     amount:0,
     createdAt: 0

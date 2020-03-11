@@ -8,7 +8,8 @@ export default class ExpenseForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      description: props.expense ? props.expense.description:'',
+      category: props.expense ? props.expense.category:'',
+      business: props.expense ? props.expense.business:'',
       amount: props.expense ? (props.expense.amount/100).toString():'',
       note:props.expense ? props.expense.note:'',
       createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
@@ -16,15 +17,19 @@ export default class ExpenseForm extends React.Component {
       error:''
     };
   }
-  onDescriptionChange = (e) => {
-    const description = e.target.value;
-    this.setState(() => ({description}));
-  };
   onAmountChange = (e) => {
     const amount = e.target.value;
     if(!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
       this.setState(()=> ({amount}));
     }
+  };
+  onCategoryChange = (e) => {
+    const category = e.target.value;
+    this.setState(() => ({category}));
+  };
+  onBusinessChange = (e) => {
+    const business = e.target.value;
+    this.setState(() => ({business}));
   };
   onNoteChange = (e) => {
     const note = e.target.value;
@@ -40,12 +45,13 @@ export default class ExpenseForm extends React.Component {
   };
   onSubmit = (e) => {
     e.preventDefault();
-    if (!this.state.description || !this.state.amount) {
-      this.setState(()=> ({error:'Please provide description & amount'}));
+    if (!this.state.category ||!this.state.business || !this.state.amount) {
+      this.setState(()=> ({error:'Please provide amount, business & category'}));
     }else {
       this.setState(()=> ({error:''}));
       this.props.onSubmit({
-        description: this.state.description,
+        category: this.state.category,
+        business: this.state.business,
         amount: parseFloat(this.state.amount, 10)*100,
         createdAt: this.state.createdAt.valueOf(),
         note: this.state.note
@@ -56,13 +62,13 @@ export default class ExpenseForm extends React.Component {
     return (
       <form className="form" onSubmit={this.onSubmit}>
         {this.state.error!=='' && <p className="form__error">{this.state.error}</p>}
-        <input
-          type="text"
-          placeholder="Description"
-          className="text-input"
-          autoFocus
-          value={this.state.description}
-          onChange={this.onDescriptionChange}
+        <SingleDatePicker
+          date = {this.state.createdAt}
+          onDateChange={this.onDateChange}
+          focused={this.state.calendarFocused}
+          onFocusChange={this.onFocusChange}
+          numberOfMonths={1}
+          isOutsideRange={() => false}
         />
         <input
           type="text"
@@ -71,13 +77,21 @@ export default class ExpenseForm extends React.Component {
           value={this.state.amount}
           onChange={this.onAmountChange}
         />
-        <SingleDatePicker
-          date = {this.state.createdAt}
-          onDateChange={this.onDateChange}
-          focused={this.state.calendarFocused}
-          onFocusChange={this.onFocusChange}
-          numberOfMonths={1}
-          isOutsideRange={() => false}
+        <input
+          type="text"
+          placeholder="Category"
+          className="text-input"
+          autoFocus
+          value={this.state.category}
+          onChange={this.onCategoryChange}
+        />
+        <input
+          type="text"
+          placeholder="Business"
+          className="text-input"
+          autoFocus
+          value={this.state.business}
+          onChange={this.onBusinessChange}
         />
         <textarea
           placeholder= "Add a note for your expense (optional)"

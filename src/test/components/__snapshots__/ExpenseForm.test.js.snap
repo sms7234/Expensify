@@ -5,21 +5,6 @@ exports[`should render ExpenseForm with expense data 1`] = `
   className="form"
   onSubmit={[Function]}
 >
-  <input
-    autoFocus={true}
-    className="text-input"
-    onChange={[Function]}
-    placeholder="Description"
-    type="text"
-    value="Gum"
-  />
-  <input
-    className="text-input"
-    onChange={[Function]}
-    placeholder="Amount"
-    type="text"
-    value="1.95"
-  />
   <withStyles(SingleDatePicker)
     anchorDirection="left"
     appendToBody={false}
@@ -114,6 +99,29 @@ exports[`should render ExpenseForm with expense data 1`] = `
     weekDayFormat="dd"
     withFullScreenPortal={false}
     withPortal={false}
+  />
+  <input
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Amount"
+    type="text"
+    value="1.95"
+  />
+  <input
+    autoFocus={true}
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Category"
+    type="text"
+    value="Gum"
+  />
+  <input
+    autoFocus={true}
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Business"
+    type="text"
+    value="walmart"
   />
   <textarea
     className="textarea"
@@ -136,21 +144,6 @@ exports[`should render ExpenseForm with no data correctly 1`] = `
   className="form"
   onSubmit={[Function]}
 >
-  <input
-    autoFocus={true}
-    className="text-input"
-    onChange={[Function]}
-    placeholder="Description"
-    type="text"
-    value=""
-  />
-  <input
-    className="text-input"
-    onChange={[Function]}
-    placeholder="Amount"
-    type="text"
-    value=""
-  />
   <withStyles(SingleDatePicker)
     anchorDirection="left"
     appendToBody={false}
@@ -245,6 +238,29 @@ exports[`should render ExpenseForm with no data correctly 1`] = `
     weekDayFormat="dd"
     withFullScreenPortal={false}
     withPortal={false}
+  />
+  <input
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Amount"
+    type="text"
+    value=""
+  />
+  <input
+    autoFocus={true}
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Category"
+    type="text"
+    value=""
+  />
+  <input
+    autoFocus={true}
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Business"
+    type="text"
+    value=""
   />
   <textarea
     className="textarea"
@@ -267,21 +283,6 @@ exports[`should render error for invalid form submission 1`] = `
   className="form"
   onSubmit={[Function]}
 >
-  <input
-    autoFocus={true}
-    className="text-input"
-    onChange={[Function]}
-    placeholder="Description"
-    type="text"
-    value=""
-  />
-  <input
-    className="text-input"
-    onChange={[Function]}
-    placeholder="Amount"
-    type="text"
-    value=""
-  />
   <withStyles(SingleDatePicker)
     anchorDirection="left"
     appendToBody={false}
@@ -376,6 +377,29 @@ exports[`should render error for invalid form submission 1`] = `
     weekDayFormat="dd"
     withFullScreenPortal={false}
     withPortal={false}
+  />
+  <input
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Amount"
+    type="text"
+    value=""
+  />
+  <input
+    autoFocus={true}
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Category"
+    type="text"
+    value=""
+  />
+  <input
+    autoFocus={true}
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Business"
+    type="text"
+    value=""
   />
   <textarea
     className="textarea"
@@ -401,23 +425,8 @@ exports[`should render error for invalid form submission 2`] = `
   <p
     className="form__error"
   >
-    Please provide description & amount
+    Please provide amount, business & category
   </p>
-  <input
-    autoFocus={true}
-    className="text-input"
-    onChange={[Function]}
-    placeholder="Description"
-    type="text"
-    value=""
-  />
-  <input
-    className="text-input"
-    onChange={[Function]}
-    placeholder="Amount"
-    type="text"
-    value=""
-  />
   <withStyles(SingleDatePicker)
     anchorDirection="left"
     appendToBody={false}
@@ -512,6 +521,29 @@ exports[`should render error for invalid form submission 2`] = `
     weekDayFormat="dd"
     withFullScreenPortal={false}
     withPortal={false}
+  />
+  <input
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Amount"
+    type="text"
+    value=""
+  />
+  <input
+    autoFocus={true}
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Category"
+    type="text"
+    value=""
+  />
+  <input
+    autoFocus={true}
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Business"
+    type="text"
+    value=""
   />
   <textarea
     className="textarea"

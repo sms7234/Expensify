@@ -27,7 +27,8 @@ test('should not remove expenses if id not found', () => {
 test('should add an expense', () => {
   const newObj = {
     id:'4',
-    description: 'blah',
+    category: 'blah',
+    business: '',
     note:'',
     amount: 15,
     createdAt: 10
@@ -43,7 +44,8 @@ test('should add an expense', () => {
 test('should edit an existing expense', () => {
   const newObj = {
     id:'1',
-    description: 'random',
+    category: 'random',
+    business: 'hallmark',
     note:'',
     amount: 195,
     createdAt: 0
@@ -52,7 +54,8 @@ test('should edit an existing expense', () => {
     type: 'EDIT_EXPENSE',
     id:expenses[0].id,
     updates: {
-      description: 'random'
+      category: 'random',
+      business: 'hallmark'
     }
   };
   const state = expensesReducer(expenses,action);
@@ -64,7 +67,7 @@ test('should not alter array when invalid id is used', () => {
     type: 'EDIT_EXPENSE',
     id:4,
     updates: {
-      description: 'random'
+      category: 'random'
     }
   };
   const state = expensesReducer(expenses,action);

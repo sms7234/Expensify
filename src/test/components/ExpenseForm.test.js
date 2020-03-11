@@ -27,10 +27,10 @@ test('should render error for invalid form submission', () => {
 test('should set description on input change', () => {
   const value = 'new description'
   const wrapper = shallow(<ExpenseForm />);
-  wrapper.find('input').at(0).simulate('change', {
+  wrapper.find('input').at(1).simulate('change', {
     target: {value}
   });
-  expect(wrapper.state('description')).toBe(value);
+  expect(wrapper.state('category')).toBe(value);
 });
 
 test('should set note on textarea change', () => {
@@ -45,7 +45,7 @@ test('should set note on textarea change', () => {
 test('should set amount to a valid value', () => {
   const value = '23.50'
   const wrapper = shallow(<ExpenseForm />);
-  wrapper.find('input').at(1).simulate('change', {
+  wrapper.find('input').at(0).simulate('change', {
     target: {value}
   });
   expect(wrapper.state('amount')).toBe(value);
@@ -54,7 +54,7 @@ test('should set amount to a valid value', () => {
 test('should not amount due to invalid data', () => {
   const value = '15.112'
   const wrapper = shallow(<ExpenseForm />);
-  wrapper.find('input').at(1).simulate('change', {
+  wrapper.find('input').at(0).simulate('change', {
     target: {value}
   });
   expect(wrapper.state('amount')).toBe("");
@@ -68,7 +68,8 @@ test('should call onSubmit prop for valid form submission', () => {
   });
   expect(wrapper.state('error')).toBe('');
   expect(onSubmitSpy).toHaveBeenLastCalledWith({
-    description: expenses[0].description,
+    category: expenses[0].category,
+    business: expenses[0].business,
     amount: expenses[0].amount,
     note: expenses[0].note,
     createdAt: expenses[0].createdAt
