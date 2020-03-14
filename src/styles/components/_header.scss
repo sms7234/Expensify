@@ -16,3 +16,43 @@
   align-items: center;
   padding: $s-size 0;
 }
+
+.header__content--items{
+  justify-content: flex-end
+}
+
+.header__item{
+  justify-content: space-between;
+  font-size: $font-size-small;
+  padding: $m-size;
+  border-right: solid $white 1px;
+  color: $white;
+  &:hover{
+    color: $yellow;
+    font-weight: bold;
+  }
+}
+
+.header__item--brand{
+  color: $white;
+  font-weight: bold;
+  font-size: $font-size-Xlarge;
+  &:hover{
+    color: $yellow;
+  }
+}
+
+
+.header__item--button{
+  background: none;
+  font-size: $font-size-small;
+  color: $white;
+  border: none;
+  padding: $m-size;
+  text-align: left;
+  &:hover{
+    color: $yellow;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}

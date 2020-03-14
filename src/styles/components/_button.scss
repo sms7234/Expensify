@@ -10,11 +10,6 @@
   border: none;
 }
 
-.button--link{
-  @extend .button;
-  background: none;
-}
-
 .button--secondary{
   @extend .button;
   background: $red;

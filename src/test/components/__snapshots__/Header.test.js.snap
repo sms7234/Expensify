@@ -10,20 +10,59 @@ exports[`should render Header correctly 1`] = `
     <div
       className="header__content"
     >
-      <Link
-        className="header__title"
-        to="/dashboard"
+      <Navbar
+        bg="none"
+        collapseOnSelect={false}
+        expand="sm"
+        variant="dark"
       >
-        <h1>
-          Expensify
-        </h1>
-      </Link>
-      <button
-        className="button--link"
-        onClick={[MockFunction]}
-      >
-        Logout
-      </button>
+        <NavbarBrand>
+          <Link
+            className="header__item--brand"
+            to="/dashboard"
+          >
+            Expensify
+          </Link>
+        </NavbarBrand>
+        <NavbarToggle
+          aria-controls="basic-navbar-nav"
+          label="Toggle navigation"
+        />
+        <NavbarCollapse
+          className="justify-content-end"
+          id="basic-navbar-nav"
+        >
+          <Nav
+            className="ml-auto"
+            fill={false}
+            justify={false}
+          >
+            <Link
+              className="header__item"
+              to="/dashboard"
+            >
+              Dashboard
+            </Link>
+            <Link
+              className="header__item"
+              to="/create"
+            >
+              Add Expense
+            </Link>
+            <Link
+              className="header__item"
+            >
+              Categories
+            </Link>
+            <button
+              className="header__item--button"
+              onClick={[MockFunction]}
+            >
+              Logout
+            </button>
+          </Nav>
+        </NavbarCollapse>
+      </Navbar>
     </div>
   </div>
 </header>
