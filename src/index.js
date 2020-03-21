@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import AppRouter, {history} from './router/AppRouter';
 import configureStore from './store/configureStore';
 import {startSetExpenses} from './actions/expenses';
+import {startSetCategories} from './actions/categories';
 import {login, logout} from './actions/auth';
 import getVisibleExpenses from './selectors/expenses';
 import LoadingPage from './components/LoadingPage';
@@ -35,10 +36,11 @@ ReactDOM.render(<LoadingPage />,document.querySelector('#app'));
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user.uid));
+    store.dispatch(startSetCategories());
     store.dispatch(startSetExpenses()).then(() => {
       renderApp();
       if (history.location.pathname === '/') {
-        history.push('/dashboard');
+        history.push('/expenses');
       }
     });
   } else {

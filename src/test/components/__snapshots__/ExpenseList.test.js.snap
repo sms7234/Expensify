@@ -27,7 +27,7 @@ exports[`should render ExpenseList with empty message 1`] = `
     className="list-body"
   >
     <div
-      className="liet-item--message"
+      className="list-item--message"
     >
       <span>
         No Expenses

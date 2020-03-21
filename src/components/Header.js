@@ -11,18 +11,18 @@ export const Header = (props) => (
       <div className="header__content">
         <Navbar bg="none" expand="sm" variant="dark">
           <Navbar.Brand>
-            <Link to="/dashboard" className="header__item--brand">Expensify</Link>
+            <Link to="/expenses" className="header__item--brand">Expensify</Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav className="ml-auto">
-              <Link to="/dashboard" className="header__item">
+              <Link to="/expenses" className="header__item">
                 Dashboard
               </Link>
-              <Link to="/create" className="header__item">
-                Add Expense
+              <Link to="/expenses" className="header__item">
+                Expenses
               </Link>
-              <Link className="header__item">
+              <Link to="/categories" className="header__item">
                 Categories
               </Link>
               <button className="header__item--button" onClick={props.startLogout}>
@@ -41,8 +41,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(undefined,mapDispatchToProps)(Header);
-
-{/* <Link className="header__title" to="/dashboard">
-    <h1>Expensify</h1>
-</Link> */}
-{/* <button className="button--link" onClick={props.startLogout}>Logout</button> */}
