@@ -4,7 +4,7 @@ import numeral from 'numeral';
 import {Link} from 'react-router-dom';
 
 const ExpenseListItem = ({dispatch, id, category, amount, createdAt}) => (
-    <Link className="list-item" to={`/edit/${id}`}>
+    <Link className="list-item" to={`/editExpense/${id}`}>
     <div>
       <h3 className="list-item__title">{category}</h3>
       <span className="list-item__sub-title">{moment(createdAt).format("MMMM Do, YYYY")}</span>

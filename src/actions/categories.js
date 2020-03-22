@@ -44,3 +44,32 @@ export const startAddCategory = (categoryData = {}) => {
     });
   };
 };
+
+export const editCategory = (id, updates) => ({
+  type: 'EDIT_CATEGORY',
+  id,
+  updates
+});
+
+export const startEditCategory = (id, updates) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/categories/${id}`).update(updates).then(()=>{
+      dispatch(editCategory(id,updates));
+    });
+  };
+};
+
+export const removeCategory = (id) => ({
+  type: 'REMOVE_CATEGORY',
+  id
+});
+
+export const startRemoveCategory = ({ id } = {}) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/categories/${id}`).remove().then(()=>{
+      dispatch(removeCategory(id));
+    });
+  };
+};

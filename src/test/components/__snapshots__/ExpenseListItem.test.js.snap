@@ -3,7 +3,7 @@
 exports[`render ExpenseListItem with one item 1`] = `
 <Link
   className="list-item"
-  to="/edit/1"
+  to="/editExpense/1"
 >
   <div>
     <h3

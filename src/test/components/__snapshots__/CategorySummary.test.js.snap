@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should correctly render expenses summary with 1 expense 1`] = `
+exports[`should correctly render category summary with multiple expenses 1`] = `
 <div
   className="page-header"
 >
@@ -10,20 +10,14 @@ exports[`should correctly render expenses summary with 1 expense 1`] = `
     <h1
       className="page-header__title"
     >
-      Expenses List
+       Category List 
     </h1>
     <h2
       className="page-header__subtitle"
     >
-      Viewing 
+      Total number of categories: 
       <span>
-        1
-      </span>
-       
-      expense
-       totalling 
-      <span>
-        $2.35
+        47
       </span>
     </h2>
     <div
@@ -31,16 +25,16 @@ exports[`should correctly render expenses summary with 1 expense 1`] = `
     >
       <Link
         className="button"
-        to="/createExpense"
+        to="/createCategory"
       >
-        Add Expense
+        Add Category
       </Link>
     </div>
   </div>
 </div>
 `;
 
-exports[`should correctly render expenses summary with multiple expense 1`] = `
+exports[`should correctly render category summary with no expenses 1`] = `
 <div
   className="page-header"
 >
@@ -50,20 +44,14 @@ exports[`should correctly render expenses summary with multiple expense 1`] = `
     <h1
       className="page-header__title"
     >
-      Expenses List
+       Category List 
     </h1>
     <h2
       className="page-header__subtitle"
     >
-      Viewing 
+      Total number of categories: 
       <span>
-        23
-      </span>
-       
-      expenses
-       totalling 
-      <span>
-        $12,345,654,894.56
+        0
       </span>
     </h2>
     <div
@@ -71,9 +59,9 @@ exports[`should correctly render expenses summary with multiple expense 1`] = `
     >
       <Link
         className="button"
-        to="/createExpense"
+        to="/createCategory"
       >
-        Add Expense
+        Add Category
       </Link>
     </div>
   </div>

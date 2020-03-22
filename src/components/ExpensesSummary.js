@@ -12,9 +12,10 @@ export const ExpensesSummary = ({expensesCount, expensesTotal}) => {
   return (
     <div className="page-header">
       <div className="content-container">
-        <h1 className="page-header__title">Viewing <span>{expensesCount}</span> {expenseWord} totalling <span>{formattedExpensesTotal}</span></h1>
+        <h1 className="page-header__title">Expenses List</h1>
+        <h2 className="page-header__subtitle">Viewing <span>{expensesCount}</span> {expenseWord} totalling <span>{formattedExpensesTotal}</span></h2>
         <div className="page-header__actions">
-          <Link className="button" to="/create">Add Expense</Link>
+          <Link className="button" to="/createExpense">Add Expense</Link>
         </div>
       </div>
     </div>
