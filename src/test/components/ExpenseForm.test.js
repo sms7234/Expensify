@@ -1,8 +1,11 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import moment from 'moment';
+import Select from 'react-select';
 import ExpenseForm from '../../components/ExpenseForm';
 import expenses from '../fixtures/expenses';
+import categories from '../fixtures/categories';
+
 
 test('should render ExpenseForm with no data correctly', () =>{
   const wrapper = shallow(<ExpenseForm />);
@@ -24,13 +27,19 @@ test('should render error for invalid form submission', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-test('should set description on input change', () => {
-  const value = 'new description'
+//testing for category select
+test('should set category from dropdown', () =>{
+  const wrapper = shallow(<ExpenseForm categoryList={categories}/>);
+  expect(wrapper.find('StateManager').prop('options')).toHaveLength(3);
+});
+
+test('should set business on input change', () => {
+  const value = 'new business'
   const wrapper = shallow(<ExpenseForm />);
   wrapper.find('input').at(1).simulate('change', {
     target: {value}
   });
-  expect(wrapper.state('category')).toBe(value);
+  expect(wrapper.state('business')).toBe(value);
 });
 
 test('should set note on textarea change', () => {

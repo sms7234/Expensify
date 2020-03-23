@@ -101,22 +101,23 @@ exports[`should render ExpenseForm with expense data 1`] = `
     withPortal={false}
   />
   <input
+    autoFocus={true}
     className="text-input"
     onChange={[Function]}
     placeholder="Amount"
     type="text"
     value="1.95"
   />
-  <input
-    autoFocus={true}
-    className="text-input"
+  <StateManager
+    className="dropdown"
+    defaultInputValue="Gum"
+    defaultMenuIsOpen={false}
+    defaultValue={null}
+    isClearable={true}
     onChange={[Function]}
-    placeholder="Category"
-    type="text"
-    value="Gum"
+    placeholder="select category"
   />
   <input
-    autoFocus={true}
     className="text-input"
     onChange={[Function]}
     placeholder="Business"
@@ -240,22 +241,23 @@ exports[`should render ExpenseForm with no data correctly 1`] = `
     withPortal={false}
   />
   <input
+    autoFocus={true}
     className="text-input"
     onChange={[Function]}
     placeholder="Amount"
     type="text"
     value=""
   />
-  <input
-    autoFocus={true}
-    className="text-input"
+  <StateManager
+    className="dropdown"
+    defaultInputValue=""
+    defaultMenuIsOpen={false}
+    defaultValue={null}
+    isClearable={true}
     onChange={[Function]}
-    placeholder="Category"
-    type="text"
-    value=""
+    placeholder="select category"
   />
   <input
-    autoFocus={true}
     className="text-input"
     onChange={[Function]}
     placeholder="Business"
@@ -379,22 +381,23 @@ exports[`should render error for invalid form submission 1`] = `
     withPortal={false}
   />
   <input
+    autoFocus={true}
     className="text-input"
     onChange={[Function]}
     placeholder="Amount"
     type="text"
     value=""
   />
-  <input
-    autoFocus={true}
-    className="text-input"
+  <StateManager
+    className="dropdown"
+    defaultInputValue=""
+    defaultMenuIsOpen={false}
+    defaultValue={null}
+    isClearable={true}
     onChange={[Function]}
-    placeholder="Category"
-    type="text"
-    value=""
+    placeholder="select category"
   />
   <input
-    autoFocus={true}
     className="text-input"
     onChange={[Function]}
     placeholder="Business"
@@ -523,22 +526,23 @@ exports[`should render error for invalid form submission 2`] = `
     withPortal={false}
   />
   <input
+    autoFocus={true}
     className="text-input"
     onChange={[Function]}
     placeholder="Amount"
     type="text"
     value=""
   />
-  <input
-    autoFocus={true}
-    className="text-input"
+  <StateManager
+    className="dropdown"
+    defaultInputValue=""
+    defaultMenuIsOpen={false}
+    defaultValue={null}
+    isClearable={true}
     onChange={[Function]}
-    placeholder="Category"
-    type="text"
-    value=""
+    placeholder="select category"
   />
   <input
-    autoFocus={true}
     className="text-input"
     onChange={[Function]}
     placeholder="Business"

@@ -6,9 +6,14 @@
   font-weight: 300;
 }
 
+.dropdown {
+  font-size: $font-size-large;
+  height: 50px;
+  font-weight: 300;
+}
+
 .select {
   @extend .text-input;
-
 }
 
 .textarea {

@@ -1,5 +1,7 @@
 import React from 'react';
+import Select from 'react-select';
 import moment from 'moment';
+import {connect} from 'react-redux';
 import {SingleDatePicker} from 'react-dates';
 import 'react-dates/initialize';
 
@@ -14,6 +16,7 @@ export default class ExpenseForm extends React.Component {
       note:props.expense ? props.expense.note:'',
       createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
       calendarFocused: false,
+      categoryList: props.categoryList,
       error:''
     };
   }
@@ -23,8 +26,8 @@ export default class ExpenseForm extends React.Component {
       this.setState(()=> ({amount}));
     }
   };
-  onCategoryChange = (e) => {
-    const category = e.target.value;
+  onCategoryChange = (opt) => {
+    const category = opt.value;
     this.setState(() => ({category}));
   };
   onBusinessChange = (e) => {
@@ -74,22 +77,22 @@ export default class ExpenseForm extends React.Component {
           type="text"
           placeholder="Amount"
           className="text-input"
+          autoFocus
           value={this.state.amount}
           onChange={this.onAmountChange}
         />
-        <input
-          type="text"
-          placeholder="Category"
-          className="text-input"
-          autoFocus
-          value={this.state.category}
+        <Select
+          placeholder="select category"
+          className="dropdown"
+          isClearable
+          defaultInputValue={this.state.category}
+          options={this.state.categoryList}
           onChange={this.onCategoryChange}
         />
         <input
           type="text"
           placeholder="Business"
           className="text-input"
-          autoFocus
           value={this.state.business}
           onChange={this.onBusinessChange}
         />

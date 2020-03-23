@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render CategoryList with categories 1`] = `
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Categories
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Categories
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Description
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <CategoryListItem
+      category="Dog"
+      description="dog costs"
+      id="1"
+      key="1"
+    />
+    <CategoryListItem
+      category="Groceries"
+      description="food costs"
+      id="2"
+      key="2"
+    />
+    <CategoryListItem
+      category="Car"
+      description="car costs"
+      id="3"
+      key="3"
+    />
+  </div>
+</div>
+`;
+
+exports[`should render CategoryList with no categories 1`] = `
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Categories
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Categories
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Description
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <div
+      className="list-item--message"
+    >
+      <span>
+        No categories to show
+      </span>
+    </div>
+  </div>
+</div>
+`;
