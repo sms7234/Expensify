@@ -1,11 +1,15 @@
-const loadMe=false;
+const categories = null;
 
-const renderer = (loadMe) => {
-  if(loadMe){
-    console.log('loadMe')
-  } else if(!loadMe){
-    console.log('!loadMe')
+const finder = (input) => {
+  if(input===null){
+    console.log('null')
+  } else if (input===false){
+    console.log('false')
+  } else if(input===true){
+    console.log('true')
   }
 }
 
-renderer(loadMe);
+finder(null)
+finder(true)
+finder(false)

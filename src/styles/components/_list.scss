@@ -35,6 +35,13 @@
   }
 }
 
+.list-item--invalid{
+  background-color: $invalid;
+}
+.list-item--valid{
+  background-color: $valid;
+}
+
 .list-item__title{
   margin: 0;
   word-break: break-all;

@@ -92,9 +92,9 @@ export class ImportListItem extends React.Component {
   render() {
     return (
       <div>
-        <div className="list-item">
+        <div className={"list-item " + (this.props.validation===false ? "list-item--invalid ":"")+ (this.props.validation===true ? "list-item--valid ":"")}>
           <SingleDatePicker
-            // id={uuidv4()}
+            id={uuidv4()}
             date = {this.state.createdAt}
             onDateChange={this.onDateChange}
             focused={this.state.calendarFocused}

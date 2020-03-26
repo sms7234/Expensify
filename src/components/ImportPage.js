@@ -10,14 +10,15 @@ import ImportSummary from './ImportSummary';
 
 export class ImportPage extends React.Component {
   state= {
-    data: null,
+    data: [],
+    validation: [],
     file: '',
     error: '',
     buttonUpload: true,
     buttonCheck: true,
     buttonSave: true,
-    buttonAdd: true
   };
+  //runs when the file is selected from local directory
   onFileUpload = (e)=>{
     const file = e.target.files[0];
     if (file.name.match(/\.csv$/)){
@@ -32,6 +33,7 @@ export class ImportPage extends React.Component {
       }))
     }
   };
+  //runs when the upload button is clicked
   onDataUpload=(e)=>{
     e.preventDefault();
     if (this.state.error==='') {
@@ -39,9 +41,13 @@ export class ImportPage extends React.Component {
         header: true,
         dynamicTyping: true,
         complete: (results) => {
-          this.setState(()=>({
-            data:results.data
-          }))
+          const data = this.state.data;
+          const validation = this.state.validation;
+          results.data.forEach((item) => {
+            data.push(item);
+            validation.push(null);
+          })
+          this.setState(()=>({data, validation}))
         },
         error: (err) => {
           this.setState(()=>{error: 'Error during parse: ', err.type})
@@ -49,15 +55,42 @@ export class ImportPage extends React.Component {
       });
       this.setState(()=>({
         buttonUpload: true,
-        buttonAdd: false
+        buttonCheck: false
       }))
     }
   };
-  // onDataCheck = () => {
-  //   this.state.data.forEach((item,index) => {
-  //     const check1, check2,check3;
-  //   })
-  // };
+  onDataCheck = () => {
+    const val= this.state.validation;
+    const categories = [];
+    this.props.categoryList.forEach((item) => {
+      categories.push(item.label);
+    })
+    const errorTrack=[];
+    this.state.data.forEach((item,index) => {
+      if(!item.Date){
+        val[index]=false;
+        errorTrack.push('date null')
+      } else if (item.Amount.length===0 || item.Business.length===0) {
+        val[index]=false;
+        errorTrack.push('amt/descr')
+      } else if (!categories.includes(item.Category)) {
+        val[index]=false;
+        errorTrack.push('categories')
+      } else {
+        val[index]=true;
+        errorTrack.push('NO ERRORS')
+      }
+    });
+    console.log(errorTrack);
+    this.setState(()=>({validation: val}))
+    if (val.includes(false) || val.includes(null)) {
+      this.setState(()=>({
+        buttonSave:true
+      }))
+    } else {
+      this.setState(()=>({buttonSave:false}))
+    }
+  };
   onDataAdd = () =>{
     const newData = {
       Date: moment().format("MM/DD/YY"),
@@ -66,39 +99,18 @@ export class ImportPage extends React.Component {
       Business: '',
       Note: ''
     };
-    const data = this.state.data
+    const data = this.state.data;
+    const validation = this.state.validation;
     data.push(newData);
-    this.setState(()=>({data}))
-  };
-  onDateChange = (createdAt,index) => {
-    const data = this.state.data;
-    data[index].Date=createdAt;
-    this.setState(()=> ({data}));
-  };
-  onAmountChange = (amount, index) => {
-    const data = this.state.data;
-    data[index].Amount=amount;
-    this.setState(()=> ({data}));
-  };
-  onCategoryChange = (category, index) => {
-    const data = this.state.data;
-    data[index].Category=category;
-    this.setState(()=> ({data}));
-  };
-  onBusinessChange = (business, index) => {
-    const data = this.state.data;
-    data[index].Business=business;
-    this.setState(()=> ({data}));
-  };
-  onNoteChange = (note, index) => {
-    const data = this.state.data;
-    data[index].Note=note;
-    this.setState(()=> ({data}));
+    validation.push(null);
+    this.setState(()=>({data, validation, buttonCheck: false}))
   };
   onItemRemove = (index) => {
     const data = this.state.data;
+    const validation = this.state.validation;
     data.splice(index,1);
-    this.setState(()=>({data}));
+    validation.splice(index,1);
+    this.setState(()=>({data, validation}));
   };
   onItemSave=(update, index) => {
     const data = this.state.data;
@@ -155,6 +167,7 @@ export class ImportPage extends React.Component {
                   {...item}
                   id={index}
                   categoryList={this.props.categoryList}
+                  validation={this.state.validation[index]}
                   onRemove={this.onItemRemove}
                   onSave={this.onItemSave}
                 />;
@@ -163,8 +176,8 @@ export class ImportPage extends React.Component {
           }
           </div>
           <div className="content-container--buttons">
-            <button className="button" disabled={this.state.buttonAdd} onClick={this.onDataAdd}>Add Data</button>
-            <button className="button--check" disabled={this.state.buttonCheck}>Check Data</button>
+            <button className="button" onClick={this.onDataAdd}>Add Data</button>
+            <button className="button--check" disabled={this.state.buttonCheck} onClick={this.onDataCheck}>Check Data</button>
             <button className="button" disabled={this.state.buttonSave}>Save All</button>
           </div>
         </div>
