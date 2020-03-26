@@ -1,5 +1,9 @@
 .content-container{
   margin: 0 auto;
-  max-width: 80rem;
   padding: 0 $m-size;
+}
+
+.content-container--subHeader {
+  @extend .content-container;
+  margin-bottom: $m-size;
 }

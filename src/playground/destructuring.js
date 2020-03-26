@@ -1,5 +1,11 @@
-const item = ['Coffee (hot)', '$2.00', '$2.50', '$2.75'];
+const loadMe=false;
 
-const [product, ...prices] = item;
+const renderer = (loadMe) => {
+  if(loadMe){
+    console.log('loadMe')
+  } else if(!loadMe){
+    console.log('!loadMe')
+  }
+}
 
-console.log(`A medium ${product} costs ${prices[1]}`)
+renderer(loadMe);

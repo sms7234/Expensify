@@ -25,6 +25,9 @@ export const Header = (props) => (
               <Link to="/categories" className="header__item">
                 Categories
               </Link>
+              <Link to="/import" className="header__item">
+                Import
+              </Link>
               <button className="header__item--button" onClick={props.startLogout}>
                 Logout
               </button>

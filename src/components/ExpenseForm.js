@@ -1,7 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
 import moment from 'moment';
-import {connect} from 'react-redux';
 import {SingleDatePicker} from 'react-dates';
 import 'react-dates/initialize';
 
