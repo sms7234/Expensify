@@ -6,7 +6,7 @@ import Select from 'react-select';
 import {SingleDatePicker} from 'react-dates';
 import 'react-dates/initialize';
 
-const dateGenerator=(input) => {
+const stringToDateConverter=(input) => {
   let date;
   if(input.length===7) {
     date='0'.concat(input.slice(0,1),'-', input.slice(2,4), '-', input.slice(5));
@@ -24,20 +24,23 @@ export class ImportListItem extends React.Component {
     super(props);
     this.state={
       index: props.id,
-      createdAt: props.Date? dateGenerator(props.Date):moment(),
+      createdAt: props.Date? stringToDateConverter(props.Date):moment(),
       amount:props.Amount? numeral(props.Amount).format('0,0.00'):'',
       category:props.Category? props.Category:'',
       business:props.Business? props.Business:'',
       note:props.Note? props.Note:'',
-      calendarFocused: false
+      calendarFocused: false,
+      buttonSave: true
     }
   }
   //handlers
   onDateChange = (createdAt) => {
     if(createdAt){
       this.setState(() => ({createdAt}));
-      this.props.onDateChange(createdAt, this.state.index);
-    }
+    };
+    if (this.state.buttonSave){
+      this.setState(()=>({buttonSave:false}))
+    };
   };
   onFocusChange = ( {focused} ) => {
     this.setState(() => ({ calendarFocused: focused }));
@@ -46,32 +49,52 @@ export class ImportListItem extends React.Component {
     const amount = e.target.value;
     if(!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
       this.setState(()=> ({amount}));
-      this.props.onAmountChange(amount, this.state.index);
-    }
+    };
+    if (this.state.buttonSave){
+      this.setState(()=>({buttonSave:false}))
+    };
   };
   onCategoryChange = (opt) => {
     const category = opt.value;
     this.setState(() => ({category}));
-    this.props.onCategoryChange(category, this.state.index);
+    if (this.state.buttonSave){
+      this.setState(()=>({buttonSave:false}))
+    };
   };
   onBusinessChange = (e) => {
     const business = e.target.value;
     this.setState(() => ({business}));
-    this.props.onBusinessChange(business, this.state.index);
+    if (this.state.buttonSave){
+      this.setState(()=>({buttonSave:false}))
+    };
   };
   onNoteChange = (e) => {
     const note = e.target.value;
     this.setState(()=>({note}));
-    this.props.onNoteChange(note, this.state.index);
+    if (this.state.buttonSave){
+      this.setState(()=>({buttonSave:false}))
+    };
   };
   onRemove = () => {
     this.props.onRemove(this.state.index);
+  }
+  onSave=() => {
+    const update = {
+      Amount: this.state.amount,
+      Category: this.state.category,
+      Business: this.state.business,
+      Note: this.state.note,
+      Date: this.state.createdAt
+    }
+    this.props.onSave(update, this.state.index);
+    this.setState(()=>({buttonSave:true}));
   }
   render() {
     return (
       <div>
         <div className="list-item">
-          <SingleDatePicker id={uuidv4()}
+          <SingleDatePicker
+            // id={uuidv4()}
             date = {this.state.createdAt}
             onDateChange={this.onDateChange}
             focused={this.state.calendarFocused}
@@ -107,8 +130,14 @@ export class ImportListItem extends React.Component {
             value={this.state.note}
             onChange={this.onNoteChange}>
           </textarea>
-          <button className="list-group__item" onClick={this.onRemove}>
+          <button className="list-group__item button--secondary" onClick={this.onRemove}>
             X
+          </button>
+          <button
+            disabled={this.state.buttonSave}
+            className="list-group__item button"
+            onClick={this.onSave}>
+            Save
           </button>
         </div>
       </div>

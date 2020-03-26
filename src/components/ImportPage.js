@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Papa from 'papaparse';
+import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
 import ImportInstructions from './ImportInstructions';
 import ImportListItem from './ImportListItem';
@@ -14,7 +15,8 @@ export class ImportPage extends React.Component {
     error: '',
     buttonUpload: true,
     buttonCheck: true,
-    buttonSave: true
+    buttonSave: true,
+    buttonAdd: true
   };
   onFileUpload = (e)=>{
     const file = e.target.files[0];
@@ -29,7 +31,7 @@ export class ImportPage extends React.Component {
         error: 'Please upload correct file type'
       }))
     }
-  }
+  };
   onDataUpload=(e)=>{
     e.preventDefault();
     if (this.state.error==='') {
@@ -47,8 +49,7 @@ export class ImportPage extends React.Component {
       });
       this.setState(()=>({
         buttonUpload: true,
-        buttonCheck: true,
-        buttonSave: true
+        buttonAdd: false
       }))
     }
   };
@@ -56,7 +57,19 @@ export class ImportPage extends React.Component {
   //   this.state.data.forEach((item,index) => {
   //     const check1, check2,check3;
   //   })
-  // }
+  // };
+  onDataAdd = () =>{
+    const newData = {
+      Date: moment().format("MM/DD/YY"),
+      Amount: '',
+      Category: '',
+      Business: '',
+      Note: ''
+    };
+    const data = this.state.data
+    data.push(newData);
+    this.setState(()=>({data}))
+  };
   onDateChange = (createdAt,index) => {
     const data = this.state.data;
     data[index].Date=createdAt;
@@ -82,10 +95,14 @@ export class ImportPage extends React.Component {
     data[index].Note=note;
     this.setState(()=> ({data}));
   };
-  onRemove = (index) => {
+  onItemRemove = (index) => {
     const data = this.state.data;
     data.splice(index,1);
-    console.log(data);
+    this.setState(()=>({data}));
+  };
+  onItemSave=(update, index) => {
+    const data = this.state.data;
+    data[index] = update;
     this.setState(()=>({data}));
   };
 
@@ -112,7 +129,7 @@ export class ImportPage extends React.Component {
               </button>
             </div>
           </form>
-          {/* <ImportSummary qty={this.state.data} /> */}
+          <ImportSummary qty={this.state.data} />
           <div>
             <h3>Filters go Here in Accordian (must be connected to state)</h3>
           </div>
@@ -138,18 +155,15 @@ export class ImportPage extends React.Component {
                   {...item}
                   id={index}
                   categoryList={this.props.categoryList}
-                  onDateChange={this.onDateChange}
-                  onAmountChange={this.onAmountChange}
-                  onCategoryChange={this.onCategoryChange}
-                  onBusinessChange={this.onBusinessChange}
-                  onNoteChange={this.onNoteChange}
-                  onRemove={this.onRemove}
+                  onRemove={this.onItemRemove}
+                  onSave={this.onItemSave}
                 />;
               })
             )
           }
           </div>
           <div className="content-container--buttons">
+            <button className="button" disabled={this.state.buttonAdd} onClick={this.onDataAdd}>Add Data</button>
             <button className="button--check" disabled={this.state.buttonCheck}>Check Data</button>
             <button className="button" disabled={this.state.buttonSave}>Save All</button>
           </div>
