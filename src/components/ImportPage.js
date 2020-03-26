@@ -4,20 +4,25 @@ import Papa from 'papaparse';
 import { v4 as uuidv4 } from 'uuid';
 import ImportInstructions from './ImportInstructions';
 import ImportListItem from './ImportListItem';
+import ImportSummary from './ImportSummary';
 
 
 export class ImportPage extends React.Component {
   state= {
     data: null,
     file: '',
-    error: ''
+    error: '',
+    buttonUpload: true,
+    buttonCheck: true,
+    buttonSave: true
   };
   onFileUpload = (e)=>{
     const file = e.target.files[0];
     if (file.name.match(/\.csv$/)){
       this.setState(()=> ({
         file,
-        error:''
+        error:'',
+        buttonUpload: false
       }))
     } else {
       this.setState(()=> ({
@@ -40,8 +45,18 @@ export class ImportPage extends React.Component {
           this.setState(()=>{error: 'Error during parse: ', err.type})
         }
       });
+      this.setState(()=>({
+        buttonUpload: true,
+        buttonCheck: true,
+        buttonSave: true
+      }))
     }
   };
+  // onDataCheck = () => {
+  //   this.state.data.forEach((item,index) => {
+  //     const check1, check2,check3;
+  //   })
+  // }
   onDateChange = (createdAt,index) => {
     const data = this.state.data;
     data[index].Date=createdAt;
@@ -92,11 +107,12 @@ export class ImportPage extends React.Component {
               onChange={this.onFileUpload}
             />
             <div>
-              <button className="button">
+              <button className="button" disabled={this.state.buttonUpload}>
                 Upload Data
               </button>
             </div>
           </form>
+          {/* <ImportSummary qty={this.state.data} /> */}
           <div>
             <h3>Filters go Here in Accordian (must be connected to state)</h3>
           </div>
@@ -119,8 +135,8 @@ export class ImportPage extends React.Component {
               this.state.data.map((item,index) => {
                 return <ImportListItem
                   key = {uuidv4()}
-                  id={index}
                   {...item}
+                  id={index}
                   categoryList={this.props.categoryList}
                   onDateChange={this.onDateChange}
                   onAmountChange={this.onAmountChange}
@@ -132,6 +148,10 @@ export class ImportPage extends React.Component {
               })
             )
           }
+          </div>
+          <div className="content-container--buttons">
+            <button className="button--check" disabled={this.state.buttonCheck}>Check Data</button>
+            <button className="button" disabled={this.state.buttonSave}>Save All</button>
           </div>
         </div>
       </div>

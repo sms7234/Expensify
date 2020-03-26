@@ -7,3 +7,10 @@
   @extend .content-container;
   margin-bottom: $m-size;
 }
+
+.content-container--buttons {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 $l-size;
+}

@@ -14,3 +14,12 @@
   @extend .button;
   background: $red;
 }
+
+.button--check{
+  @extend .button;
+  background: $green;
+}
+
+button:disabled {
+  opacity:0.5;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import numeral from 'numeral';
+import { v4 as uuidv4 } from 'uuid';
 import Select from 'react-select';
 import {SingleDatePicker} from 'react-dates';
 import 'react-dates/initialize';
@@ -28,7 +29,6 @@ export class ImportListItem extends React.Component {
       category:props.Category? props.Category:'',
       business:props.Business? props.Business:'',
       note:props.Note? props.Note:'',
-      loadMe: true,
       calendarFocused: false
     }
   }
@@ -66,58 +66,53 @@ export class ImportListItem extends React.Component {
   };
   onRemove = () => {
     this.props.onRemove(this.state.index);
-    // this.setState(()=>({loadMe:false}))
   }
   render() {
-    if (this.state.loadMe) {
-      return (
-        <div>
-          <div className="list-item">
-            <SingleDatePicker
-              date = {this.state.createdAt}
-              onDateChange={this.onDateChange}
-              focused={this.state.calendarFocused}
-              onFocusChange={this.onFocusChange}
-              numberOfMonths={1}
-              isOutsideRange={() => false}
-            />
-            <input
-              type="text"
-              placeholder="Amount"
-              className="text-input"
-              value={this.state.amount}
-              onChange={this.onAmountChange}
-            />
-            <Select
-              placeholder="select category"
-              className="dropdown"
-              isClearable
-              defaultInputValue={this.state.category}
-              options={this.props.categoryList}
-              onChange={this.onCategoryChange}
-            />
-            <input
-              type="text"
-              placeholder="Business"
-              className="text-input"
-              value={this.state.business}
-              onChange={this.onBusinessChange}
-            />
-            <textarea
-              placeholder= "Add a note for your expense (optional)"
-              className="text-area"
-              value={this.state.note}
-              onChange={this.onNoteChange}>
-            </textarea>
-            <button className="list-group__item" onClick={this.onRemove}>
-              X
-            </button>
-          </div>
+    return (
+      <div>
+        <div className="list-item">
+          <SingleDatePicker id={uuidv4()}
+            date = {this.state.createdAt}
+            onDateChange={this.onDateChange}
+            focused={this.state.calendarFocused}
+            onFocusChange={this.onFocusChange}
+            numberOfMonths={1}
+            isOutsideRange={() => false}
+          />
+          <input
+            type="text"
+            placeholder="Amount"
+            className="text-input"
+            value={this.state.amount}
+            onChange={this.onAmountChange}
+          />
+          <Select
+            placeholder="select category"
+            className="dropdown"
+            isClearable
+            defaultInputValue={this.state.category}
+            options={this.props.categoryList}
+            onChange={this.onCategoryChange}
+          />
+          <input
+            type="text"
+            placeholder="Business"
+            className="text-input"
+            value={this.state.business}
+            onChange={this.onBusinessChange}
+          />
+          <textarea
+            placeholder= "Add a note for your expense (optional)"
+            className="text-area"
+            value={this.state.note}
+            onChange={this.onNoteChange}>
+          </textarea>
+          <button className="list-group__item" onClick={this.onRemove}>
+            X
+          </button>
         </div>
-      )
-    } else if (!this.state.loadMe) {
-      return null
-    }
+      </div>
+    )
   }
 }
 
