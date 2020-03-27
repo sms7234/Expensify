@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Papa from 'papaparse';
 import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
 import {startAddExpense} from '../actions/expenses';
 import ImportInstructions from './ImportInstructions';
+import ImportUpload from './ImportUpload';
 import ImportListItem from './ImportListItem';
 import ImportSummary from './ImportSummary';
 
@@ -13,52 +13,15 @@ export class ImportPage extends React.Component {
   state= {
     data: [],
     validation: [],
-    file: '',
-    error: '',
-    buttonUpload: true,
-    buttonCheck: true,
     buttonSave: true,
+    buttonCheck: true,
   };
-  //runs when the file is selected from local directory
-  onFileUpload = (e)=>{
-    const file = e.target.files[0];
-    if (file.name.match(/\.csv$/)){
-      this.setState(()=> ({
-        file,
-        error:'',
-        buttonUpload: false
-      }))
-    } else {
-      this.setState(()=> ({
-        error: 'Please upload correct file type'
-      }))
-    }
-  };
-  //runs when the upload button is clicked
-  onDataUpload=(e)=>{
-    e.preventDefault();
-    if (this.state.error==='') {
-      Papa.parse(this.state.file,{
-        header: true,
-        dynamicTyping: true,
-        complete: (results) => {
-          const data = this.state.data;
-          const validation = this.state.validation;
-          results.data.forEach((item) => {
-            data.push(item);
-            validation.push(null);
-          })
-          this.setState(()=>({data, validation}))
-        },
-        error: (err) => {
-          this.setState(()=>{error: 'Error during parse: ', err.type})
-        }
-      });
-      this.setState(()=>({
-        buttonUpload: true,
-        buttonCheck: false
-      }))
-    }
+  onDataUpload = (data, validation) => {
+    this.setState(()=>({data, validation}));
+    this.setState(()=>({
+      buttonUpload: true,
+      buttonCheck: false
+    }));
   };
   onDataCheck = () => {
     const val= this.state.validation;
@@ -113,7 +76,7 @@ export class ImportPage extends React.Component {
     data[index] = update;
     this.setState(()=>({data}));
   };
-  onSave=() =>{
+  onSubmit=() =>{
     const convertedData = [];
     this.state.data.forEach((item)=>{
       convertedData.push({
@@ -140,19 +103,11 @@ export class ImportPage extends React.Component {
         </div>
         <ImportInstructions />
         <div className="content-container">
-          <form className="form" onSubmit={this.onDataUpload}>
-            {this.state.error!=='' && <h3 className="form__error">{this.state.error}</h3>}
-            <input
-              type="file"
-              name="file"
-              onChange={this.onFileUpload}
-            />
-            <div>
-              <button className="button" disabled={this.state.buttonUpload}>
-                Upload Data
-              </button>
-            </div>
-          </form>
+          <ImportUpload
+            onDataUpload={this.onDataUpload}
+            data={this.state.data}
+            validation={this.state.validation}
+          />
           <ImportSummary qty={this.state.data} />
           <div>
             <h3>Filters go Here in Accordian (must be connected to state)</h3>
@@ -190,7 +145,7 @@ export class ImportPage extends React.Component {
           <div className="content-container--buttons">
             <button className="button" onClick={this.onDataAdd}>Add Data</button>
             <button className="button--check" disabled={this.state.buttonCheck} onClick={this.onDataCheck}>Check Data</button>
-            <button className="button" disabled={this.state.buttonSave} onClick={this.onSave}>Save All</button>
+            <button className="button" disabled={this.state.buttonSave} onClick={this.onSubmit}>Submit Data</button>
           </div>
         </div>
       </div>
