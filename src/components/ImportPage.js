@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Papa from 'papaparse';
 import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
+import {startAddExpense} from '../actions/expenses';
 import ImportInstructions from './ImportInstructions';
 import ImportListItem from './ImportListItem';
 import ImportSummary from './ImportSummary';
@@ -69,23 +70,18 @@ export class ImportPage extends React.Component {
     this.state.data.forEach((item,index) => {
       if(!item.Date){
         val[index]=false;
-        errorTrack.push('date null')
       } else if (item.Amount.length===0 || item.Business.length===0) {
         val[index]=false;
-        errorTrack.push('amt/descr')
       } else if (!categories.includes(item.Category)) {
         val[index]=false;
-        errorTrack.push('categories')
       } else {
         val[index]=true;
-        errorTrack.push('NO ERRORS')
       }
     });
-    console.log(errorTrack);
     this.setState(()=>({validation: val}))
     if (val.includes(false) || val.includes(null)) {
       this.setState(()=>({
-        buttonSave:true
+        buttonSave:true,
       }))
     } else {
       this.setState(()=>({buttonSave:false}))
@@ -116,6 +112,22 @@ export class ImportPage extends React.Component {
     const data = this.state.data;
     data[index] = update;
     this.setState(()=>({data}));
+  };
+  onSave=() =>{
+    const convertedData = [];
+    this.state.data.forEach((item)=>{
+      convertedData.push({
+        amount: parseInt(item.Amount)*100,
+        business: item.Business,
+        category: item.Category,
+        note: item.Note,
+        createdAt: item.Date.valueOf()
+      })
+    });
+    convertedData.forEach((item) => {
+      this.props.startAddExpense(item)
+    })
+    this.props.history.push('/expenses');
   };
 
   render() {
@@ -178,7 +190,7 @@ export class ImportPage extends React.Component {
           <div className="content-container--buttons">
             <button className="button" onClick={this.onDataAdd}>Add Data</button>
             <button className="button--check" disabled={this.state.buttonCheck} onClick={this.onDataCheck}>Check Data</button>
-            <button className="button" disabled={this.state.buttonSave}>Save All</button>
+            <button className="button" disabled={this.state.buttonSave} onClick={this.onSave}>Save All</button>
           </div>
         </div>
       </div>
@@ -193,4 +205,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(ImportPage);
+const mapDispatchToProps = (dispatch) => ({
+  startAddExpense: (expense) => dispatch(startAddExpense(expense))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ImportPage);
