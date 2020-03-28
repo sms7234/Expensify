@@ -1,5 +1,7 @@
 import React from 'react';
 import Papa from 'papaparse';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card'
 
 class ImportUpload extends React.Component {
   constructor(props){
@@ -50,19 +52,32 @@ class ImportUpload extends React.Component {
   };
   render () {
     return (
-      <form className="form" onSubmit={this.onDataUpload}>
-        {this.state.error!=='' && <h3 className="form__error">{this.state.error}</h3>}
-        <input
-          type="file"
-          name="file"
-          onChange={this.onFileUpload}
-        />
-        <div>
-          <button className="button" disabled={this.state.buttonUpload}>
-            Upload Data
-          </button>
-        </div>
-      </form>
+      <div className="content-container--subHeader">
+        <Accordion>
+          <Card>
+            <Accordion.Toggle as={Card.Header} className="accordion__header" eventKey="0">
+              Upload Data
+            </Accordion.Toggle>
+            <Accordion.Collapse eventKey="0">
+              <Card.Body>
+                <form className="form" onSubmit={this.onDataUpload}>
+                  {this.state.error!=='' && <h3 className="form__error">{this.state.error}</h3>}
+                  <input
+                    type="file"
+                    name="file"
+                    onChange={this.onFileUpload}
+                  />
+                  <div>
+                    <button className="button" disabled={this.state.buttonUpload}>
+                      Upload Data
+                    </button>
+                  </div>
+                </form>
+              </Card.Body>
+            </Accordion.Collapse>
+          </Card>
+        </Accordion>
+      </div>
     )
   }
 }

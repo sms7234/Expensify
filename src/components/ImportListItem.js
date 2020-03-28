@@ -26,7 +26,7 @@ export class ImportListItem extends React.Component {
       index: props.id,
       createdAt: props.Date? stringToDateConverter(props.Date):moment(),
       amount:props.Amount? numeral(props.Amount).format('0,0.00'):'',
-      category:props.Category? props.Category:'',
+      category:props.Category ? props.Category: '',
       business:props.Business? props.Business:'',
       note:props.Note? props.Note:'',
       calendarFocused: false,
@@ -125,17 +125,17 @@ export class ImportListItem extends React.Component {
             onChange={this.onBusinessChange}
           />
           <textarea
-            placeholder= "Add a note for your expense (optional)"
-            className="text-area"
+            placeholder= "Add a note (optional)"
+            className="textarea--multiple"
             value={this.state.note}
             onChange={this.onNoteChange}>
           </textarea>
-          <button className="list-group__item button--secondary" onClick={this.onRemove}>
+          <button className="button--group button--secondary" onClick={this.onRemove}>
             X
           </button>
           <button
             disabled={this.state.buttonSave}
-            className="list-group__item button"
+            className="button button--group"
             onClick={this.onSave}>
             Save
           </button>

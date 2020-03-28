@@ -99,27 +99,24 @@ export class ImportPage extends React.Component {
         <div className="page-header">
           <div className="content-container">
             <h1 className="page-header__title"> Import </h1>
+            <h2 className="page-header__subtitle">Manually input or import csv data to add multiple expenses simultaneously</h2>
+            <ImportSummary className="page-header__subtitle" qty={this.state.data} />
           </div>
         </div>
         <ImportInstructions />
+        <ImportUpload
+          onDataUpload={this.onDataUpload}
+          data={this.state.data}
+          validation={this.state.validation}
+        />
         <div className="content-container">
-          <ImportUpload
-            onDataUpload={this.onDataUpload}
-            data={this.state.data}
-            validation={this.state.validation}
-          />
-          <ImportSummary qty={this.state.data} />
-          <div>
-            <h3>Filters go Here in Accordian (must be connected to state)</h3>
-          </div>
           <div className="list-header">
-            <h4>Date</h4>
-            <h4>Amount</h4>
-            <h4>Category</h4>
-            <h4>Business</h4>
-            <h4>Note</h4>
-            <h4>Remove</h4>
-
+            <h4 className="show-for-mobile">Expense List </h4>
+            <h4 className="show-for-desktop">Date</h4>
+            <h4 className="show-for-desktop">Amount</h4>
+            <h4 className="show-for-desktop">Category</h4>
+            <h4 className="show-for-desktop">Business</h4>
+            <h4 className="show-for-desktop">Note</h4>
           </div>
           <div className="list-body">
           {

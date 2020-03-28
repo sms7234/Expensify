@@ -1,0 +1,11 @@
+.accordion__header{
+  font-weight: 700;
+  font-size: $font-size-large;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.accordion__message{
+  font-size:$font-size-small;
+}

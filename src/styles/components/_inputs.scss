@@ -12,6 +12,7 @@
   height: 50px;
   font-weight: 300;
   margin: 10px;
+  min-width: 200px;
 }
 
 .select {
@@ -21,4 +22,11 @@
 .textarea {
   @extend .text-input;
   height: 10rem;
+}
+
+.textarea--multiple {
+  @extend .text-input;
+  height: 50px;
+  font-size: $font-size-small;
+
 }

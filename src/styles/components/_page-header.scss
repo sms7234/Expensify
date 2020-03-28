@@ -18,6 +18,11 @@
   }
 }
 
+.page-header__message{
+  @extend .page-header__subtitle;
+  margin: $s-size 0;
+}
+
 .page-header__actions{
   margin-top: $m-size;
 
