@@ -1,0 +1,23 @@
+.group-listing {
+  display: grid;
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  border: 1px solid darken($grey, 7%);
+  border-top: none;
+  color: $dark-grey;
+  padding: $s-size;
+  text-decoration: none;
+  transition: background .3s ease;
+  &:hover{
+    background: $grey;
+  }
+  @media(max-width: $desktop-breakpoint) {
+    grid-template-columns: 1fr;
+    align-items: center;
+    padding: $m-size;
+  }
+}
+
+.SingleDatePicker {
+  margin: 10px 0 10px 10px;
+}

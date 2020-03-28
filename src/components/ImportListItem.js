@@ -92,7 +92,7 @@ export class ImportListItem extends React.Component {
   render() {
     return (
       <div>
-        <div className={"list-item " + (this.props.validation===false ? "list-item--invalid ":"")+ (this.props.validation===true ? "list-item--valid ":"")}>
+        <div className={"group-listing " + (this.props.validation===false ? "list-item--invalid ":"")+ (this.props.validation===true ? "list-item--valid ":"")}>
           <SingleDatePicker
             id={uuidv4()}
             date = {this.state.createdAt}
@@ -131,7 +131,7 @@ export class ImportListItem extends React.Component {
             onChange={this.onNoteChange}>
           </textarea>
           <button className="button--group button--secondary" onClick={this.onRemove}>
-            X
+            Remove
           </button>
           <button
             disabled={this.state.buttonSave}
