@@ -11,12 +11,12 @@ export const Header = (props) => (
       <div className="header__content">
         <Navbar bg="none" expand="sm" variant="dark">
           <Navbar.Brand>
-            <Link to="/expenses" className="header__item--brand">Expensify</Link>
+            <Link to="/dashboard" className="header__item--brand">Expensify</Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav className="ml-auto">
-              <Link to="/expenses" className="header__item">
+              <Link to="/dashboard" className="header__item">
                 Dashboard
               </Link>
               <Link to="/expenses" className="header__item">

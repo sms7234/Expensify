@@ -1,15 +1,3 @@
-const categories = null;
+const arr =[1,2,3,4,5]
 
-const finder = (input) => {
-  if(input===null){
-    console.log('null')
-  } else if (input===false){
-    console.log('false')
-  } else if(input===true){
-    console.log('true')
-  }
-}
-
-finder(null)
-finder(true)
-finder(false)
+console.log(arr.filter((item) => item ===6));

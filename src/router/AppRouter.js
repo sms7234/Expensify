@@ -4,6 +4,7 @@ import createHistory from 'history/createBrowserHistory';
 import ExpenseDashboardPage from '../components/ExpenseDashboardPage';
 import CategoryDashboardPage from '../components/CategoryDashboardPage';
 import LoginPage from '../components/LoginPage';
+import DashboardPage from '../components/DashboardPage';
 import AddExpensePage from '../components/AddExpensePage';
 import AddCategoryPage from '../components/AddCategoryPage';
 import EditExpensePage from '../components/EditExpensePage';
@@ -20,6 +21,7 @@ const AppRouter = () => (
     <div>
       <Switch>
         <PublicRoute path="/" component={LoginPage} exact={true}/>
+        <PrivateRoute path="/dashboard" component={DashboardPage}/>
         <PrivateRoute path="/expenses" component={ExpenseDashboardPage}/>
         <PrivateRoute path="/categories" component={CategoryDashboardPage}/>
         <PrivateRoute path="/createExpense" component={AddExpensePage} />
