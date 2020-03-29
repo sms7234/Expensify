@@ -29,9 +29,8 @@ export class ImportPage extends React.Component {
     this.props.categoryList.forEach((item) => {
       categories.push(item.label);
     })
-    const errorTrack=[];
     this.state.data.forEach((item,index) => {
-      if(!item.Date){
+      if(!item.Amount ||!item.Business ||!item.Category){
         val[index]=false;
       } else if (item.Amount.length===0 || item.Business.length===0) {
         val[index]=false;
@@ -52,7 +51,7 @@ export class ImportPage extends React.Component {
   };
   onDataAdd = () =>{
     const newData = {
-      Date: moment().format("MM/DD/YY"),
+      Date: moment(),
       Amount: '',
       Category: '',
       Business: '',
@@ -130,6 +129,7 @@ export class ImportPage extends React.Component {
                   key = {uuidv4()}
                   {...item}
                   id={index}
+                  dateKey={uuidv4()}
                   categoryList={this.props.categoryList}
                   validation={this.state.validation[index]}
                   onRemove={this.onItemRemove}

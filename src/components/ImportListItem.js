@@ -6,25 +6,14 @@ import Select from 'react-select';
 import {SingleDatePicker} from 'react-dates';
 import 'react-dates/initialize';
 
-const stringToDateConverter=(input) => {
-  let date;
-  if(input.length===7) {
-    date='0'.concat(input.slice(0,1),'-', input.slice(2,4), '-', input.slice(5));
-    return moment(date);
-  } else if (input.length===8) {
-    date=input.slice(0,2).concat('-', input.slice(3,5), '-', input.slice(6));
-    return moment(date);
-  } else {
-    return moment();
-  }
-};
+
 
 export class ImportListItem extends React.Component {
   constructor(props){
     super(props);
     this.state={
       index: props.id,
-      createdAt: props.Date? stringToDateConverter(props.Date):moment(),
+      createdAt: props.Date ? props.Date : moment(),
       amount:props.Amount? numeral(props.Amount).format('0,0.00'):'',
       category:props.Category ? props.Category: '',
       business:props.Business? props.Business:'',
@@ -94,7 +83,7 @@ export class ImportListItem extends React.Component {
       <div>
         <div className={"group-listing " + (this.props.validation===false ? "list-item--invalid ":"")+ (this.props.validation===true ? "list-item--valid ":"")}>
           <SingleDatePicker
-            id={uuidv4()}
+            id={this.props.dateKey}
             date = {this.state.createdAt}
             onDateChange={this.onDateChange}
             focused={this.state.calendarFocused}

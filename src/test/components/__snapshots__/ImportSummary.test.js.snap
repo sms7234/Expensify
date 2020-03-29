@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render expenses correctly with 0 expenses 1`] = `<div />`;
+
+exports[`should render expenses correctly with 3 expenses 1`] = `
+<div>
+  <h1
+    className="page-header__message"
+  >
+    <span>
+      3
+    </span>
+     new 
+    expenses
+     to be uploaded
+  </h1>
+</div>
+`;
