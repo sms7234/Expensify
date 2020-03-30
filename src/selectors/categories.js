@@ -1,6 +1,6 @@
-export default (categories, {text}) => {
+export default (categories, {category}) => {
   return categories.filter((item) => {
-    const textMatch = item.category.toLowerCase().includes(text.toLowerCase());
+    const textMatch = item.category.toLowerCase().includes(category.toLowerCase());
     return textMatch;
   }).sort((a,b)=>{
     if(a.category < b.category){

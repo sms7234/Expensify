@@ -4,10 +4,12 @@ import moment from 'moment';
 import {ExpenseListFilters} from '../../components/ExpenseListFilters';
 import {filters, altFilters} from '../fixtures/filters';
 
-let setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate, wrapper;
+let setCategoryFilter, setBusinessFilter, setNoteFilter, sortByDate, sortByAmount, setStartDate, setEndDate, wrapper;
 
 beforeEach(() => {
-  setTextFilter = jest.fn();
+  setCategoryFilter = jest.fn();
+  setBusinessFilter=jest.fn();
+  setNoteFilter= jest.fn();
   sortByDate = jest.fn();
   sortByAmount = jest.fn();
   setStartDate = jest.fn();
@@ -15,7 +17,9 @@ beforeEach(() => {
   wrapper = shallow(
     <ExpenseListFilters
       filters={filters}
-      setTextFilter={setTextFilter}
+      setCategoryFilter={setCategoryFilter}
+      setBusinessFilter={setBusinessFilter}
+      setNoteFilter={setNoteFilter}
       sortByDate={sortByDate}
       sortByAmount={sortByAmount}
       setStartDate={setStartDate}
@@ -34,12 +38,28 @@ test('should render ExpenseListFilters with alt data correctly', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-test('should handle text change', () => {
+test('should handle category text filter change', () => {
   const value = 'newish'
-  wrapper.find('input').simulate('change', {
+  wrapper.find('input').at(0).simulate('change', {
     target: {value}
   });
-  expect(setTextFilter).toHaveBeenLastCalledWith(value);
+  expect(setCategoryFilter).toHaveBeenLastCalledWith(value);
+});
+
+test('should handle business text filter change', () => {
+  const value = 'newish'
+  wrapper.find('input').at(1).simulate('change', {
+    target: {value}
+  });
+  expect(setBusinessFilter).toHaveBeenLastCalledWith(value);
+});
+
+test('should handle note text filter change', () => {
+  const value = 'newish'
+  wrapper.find('input').at(2).simulate('change', {
+    target: {value}
+  });
+  expect(setNoteFilter).toHaveBeenLastCalledWith(value);
 });
 
 test('should sort by date', () => {

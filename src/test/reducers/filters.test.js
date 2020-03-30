@@ -4,7 +4,9 @@ import moment from 'moment';
 test('should setup default filter values', () => {
   const state = filtersReducer(undefined, {type: '@@INIT'});
   expect(state).toEqual({
-    text:'',
+    category:'',
+    business:'',
+    note:'',
     sortBy: 'date',
     startDate: moment().startOf('month'),
     endDate: moment().endOf('month')
@@ -28,10 +30,22 @@ test('should set sortBy to date', () => {
   expect(state.sortBy).toBe('date');
 })
 
-test('should set text filter', () => {
-  const action = {type: 'SET_TEXT', text: 'hi'}
+test('should set category text filter', () => {
+  const action = {type: 'SET_CATEGORY', category: 'hi'}
   const state = filtersReducer(undefined, action);
-  expect(state.text).toBe('hi');
+  expect(state.category).toBe('hi');
+});
+
+test('should set business text filter', () => {
+  const action = {type: 'SET_BUSINESS', business: 'hi'}
+  const state = filtersReducer(undefined, action);
+  expect(state.business).toBe('hi');
+});
+
+test('should set note text filter', () => {
+  const action = {type: 'SET_NOTE', note: 'hi'}
+  const state = filtersReducer(undefined, action);
+  expect(state.note).toBe('hi');
 });
 
 test('should set start date filter', () => {

@@ -4,7 +4,9 @@ import expenses from '../fixtures/expenses';
 
 test('should filter by text value', () => {
   const filters = {
-    text: 'e',
+    category: 'e',
+    business:'',
+    note:'',
     sortBy: 'date',
     startDate: undefined,
     endDate: undefined
@@ -15,7 +17,9 @@ test('should filter by text value', () => {
 
 test('should filter by startDate', () => {
   const filters = {
-    text: '',
+    category: '',
+    business:'',
+    note:'',
     sortBy: 'date',
     startDate: moment(0),
     endDate: undefined
@@ -26,7 +30,9 @@ test('should filter by startDate', () => {
 
 test('should filter by endDate', () => {
   const filters = {
-    text: '',
+    category: '',
+    business:'',
+    note:'',
     sortBy: 'date',
     startDate: undefined,
     endDate: moment(0)
@@ -37,7 +43,9 @@ test('should filter by endDate', () => {
 
 test('should filter by date', () => {
   const filters = {
-    text: '',
+    category: '',
+    business:'',
+    note:'',
     sortBy: 'date',
     startDate: undefined,
     endDate: undefined
@@ -48,7 +56,9 @@ test('should filter by date', () => {
 
 test('should filter by amount', () => {
   const filters = {
-    text: '',
+    category: '',
+    business:'',
+    note:'',
     sortBy: 'amount',
     startDate: undefined,
     endDate: undefined
