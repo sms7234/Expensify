@@ -11,7 +11,7 @@ exports[`render page with no data 1`] = `
       <h1
         className="page-header__title"
       >
-         Import 
+         Import Expenses
       </h1>
       <h2
         className="page-header__subtitle"
@@ -21,10 +21,22 @@ exports[`render page with no data 1`] = `
       <ImportSummary
         className="page-header__subtitle"
         qty={Array []}
+        wordPlural="expenses"
+        wordSingular="expense"
       />
     </div>
   </div>
-  <_default />
+  <_default
+    dataFormat={
+      Array [
+        "Date (MM/DD/YY)",
+        "Amount",
+        "Category",
+        "Business",
+        "Notes",
+      ]
+    }
+  />
   <ImportUploadExpenses
     data={Array []}
     onDataUpload={[Function]}

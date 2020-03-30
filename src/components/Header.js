@@ -28,7 +28,7 @@ export const Header = (props) => (
               </Link>
               <DropdownButton title="Import" variant="link" className="dropdown--header">
                 <div className="header__dropdown--area">
-                  <Link to="/importExpenses" className="header__dropdown--item">Categories</Link>
+                  <Link to="/importCategories" className="header__dropdown--item">Categories</Link>
                 </div>
                 <div className="header__dropdown--area">
                   <Link to="/importExpenses" className="header__dropdown--item">Expenses</Link>

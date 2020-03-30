@@ -65,7 +65,7 @@ exports[`should render Header correctly 1`] = `
               >
                 <Link
                   className="header__dropdown--item"
-                  to="/importExpenses"
+                  to="/importCategories"
                 >
                   Categories
                 </Link>
