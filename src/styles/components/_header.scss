@@ -56,3 +56,21 @@
     text-decoration: underline;
   }
 }
+
+.header__dropdown--area {
+  padding: $s-size/2;
+}
+
+.header__dropdown--item {
+  font-size: $font-size-small;
+  color: black;
+  &:hover{
+    font-weight: bold;
+  }
+}
+//override dropdown button settings
+#dropdown-basic{
+  @extend .header__item--button;
+  padding: $s-size/2;
+  border: none !important;
+}

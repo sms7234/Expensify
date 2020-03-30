@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {startLogout} from '../actions/auth';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 export const Header = (props) => (
   <header className="header">
@@ -25,9 +26,14 @@ export const Header = (props) => (
               <Link to="/categories" className="header__item">
                 Categories
               </Link>
-              <Link to="/import" className="header__item">
-                Import
-              </Link>
+              <DropdownButton title="Import" variant="link" className="dropdown--header">
+                <div className="header__dropdown--area">
+                  <Link to="/importCategories" className="header__dropdown--item">Categories</Link>
+                </div>
+                <div className="header__dropdown--area">
+                  <Link to="/importExpenses" className="header__dropdown--item">Expenses</Link>
+                </div>
+              </DropdownButton>
               <button className="header__item--button" onClick={props.startLogout}>
                 Logout
               </button>

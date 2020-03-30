@@ -10,6 +10,8 @@ exports[`render ExpenseListItem with one item 1`] = `
       className="list-item__title"
     >
       Gum
+       - 
+      walmart
     </h3>
     <span
       className="list-item__sub-title"
@@ -17,10 +19,15 @@ exports[`render ExpenseListItem with one item 1`] = `
       December 31st, 1969
     </span>
   </div>
-  <h3
-    className="list-item__data"
-  >
-    $1.95
-  </h3>
+  <div>
+    <h3
+      className="list-item__data"
+    >
+      $1.95
+    </h3>
+    <span
+      className="list-item__sub-title show-for-desktop"
+    />
+  </div>
 </Link>
 `;

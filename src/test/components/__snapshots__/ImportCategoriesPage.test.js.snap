@@ -11,21 +11,30 @@ exports[`render page with no data 1`] = `
       <h1
         className="page-header__title"
       >
-         Import 
+         Import Categories 
       </h1>
       <h2
         className="page-header__subtitle"
       >
-        Manually input or import csv data to add multiple expenses simultaneously
+        Manually input or import csv data to add multiple categories simultaneously
       </h2>
       <ImportSummary
         className="page-header__subtitle"
         qty={Array []}
+        wordPlural="categories"
+        wordSingular="category"
       />
     </div>
   </div>
-  <_default />
-  <ImportUpload
+  <_default
+    dataFormat={
+      Array [
+        "Category",
+        "Description",
+      ]
+    }
+  />
+  <ImportUploadCategories
     data={Array []}
     onDataUpload={[Function]}
     validation={Array []}
@@ -39,17 +48,7 @@ exports[`render page with no data 1`] = `
       <h4
         className="show-for-mobile"
       >
-        Expense List 
-      </h4>
-      <h4
-        className="show-for-desktop"
-      >
-        Date
-      </h4>
-      <h4
-        className="show-for-desktop"
-      >
-        Amount
+        Category List 
       </h4>
       <h4
         className="show-for-desktop"
@@ -59,12 +58,7 @@ exports[`render page with no data 1`] = `
       <h4
         className="show-for-desktop"
       >
-        Business
-      </h4>
-      <h4
-        className="show-for-desktop"
-      >
-        Note
+        Description
       </h4>
     </div>
     <div

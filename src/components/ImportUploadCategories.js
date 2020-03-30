@@ -1,6 +1,5 @@
 import React from 'react';
 import Papa from 'papaparse';
-import moment from 'moment';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card'
 
@@ -17,7 +16,7 @@ const stringToDateConverter=(input) => {
   }
 };
 
-class ImportUpload extends React.Component {
+class ImportUploadCategories extends React.Component {
   constructor(props){
     super(props);
     this.state={
@@ -52,8 +51,8 @@ class ImportUpload extends React.Component {
           const data = this.state.data;
           const validation = this.state.validation;
           results.data.forEach((item) => {
-            item.Date = item.Date ? stringToDateConverter(item.Date):moment();
-            item.Note = item.Note ? item.Note:'';
+            item.Category = item.Category ? item.Category:'';
+            item.Description = item.Description ? item.Description:'';
             data.push(item);
             validation.push(null);
           })
@@ -98,4 +97,4 @@ class ImportUpload extends React.Component {
   }
 }
 
-export default ImportUpload;
+export default ImportUploadCategories;

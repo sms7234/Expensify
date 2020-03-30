@@ -1,15 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
-import {startAddExpense} from '../actions/expenses';
+import {startAddCategory} from '../actions/categories';
 import ImportInstructions from './ImportInstructions';
-import ImportUpload from './ImportUpload';
-import ImportListItem from './ImportListItem';
+import ImportUploadCategories from './ImportUploadCategories';
+import ImportCategoryListItem from './ImportCategoryListItem';
 import ImportSummary from './ImportSummary';
 
 
-export class ImportPage extends React.Component {
+export class ImportCategoriesPage extends React.Component {
   state= {
     data: [],
     validation: [],
@@ -25,16 +24,8 @@ export class ImportPage extends React.Component {
   };
   onDataCheck = () => {
     const val= this.state.validation;
-    const categories = [];
-    this.props.categoryList.forEach((item) => {
-      categories.push(item.label);
-    })
     this.state.data.forEach((item,index) => {
-      if(!item.Amount ||!item.Business ||!item.Category){
-        val[index]=false;
-      } else if (item.Amount.length===0 || item.Business.length===0) {
-        val[index]=false;
-      } else if (!categories.includes(item.Category)) {
+      if(item.Category===""){
         val[index]=false;
       } else {
         val[index]=true;
@@ -51,11 +42,8 @@ export class ImportPage extends React.Component {
   };
   onDataAdd = () =>{
     const newData = {
-      Date: moment(),
-      Amount: '',
       Category: '',
-      Business: '',
-      Note: ''
+      Description: ''
     };
     const data = this.state.data;
     const validation = this.state.validation;
@@ -79,17 +67,14 @@ export class ImportPage extends React.Component {
     const convertedData = [];
     this.state.data.forEach((item)=>{
       convertedData.push({
-        amount: parseInt(item.Amount)*100,
-        business: item.Business,
         category: item.Category,
-        note: item.Note,
-        createdAt: item.Date.valueOf()
+        description: item.Description
       })
     });
     convertedData.forEach((item) => {
-      this.props.startAddExpense(item)
+      this.props.startAddCategory(item)
     })
-    this.props.history.push('/expenses');
+    this.props.history.push('/categories');
   };
 
   render() {
@@ -97,25 +82,24 @@ export class ImportPage extends React.Component {
       <div>
         <div className="page-header">
           <div className="content-container">
-            <h1 className="page-header__title"> Import </h1>
-            <h2 className="page-header__subtitle">Manually input or import csv data to add multiple expenses simultaneously</h2>
-            <ImportSummary className="page-header__subtitle" qty={this.state.data} />
+            <h1 className="page-header__title"> Import Categories </h1>
+            <h2 className="page-header__subtitle">Manually input or import csv data to add multiple categories simultaneously</h2>
+            <ImportSummary className="page-header__subtitle" qty={this.state.data} wordSingular={'category'} wordPlural={'categories'}/>
           </div>
         </div>
-        <ImportInstructions />
-        <ImportUpload
+        <ImportInstructions
+          dataFormat={['Category', 'Description']}
+        />
+        <ImportUploadCategories
           onDataUpload={this.onDataUpload}
           data={this.state.data}
           validation={this.state.validation}
         />
         <div className="content-container">
           <div className="list-header">
-            <h4 className="show-for-mobile">Expense List </h4>
-            <h4 className="show-for-desktop">Date</h4>
-            <h4 className="show-for-desktop">Amount</h4>
+            <h4 className="show-for-mobile">Category List </h4>
             <h4 className="show-for-desktop">Category</h4>
-            <h4 className="show-for-desktop">Business</h4>
-            <h4 className="show-for-desktop">Note</h4>
+            <h4 className="show-for-desktop">Description</h4>
           </div>
           <div className="list-body">
           {
@@ -125,12 +109,10 @@ export class ImportPage extends React.Component {
               </div>
             ): (
               this.state.data.map((item,index) => {
-                return <ImportListItem
+                return <ImportCategoryListItem
                   key = {uuidv4()}
                   {...item}
                   id={index}
-                  dateKey={uuidv4()}
-                  categoryList={this.props.categoryList}
                   validation={this.state.validation[index]}
                   onRemove={this.onItemRemove}
                   onSave={this.onItemSave}
@@ -150,15 +132,8 @@ export class ImportPage extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    categoryList: state.categories.map((item)=>{return({label: item.category, value: item.category})
-    })
-  };
-};
-
 const mapDispatchToProps = (dispatch) => ({
-  startAddExpense: (expense) => dispatch(startAddExpense(expense))
+  startAddCategory: (category) => dispatch(startAddCategory(category))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImportPage);
+export default connect(undefined, mapDispatchToProps)(ImportCategoriesPage);

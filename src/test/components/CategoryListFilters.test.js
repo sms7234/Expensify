@@ -2,18 +2,18 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {CategoryListFilters} from '../../components/CategoryListFilters';
 
-let setTextFilter, wrapper;
+let setCategoryFilter, wrapper;
 
 const filters = {
-  text: ''
+  category: ''
 };
 
 beforeEach(()=> {
-  setTextFilter = jest.fn();
+  setCategoryFilter = jest.fn();
   wrapper=shallow(
     <CategoryListFilters
       filters={filters}
-      setTextFilter={setTextFilter} />
+      setCategoryFilter={setCategoryFilter} />
   );
 });
 
@@ -26,5 +26,5 @@ test('should handle text input', () => {
   wrapper.find('input').simulate('change', {
     target: {value}
   });
-  expect(setTextFilter).toHaveBeenLastCalledWith(value);
+  expect(setCategoryFilter).toHaveBeenLastCalledWith(value);
 });

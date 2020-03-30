@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {setTextFilter} from '../actions/filters';
+import {setCategoryFilter} from '../actions/filters';
 
 export class CategoryListFilters extends React.Component {
   onTextChange = (e) => {
-    this.props.setTextFilter(e.target.value);
+    this.props.setCategoryFilter(e.target.value);
   };
   render () {
     return (
@@ -15,7 +15,7 @@ export class CategoryListFilters extends React.Component {
               type="text"
               className="text-input"
               placeholder="search categories"
-              value={this.props.filters.text}
+              value={this.props.filters.category}
               onChange={this.onTextChange}
             />
           </div>
@@ -32,7 +32,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  setTextFilter: (text) => dispatch(setTextFilter(text)),
+  setCategoryFilter: (text) => dispatch(setCategoryFilter(text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryListFilters);

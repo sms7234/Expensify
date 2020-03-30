@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import moment from 'moment';
-import ImportListItem from '../../components/ImportListItem';
+import ImportExpenseListItem from '../../components/ImportExpenseListItem';
 import categoryList from '../fixtures/categoryList';
 
 const data = {
@@ -17,7 +17,7 @@ let onRemove, onSave, wrapper;
 beforeEach(()=>{
   onRemove = jest.fn();
   onSave = jest.fn();
-  wrapper = shallow( <ImportListItem
+  wrapper = shallow( <ImportExpenseListItem
     key={'1'}
     {...data}
     id={0}

@@ -7,12 +7,29 @@
   margin: 10px;
 }
 
+.text-input--filters {
+  @extend .text-input;
+  margin:0 0 10px 0;
+}
+
 .dropdown {
   font-size: $font-size-large;
   height: 50px;
   font-weight: 300;
   margin: 10px;
   min-width: 200px;
+}
+
+.dropdown--header {
+  min-width: 0;
+  >button {
+    font-size: $font-size-small;
+    color: white;
+    &:hover{
+      color: $yellow;
+      font-weight: bold;
+    }
+  }
 }
 
 .select {
