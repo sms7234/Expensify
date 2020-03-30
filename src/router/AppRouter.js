@@ -8,7 +8,7 @@ import AddExpensePage from '../components/AddExpensePage';
 import AddCategoryPage from '../components/AddCategoryPage';
 import EditExpensePage from '../components/EditExpensePage';
 import EditCategoryPage from '../components/EditCategoryPage';
-import ImportPage from '../components/ImportPage';
+import ImportExpensePage from '../components/ImportExpensePage';
 import NotFoundPage from '../components/NotFoundPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
@@ -26,7 +26,8 @@ const AppRouter = () => (
         <PrivateRoute path="/createCategory" component={AddCategoryPage} />
         <PrivateRoute path="/editExpense/:id" component={EditExpensePage} />
         <PrivateRoute path="/editCategory/:id" component={EditCategoryPage} />
-        <PrivateRoute path="/import" component={ImportPage} />
+        <PrivateRoute path="/importExpenses" component={ImportExpensePage} />
+        <PrivateRoute path="/importCategories" component={ImportExpensePage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

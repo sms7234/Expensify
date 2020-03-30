@@ -15,6 +15,18 @@
   min-width: 200px;
 }
 
+.dropdown--header {
+  min-width: 0;
+  >button {
+    font-size: $font-size-small;
+    color: white;
+    &:hover{
+      color: $yellow;
+      font-weight: bold;
+    }
+  }
+}
+
 .select {
   @extend .text-input;
 }

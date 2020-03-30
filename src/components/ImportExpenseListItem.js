@@ -8,7 +8,7 @@ import 'react-dates/initialize';
 
 
 
-export class ImportListItem extends React.Component {
+export class ImportExpenseListItem extends React.Component {
   constructor(props){
     super(props);
     this.state={
@@ -134,4 +134,4 @@ export class ImportListItem extends React.Component {
   }
 }
 
-export default ImportListItem;
+export default ImportExpenseListItem;

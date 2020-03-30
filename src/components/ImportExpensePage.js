@@ -5,11 +5,11 @@ import { v4 as uuidv4 } from 'uuid';
 import {startAddExpense} from '../actions/expenses';
 import ImportInstructions from './ImportInstructions';
 import ImportUpload from './ImportUpload';
-import ImportListItem from './ImportListItem';
+import ImportExpenseListItem from './ImportExpenseListItem';
 import ImportSummary from './ImportSummary';
 
 
-export class ImportPage extends React.Component {
+export class ImportExpensePage extends React.Component {
   state= {
     data: [],
     validation: [],
@@ -161,4 +161,4 @@ const mapDispatchToProps = (dispatch) => ({
   startAddExpense: (expense) => dispatch(startAddExpense(expense))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImportPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ImportExpensePage);
