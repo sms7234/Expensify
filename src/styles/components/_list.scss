@@ -26,6 +26,11 @@
   transition: background .3s ease;
   &:hover{
     background: $grey;
+    color: white;
+
+    div span {
+      color: white;
+    }
   }
 
   @media(min-width: $desktop-breakpoint) {

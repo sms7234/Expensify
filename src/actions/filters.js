@@ -1,6 +1,16 @@
-export const setTextFilter = (text='') => ({
-  type: 'SET_TEXT',
-  text
+export const setCategoryFilter = (category='') => ({
+  type: 'SET_CATEGORY',
+  category
+});
+
+export const setBusinessFilter = (business='') => ({
+  type: 'SET_BUSINESS',
+  business
+});
+
+export const setNoteFilter = (note='') => ({
+  type: 'SET_NOTE',
+  note
 });
 
 export const sortByAmount = () => ({

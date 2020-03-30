@@ -7,6 +7,11 @@
   margin: 10px;
 }
 
+.text-input--filters {
+  @extend .text-input;
+  margin:0 0 10px 0;
+}
+
 .dropdown {
   font-size: $font-size-large;
   height: 50px;

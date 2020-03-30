@@ -1,15 +1,21 @@
 import moment from 'moment';
 
 const filtersReducersDefaultState = {
-  text: '',
+  category: '',
+  business: '',
+  note: '',
   sortBy: 'date',
   startDate: moment().startOf('month'),
   endDate: moment().endOf('month')
 };
 export default (state=filtersReducersDefaultState,action) => {
   switch(action.type){
-    case 'SET_TEXT':
-      return { ...state, text: action.text}
+    case 'SET_CATEGORY':
+      return { ...state, category: action.category}
+    case 'SET_BUSINESS':
+      return { ...state, business: action.business}
+    case 'SET_NOTE':
+      return { ...state, note: action.note}
     case 'SET_SORTBY':
       return {...state, sortBy: action.sortBy}
     case 'SET_START-DATE':

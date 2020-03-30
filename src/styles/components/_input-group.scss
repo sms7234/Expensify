@@ -16,3 +16,10 @@
     margin: 0 $s-size 0 0;
   }
 }
+
+.input-group--filters{
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content:flex-end;
+}
