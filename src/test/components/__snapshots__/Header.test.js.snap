@@ -55,6 +55,32 @@ exports[`should render Header correctly 1`] = `
             >
               Categories
             </Link>
+            <DropdownButton
+              className="dropdown--header"
+              title="Import"
+              variant="link"
+            >
+              <div
+                className="header__dropdown--area"
+              >
+                <Link
+                  className="header__dropdown--item"
+                  to="/importExpenses"
+                >
+                  Categories
+                </Link>
+              </div>
+              <div
+                className="header__dropdown--area"
+              >
+                <Link
+                  className="header__dropdown--item"
+                  to="/importExpenses"
+                >
+                  Expenses
+                </Link>
+              </div>
+            </DropdownButton>
             <button
               className="header__item--button"
               onClick={[MockFunction]}

@@ -17,7 +17,7 @@ const stringToDateConverter=(input) => {
   }
 };
 
-class ImportUpload extends React.Component {
+class ImportUploadExpenses extends React.Component {
   constructor(props){
     super(props);
     this.state={
@@ -98,4 +98,4 @@ class ImportUpload extends React.Component {
   }
 }
 
-export default ImportUpload;
+export default ImportUploadExpenses;

@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import ImportUpload from '../../components/ImportUpload';
+import ImportUploadExpenses from '../../components/ImportUploadExpenses';
 
 
 //assuming papaparse input handles data parsing without issue.
@@ -12,7 +12,7 @@ test('test that correct file type upload works (buttonUpload=true, error=str, & 
     type: 'text/csv',
     size: 206
   }
-  const wrapper = shallow(<ImportUpload />);
+  const wrapper = shallow(<ImportUploadExpenses />);
   wrapper.find('input').simulate('change', {target: {files: [fakeFile]}});
   expect(wrapper.state('file')).toEqual(fakeFile);
   expect(wrapper.state('buttonUpload')).toBe(false);
@@ -26,7 +26,7 @@ test('test that incorrect file type generates error message', () => {
     type: '"application/vnd.oasis.opendocument.spreadsheet',
     size: 30999
   }
-  const wrapper = shallow(<ImportUpload />);
+  const wrapper = shallow(<ImportUploadExpenses />);
   wrapper.find('input').simulate('change',{target:{files:[fakeFile]}});
   expect(wrapper.state('error')).toBe('Please upload correct file type');
   expect(wrapper).toMatchSnapshot();
@@ -37,7 +37,7 @@ test('test that incorrect file type generates error message', () => {
 
 // test('test that data upload function fires', () => {
 //   const uploadFunction = jest.fn();
-//   const wrapper = shallow(<ImportUpload onDataUpload={uploadFunction}/>);
+//   const wrapper = shallow(<ImportUploadExpenses onDataUpload={uploadFunction}/>);
 //
 //   const fakeData = {
 //     name: 'blah.csv',

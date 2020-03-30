@@ -4,12 +4,12 @@ import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
 import {startAddExpense} from '../actions/expenses';
 import ImportInstructions from './ImportInstructions';
-import ImportUpload from './ImportUpload';
+import ImportUploadExpenses from './ImportUploadExpenses';
 import ImportExpenseListItem from './ImportExpenseListItem';
 import ImportSummary from './ImportSummary';
 
 
-export class ImportExpensePage extends React.Component {
+export class ImportExpensesPage extends React.Component {
   state= {
     data: [],
     validation: [],
@@ -103,7 +103,7 @@ export class ImportExpensePage extends React.Component {
           </div>
         </div>
         <ImportInstructions />
-        <ImportUpload
+        <ImportUploadExpenses
           onDataUpload={this.onDataUpload}
           data={this.state.data}
           validation={this.state.validation}
@@ -125,7 +125,7 @@ export class ImportExpensePage extends React.Component {
               </div>
             ): (
               this.state.data.map((item,index) => {
-                return <ImportListItem
+                return <ImportExpenseListItem
                   key = {uuidv4()}
                   {...item}
                   id={index}
@@ -161,4 +161,4 @@ const mapDispatchToProps = (dispatch) => ({
   startAddExpense: (expense) => dispatch(startAddExpense(expense))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImportExpensePage);
+export default connect(mapStateToProps, mapDispatchToProps)(ImportExpensesPage);
