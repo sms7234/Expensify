@@ -35,7 +35,7 @@ export class DashboardSummary extends React.Component {
           <div className="content-container">
             <h1 className="page-header__title"> Budgeting Dashboard </h1>
             <div className="content-container">
-              <h2 className="page-header__subtitle">In the timeframe, specified below, you have earned <span> {numeral(this.state.expenses).format('$0,0.00')} </span> and spent <span> {numeral(this.state.income).format('$0,0.00')} </span></h2>
+              <h2 className="page-header__subtitle">In the timeframe, specified below, you have earned <span> {numeral(this.state.income).format('$0,0.00')} </span> and spent <span> {numeral(this.state.expenses).format('$0,0.00')} </span></h2>
               <h2 className="page-header__subtitle">Remianing Funds: <span>{numeral(this.state.income - this.state.expenses).format('$0,0.00')}</span></h2>
 
             </div>
