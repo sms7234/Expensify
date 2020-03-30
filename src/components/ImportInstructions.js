@@ -1,7 +1,6 @@
 import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
-import { v4 as uuidv4 } from 'uuid';
 
 export default (props) => (
   <div className="content-container--subHeader">
@@ -18,7 +17,7 @@ export default (props) => (
             <h3>Step 1: Setup & Save Local CSV file</h3>
             <p>Be sure the csv file has the following headers: </p>
             <ul>
-              {props.dataFormat.map((item) => {return <li key={uuidv4()}>{item}</li>})}
+              {props.dataFormat.map((item,index) => {return <li key={index}>{item}</li>})}
             </ul>
             <h3>Step 2: Upload the .csv file</h3>
             <h3>Step 3: Click import</h3>

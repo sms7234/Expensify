@@ -35,20 +35,15 @@ exports[`match snapshot of instructions page 1`] = `
             Be sure the csv file has the following headers: 
           </p>
           <ul>
-            <li>
-              Date (MM/DD/YY)
+            <li
+              key="0"
+            >
+              data1
             </li>
-            <li>
-              Amount
-            </li>
-            <li>
-              Category
-            </li>
-            <li>
-              Business
-            </li>
-            <li>
-              Note
+            <li
+              key="1"
+            >
+              data2
             </li>
           </ul>
           <h3>
