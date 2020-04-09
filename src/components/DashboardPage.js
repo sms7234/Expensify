@@ -1,15 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Chart from 'react-google-charts';
+import moment from 'moment';
 import selectExpenses from '../selectors/expenses'
 import DashboardSummary from './DashboardSummary';
-import DashboardFilters from './DashboardFilters';
+import ExpenseListFilters from './ExpenseListFilters';
 
-const DashboardPage = ({income, expenses, pieData}) => (
+const DashboardPage = ({income, expenses, pieData, lineData}) => (
   <div>
     <DashboardSummary income={income} expenses={expenses} />
     <div className="content-container">
-      <DashboardFilters />
+      <ExpenseListFilters />
       <Chart
         width={'500px'}
         height={'300px'}
@@ -22,6 +23,25 @@ const DashboardPage = ({income, expenses, pieData}) => (
           is3D: true,
         }}
         rootProps={{ 'data-testid': '2' }}
+      />
+      <Chart
+        width={'500px'}
+        height={'300px'}
+        chartType="LineChart"
+        loader={<div>Loading Chart</div>}
+        data={lineData}
+        options={{
+          legend: {
+            position: "none"
+          },
+          hAxis: {
+            title: 'Remaining Funds',
+          },
+          vAxis: {
+            title: 'Date',
+          },
+        }}
+        rootProps={{ 'data-testid': '1' }}
       />
       <p>Column Chart Element: Shows the current date plus past years (current date range - x yr(s)) - (income excluded)</p>
       <p>Line Chart Element: Income-Expenses day-by-day ()</p>
@@ -54,7 +74,7 @@ const mapStateToProps=(state)=>{
     const tempHolder = [];
     const pieData = [['Category', 'Cost']];
     arr.forEach((item) => {
-      if(!tempHolder.includes(item.category)) {
+      if(!tempHolder.includes(item.category) && item.category!=="Income") {
         tempHolder.push(item.category)
       }
     });
@@ -70,6 +90,46 @@ const mapStateToProps=(state)=>{
     return pieData;
   }
 
+  const filterLine = (arr) => {
+    const lineData=[['Date', 'Remaining Funds']];
+    const originalData = arr.sort((a,b) => {
+      return a.createdAt < b.createdAt ? -1: 1;
+    });
+    const len = originalData.length;
+    let total=0;
+
+    for (let i=0; i<len; i++){
+      const firstDate = moment(originalData[i].createdAt).format("MM/DD/YY");
+      if(i<(len-1)) { //be sure i isn't last item
+        for(let j=1;j<=len;j++){
+          if(j+i<len){ //be sure not to overrun the array length
+            const secondDate = moment(originalData[i+j].createdAt).format("MM/DD/YY");
+            if(firstDate === secondDate) {
+              if(originalData[i].category === 'Income'){
+                total = total + originalData[i].amount
+              } else {
+                total = total - originalData[i].amount
+              }
+            } else {
+              lineData.push([firstDate, total/100])
+              i=i+(j-1);
+              break;
+            }
+          } else {
+            break;
+          }
+        }
+      } else { //if last item in array push info to array
+        if(originalData[i].category === 'Income'){
+          total = total + originalData[i].amount
+        } else {
+          total = total - originalData[i].amount
+        }
+        lineData.push([firstDate,total/100])
+      }
+    }
+    return lineData;
+  }
   // actual data
     let visibleExpenses = selectExpenses(state.expenses, state.filters);
     let selectedExpenses = sumItems(filterExpenses(visibleExpenses));
@@ -78,7 +138,8 @@ const mapStateToProps=(state)=>{
     a: selectExpenses(state.expenses, state.filters),
     expenses: sumItems(filterExpenses(visibleExpenses)),
     income: sumItems(filterIncome(visibleExpenses)),
-    pieData: filterPie(selectExpenses(state.expenses, state.filters))
+    pieData: filterPie(selectExpenses(state.expenses, state.filters)),
+    lineData: filterLine(selectExpenses(state.expenses, state.filters))
   };
 };
 

@@ -4,19 +4,6 @@ import moment from 'moment';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card'
 
-const stringToDateConverter=(input) => {
-  let date;
-  if(input.length===7) {
-    date='0'.concat(input.slice(0,1),'-', input.slice(2,4), '-', input.slice(5));
-    return moment(Date.parse(date));
-  } else if (input.length===8) {
-    date=input.slice(0,2).concat('-', input.slice(3,5), '-', input.slice(6));
-    return moment(Date.parse(date));
-  } else {
-    return moment();
-  }
-};
-
 class ImportUploadExpenses extends React.Component {
   constructor(props){
     super(props);
@@ -52,7 +39,7 @@ class ImportUploadExpenses extends React.Component {
           const data = this.state.data;
           const validation = this.state.validation;
           results.data.forEach((item) => {
-            item.Date = item.Date ? stringToDateConverter(item.Date):moment();
+            item.Date = item.Date ? moment(item.Date):moment();
             item.Note = item.Note ? item.Note:'';
             data.push(item);
             validation.push(null);
