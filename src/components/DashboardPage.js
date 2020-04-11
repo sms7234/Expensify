@@ -11,40 +11,38 @@ const DashboardPage = ({income, expenses, pieData, lineData}) => (
     <DashboardSummary income={income} expenses={expenses} />
     <div className="content-container">
       <ExpenseListFilters />
-      <Chart
-        width={'500px'}
-        height={'300px'}
-        chartType="PieChart"
-        loader={<div>Loading Chart</div>}
-        data={pieData}
-        options={{
-          title: 'Purchases by category',
-          // Just add this option
-          is3D: true,
-        }}
-        rootProps={{ 'data-testid': '2' }}
-      />
-      <Chart
-        width={'500px'}
-        height={'300px'}
-        chartType="LineChart"
-        loader={<div>Loading Chart</div>}
-        data={lineData}
-        options={{
-          legend: {
-            position: "none"
-          },
-          hAxis: {
-            title: 'Remaining Funds',
-          },
-          vAxis: {
-            title: 'Date',
-          },
-        }}
-        rootProps={{ 'data-testid': '1' }}
-      />
-      <p>Column Chart Element: Shows the current date plus past years (current date range - x yr(s)) - (income excluded)</p>
-      <p>Line Chart Element: Income-Expenses day-by-day ()</p>
+      <div className="content-container--charts">
+        <h1> Purchases by Category </h1>
+        <Chart
+          chartType="PieChart"
+          height={400}
+          loader={<div>Loading Chart</div>}
+          data={pieData}
+          options={{
+            is3D: true,
+          }}
+          rootProps={{ 'data-testid': '2' }}
+        />
+        <h1> Remaining Funds (in $) by Date </h1>
+        <Chart
+          chartType="LineChart"
+          height={400}
+          loader={<div>Loading Chart</div>}
+          data={lineData}
+          options={{
+            legend: {
+              position: "none"
+            },
+            hAxis: {
+              title: 'Remaining Funds',
+            },
+            vAxis: {
+              title: 'Date',
+            },
+          }}
+          rootProps={{ 'data-testid': '1' }}
+        />
+      </div>
     </div>
   </div>
 )
