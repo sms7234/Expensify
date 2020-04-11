@@ -6,7 +6,7 @@ import selectExpenses from '../selectors/expenses'
 import DashboardSummary from './DashboardSummary';
 import ExpenseListFilters from './ExpenseListFilters';
 
-const DashboardPage = ({income, expenses, pieData, lineData}) => (
+export const DashboardPage = ({income, expenses, pieData, lineData}) => (
   <div>
     <DashboardSummary income={income} expenses={expenses} />
     <div className="content-container">

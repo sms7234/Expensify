@@ -1,0 +1,284 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render page with fake data 1`] = `
+<div>
+  <DashboardSummary
+    expenses={1500}
+    income={2400}
+  />
+  <div
+    className="content-container"
+  >
+    <Connect(ExpenseListFilters) />
+    <div
+      className="content-container--charts"
+    >
+      <h1>
+         Purchases by Category 
+      </h1>
+      <Chart
+        chartActions={null}
+        chartEvents={null}
+        chartType="PieChart"
+        chartWrapperParams={Object {}}
+        className=""
+        columns={null}
+        controls={null}
+        data={
+          Array [
+            Array [
+              "Category",
+              "Cost",
+            ],
+            Array [
+              "Groceries",
+              500,
+            ],
+            Array [
+              "Eating Out",
+              500,
+            ],
+            Array [
+              "Dog",
+              500,
+            ],
+          ]
+        }
+        diffdata={null}
+        formatters={null}
+        getChartEditor={null}
+        getChartWrapper={[Function]}
+        graphID={null}
+        graph_id={null}
+        height={400}
+        legendToggle={false}
+        legend_toggle={false}
+        loader={
+          <div>
+            Loading Chart
+          </div>
+        }
+        options={
+          Object {
+            "is3D": true,
+          }
+        }
+        render={null}
+        rootProps={
+          Object {
+            "data-testid": "2",
+          }
+        }
+        rows={null}
+        spreadSheetQueryParameters={
+          Object {
+            "gid": 1,
+            "headers": 1,
+          }
+        }
+        spreadSheetUrl={null}
+        style={Object {}}
+        toolbarID={null}
+        toolbarItems={null}
+      />
+      <h1>
+         Remaining Funds (in $) by Date 
+      </h1>
+      <Chart
+        chartActions={null}
+        chartEvents={null}
+        chartType="LineChart"
+        chartWrapperParams={Object {}}
+        className=""
+        columns={null}
+        controls={null}
+        data={
+          Array [
+            Array [
+              "Date",
+              "Remaining Funds",
+            ],
+            Array [
+              "04/01/2020",
+              500,
+            ],
+            Array [
+              "04/02/2020",
+              300,
+            ],
+            Array [
+              "04/03/2020",
+              0,
+            ],
+          ]
+        }
+        diffdata={null}
+        formatters={null}
+        getChartEditor={null}
+        getChartWrapper={[Function]}
+        graphID={null}
+        graph_id={null}
+        height={400}
+        legendToggle={false}
+        legend_toggle={false}
+        loader={
+          <div>
+            Loading Chart
+          </div>
+        }
+        options={
+          Object {
+            "hAxis": Object {
+              "title": "Remaining Funds",
+            },
+            "legend": Object {
+              "position": "none",
+            },
+            "vAxis": Object {
+              "title": "Date",
+            },
+          }
+        }
+        render={null}
+        rootProps={
+          Object {
+            "data-testid": "1",
+          }
+        }
+        rows={null}
+        spreadSheetQueryParameters={
+          Object {
+            "gid": 1,
+            "headers": 1,
+          }
+        }
+        spreadSheetUrl={null}
+        style={Object {}}
+        toolbarID={null}
+        toolbarItems={null}
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render page with no data 1`] = `
+<div>
+  <DashboardSummary />
+  <div
+    className="content-container"
+  >
+    <Connect(ExpenseListFilters) />
+    <div
+      className="content-container--charts"
+    >
+      <h1>
+         Purchases by Category 
+      </h1>
+      <Chart
+        chartActions={null}
+        chartEvents={null}
+        chartType="PieChart"
+        chartWrapperParams={Object {}}
+        className=""
+        columns={null}
+        controls={null}
+        data={null}
+        diffdata={null}
+        formatters={null}
+        getChartEditor={null}
+        getChartWrapper={[Function]}
+        graphID={null}
+        graph_id={null}
+        height={400}
+        legendToggle={false}
+        legend_toggle={false}
+        loader={
+          <div>
+            Loading Chart
+          </div>
+        }
+        options={
+          Object {
+            "is3D": true,
+          }
+        }
+        render={null}
+        rootProps={
+          Object {
+            "data-testid": "2",
+          }
+        }
+        rows={null}
+        spreadSheetQueryParameters={
+          Object {
+            "gid": 1,
+            "headers": 1,
+          }
+        }
+        spreadSheetUrl={null}
+        style={Object {}}
+        toolbarID={null}
+        toolbarItems={null}
+      />
+      <h1>
+         Remaining Funds (in $) by Date 
+      </h1>
+      <Chart
+        chartActions={null}
+        chartEvents={null}
+        chartType="LineChart"
+        chartWrapperParams={Object {}}
+        className=""
+        columns={null}
+        controls={null}
+        data={null}
+        diffdata={null}
+        formatters={null}
+        getChartEditor={null}
+        getChartWrapper={[Function]}
+        graphID={null}
+        graph_id={null}
+        height={400}
+        legendToggle={false}
+        legend_toggle={false}
+        loader={
+          <div>
+            Loading Chart
+          </div>
+        }
+        options={
+          Object {
+            "hAxis": Object {
+              "title": "Remaining Funds",
+            },
+            "legend": Object {
+              "position": "none",
+            },
+            "vAxis": Object {
+              "title": "Date",
+            },
+          }
+        }
+        render={null}
+        rootProps={
+          Object {
+            "data-testid": "1",
+          }
+        }
+        rows={null}
+        spreadSheetQueryParameters={
+          Object {
+            "gid": 1,
+            "headers": 1,
+          }
+        }
+        spreadSheetUrl={null}
+        style={Object {}}
+        toolbarID={null}
+        toolbarItems={null}
+      />
+    </div>
+  </div>
+</div>
+`;
