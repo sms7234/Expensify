@@ -13,7 +13,7 @@ export default class ExpenseForm extends React.Component {
       business: props.expense ? props.expense.business:'',
       amount: props.expense ? (props.expense.amount/100).toString():'',
       note:props.expense ? props.expense.note:'',
-      createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
+      purchaseDate: props.expense ? moment(props.expense.purchaseDate) : moment(),
       calendarFocused: false,
       categoryList: props.categoryList,
       error:''
@@ -37,9 +37,9 @@ export default class ExpenseForm extends React.Component {
     const note = e.target.value;
     this.setState(()=>({note}));
   };
-  onDateChange = (createdAt) => {
-    if(createdAt){
-      this.setState(() => ({createdAt}))
+  onDateChange = (purchaseDate) => {
+    if(purchaseDate){
+      this.setState(() => ({purchaseDate}))
     }
   };
   onFocusChange = ( {focused} ) => {
@@ -55,7 +55,7 @@ export default class ExpenseForm extends React.Component {
         category: this.state.category,
         business: this.state.business,
         amount: parseFloat(this.state.amount, 10)*100,
-        createdAt: this.state.createdAt.valueOf(),
+        purchaseDate: this.state.purchaseDate.valueOf(),
         note: this.state.note
       })
     }
@@ -65,7 +65,7 @@ export default class ExpenseForm extends React.Component {
       <form className="form" onSubmit={this.onSubmit}>
         {this.state.error!=='' && <p className="form__error">{this.state.error}</p>}
         <SingleDatePicker
-          date = {this.state.createdAt}
+          date = {this.state.purchaseDate}
           onDateChange={this.onDateChange}
           focused={this.state.calendarFocused}
           onFocusChange={this.onFocusChange}

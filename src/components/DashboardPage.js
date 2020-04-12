@@ -91,17 +91,17 @@ const mapStateToProps=(state)=>{
   const filterLine = (arr) => {
     const lineData=[['Date', 'Remaining Funds']];
     const originalData = arr.sort((a,b) => {
-      return a.createdAt < b.createdAt ? -1: 1;
+      return a.purchaseDate < b.purchaseDate ? -1: 1;
     });
     const len = originalData.length;
     let total=0;
 
     for (let i=0; i<len; i++){
-      const firstDate = moment(originalData[i].createdAt).format("MM/DD/YY");
+      const firstDate = moment(originalData[i].purchaseDate).format("MM/DD/YY");
       if(i<(len-1)) { //be sure i isn't last item
         for(let j=1;j<=len;j++){
           if(j+i<len){ //be sure not to overrun the array length
-            const secondDate = moment(originalData[i+j].createdAt).format("MM/DD/YY");
+            const secondDate = moment(originalData[i+j].purchaseDate).format("MM/DD/YY");
             if(firstDate === secondDate) {
               if(originalData[i].category === 'Income'){
                 total = total + originalData[i].amount

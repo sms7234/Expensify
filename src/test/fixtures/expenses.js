@@ -6,7 +6,7 @@ export default [{
   business:'walmart',
   note:'',
   amount: 195,
-  createdAt: 0
+  purchaseDate: 0
 },
 {
   id:'2',
@@ -14,13 +14,13 @@ export default [{
   business:'',
   note:'',
   amount: 109500,
-  createdAt: moment(0).subtract(4,'days').valueOf()
+  purchaseDate: moment(0).subtract(4,'days').valueOf()
 },{
   id:'3',
   category: 'Credit Card',
   business:'',
   note:'',
   amount: 4500,
-  createdAt: moment(0).add(4, 'days').valueOf()
+  purchaseDate: moment(0).add(4, 'days').valueOf()
 }
 ]

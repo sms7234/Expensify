@@ -13,7 +13,7 @@ export class ImportExpenseListItem extends React.Component {
     super(props);
     this.state={
       index: props.id,
-      createdAt: props.Date ? props.Date : moment(),
+      purchaseDate: props.Date ? props.Date : moment(),
       amount:props.Amount? numeral(props.Amount).format('0,0.00'):'',
       category:props.Category ? props.Category: '',
       business:props.Business? props.Business:'',
@@ -23,9 +23,9 @@ export class ImportExpenseListItem extends React.Component {
     }
   }
   //handlers
-  onDateChange = (createdAt) => {
-    if(createdAt){
-      this.setState(() => ({createdAt}));
+  onDateChange = (purchaseDate) => {
+    if(purchaseDate){
+      this.setState(() => ({purchaseDate}));
     };
     if (this.state.buttonSave){
       this.setState(()=>({buttonSave:false}))
@@ -73,7 +73,7 @@ export class ImportExpenseListItem extends React.Component {
       Category: this.state.category,
       Business: this.state.business,
       Note: this.state.note,
-      Date: this.state.createdAt
+      Date: this.state.purchaseDate
     }
     this.props.onSave(update, this.state.index);
     this.setState(()=>({buttonSave:true}));
@@ -84,7 +84,7 @@ export class ImportExpenseListItem extends React.Component {
         <div className={"group-listing " + (this.props.validation===false ? "list-item--invalid ":"")+ (this.props.validation===true ? "list-item--valid ":"")}>
           <SingleDatePicker
             id={this.props.dateKey}
-            date = {this.state.createdAt}
+            date = {this.state.purchaseDate}
             onDateChange={this.onDateChange}
             focused={this.state.calendarFocused}
             onFocusChange={this.onFocusChange}

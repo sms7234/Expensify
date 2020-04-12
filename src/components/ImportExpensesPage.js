@@ -83,7 +83,7 @@ export class ImportExpensesPage extends React.Component {
         business: item.Business,
         category: item.Category,
         note: item.Note,
-        createdAt: item.Date.valueOf()
+        purchaseDate: item.Date.valueOf()
       })
     });
     convertedData.forEach((item) => {

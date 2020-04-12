@@ -31,7 +31,7 @@ test('should add an expense', () => {
     business: '',
     note:'',
     amount: 15,
-    createdAt: 10
+    purchaseDate: 10
   };
   const action = {
     type: 'ADD_EXPENSE',
@@ -48,7 +48,7 @@ test('should edit an existing expense', () => {
     business: 'hallmark',
     note:'',
     amount: 195,
-    createdAt: 0
+    purchaseDate: 0
   }
   const action = {
     type: 'EDIT_EXPENSE',
