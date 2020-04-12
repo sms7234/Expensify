@@ -14,3 +14,15 @@
   justify-content: space-between;
   padding: 0 $l-size;
 }
+
+.content-container--charts {
+  display: flex;
+  flex-direction: column;
+  >div {
+    margin-bottom: $m-size;
+  }
+  >h1 {
+    text-align: center;
+  }
+
+}

@@ -1,15 +1,7 @@
-const categories = null;
+const moment = require('moment');
 
-const finder = (input) => {
-  if(input===null){
-    console.log('null')
-  } else if (input===false){
-    console.log('false')
-  } else if(input===true){
-    console.log('true')
-  }
-}
+const a = moment("4/1/2020");
+const b = new Date(2020, 5);
 
-finder(null)
-finder(true)
-finder(false)
+// console.log("moment:", a);
+console.log("js: ", b);

@@ -36,39 +36,28 @@ export class ExpenseListFilters extends React.Component {
   render() {
     return (
       <div className="content-container accordion__filters">
+        <div className="input-group__item">
+          <DateRangePicker
+            startDate={this.props.filters.startDate}
+            endDate={this.props.filters.endDate}
+            startDateId="dasewqeqwe"
+            endDateId="jijhjkyjyihi"
+            onDatesChange={this.onDatesChange}
+            focusedInput = {this.state.calendarFocused}
+            onFocusChange = {this.onFocusChange}
+            isOutsideRange = {() => false}
+            numberOfMonths = {1}
+            showClearDates={true}
+          />
+        </div>
       <Accordion>
         <Card>
           <Accordion.Toggle as={Card.Header} className="accordion__header" eventKey="0">
-            Filters
+            Additional Filters
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="0">
             <Card.Body>
               <div className="input-group">
-                <div>
-                  <div className="input-group__item">
-                    <DateRangePicker
-                      startDate={this.props.filters.startDate}
-                      endDate={this.props.filters.endDate}
-                      startDateId="dasewqeqwe"
-                      endDateId="jijhjkyjyihi"
-                      onDatesChange={this.onDatesChange}
-                      focusedInput = {this.state.calendarFocused}
-                      onFocusChange = {this.onFocusChange}
-                      isOutsideRange = {() => false}
-                      numberOfMonths = {1}
-                      showClearDates={true}
-                    />
-                  </div>
-                  <div className="input-group__item">
-                    <select
-                      className="select"
-                      value={this.props.filters.sortBy}
-                      onChange={this.onSortChange}>
-                      <option value="date">Date</option>
-                      <option value="amount">Amount</option>
-                    </select>
-                  </div>
-                </div>
                 <div className="input-group--filters">
                   <div className="input-group__item">
                     <input type = "text"
@@ -82,14 +71,24 @@ export class ExpenseListFilters extends React.Component {
                       placeholder="search business"
                       value={this.props.filters.business} onChange={this.onBusinessChange}/>
                   </div>
-
+                  <div>
+                    <div className="input-group__item">
+                      <input type = "text"
+                        className="text-input--filters"
+                        placeholder="search notes"
+                        value={this.props.filters.note} onChange={this.onNoteChange}/>
+                    </div>
+                  </div>
                 </div>
                 <div>
                   <div className="input-group__item">
-                    <input type = "text"
-                      className="text-input--filters"
-                      placeholder="search notes"
-                      value={this.props.filters.note} onChange={this.onNoteChange}/>
+                    <select
+                      className="select"
+                      value={this.props.filters.sortBy}
+                      onChange={this.onSortChange}>
+                      <option value="date">Date</option>
+                      <option value="amount">Amount</option>
+                    </select>
                   </div>
                 </div>
               </div>

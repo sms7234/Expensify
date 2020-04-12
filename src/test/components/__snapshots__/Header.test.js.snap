@@ -19,7 +19,7 @@ exports[`should render Header correctly 1`] = `
         <NavbarBrand>
           <Link
             className="header__item--brand"
-            to="/expenses"
+            to="/dashboard"
           >
             Expensify
           </Link>
@@ -39,7 +39,7 @@ exports[`should render Header correctly 1`] = `
           >
             <Link
               className="header__item"
-              to="/expenses"
+              to="/dashboard"
             >
               Dashboard
             </Link>
