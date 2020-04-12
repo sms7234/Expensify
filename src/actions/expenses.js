@@ -1,4 +1,5 @@
 import database from '../firebase/firebase';
+import moment from 'moment';
 
 export const addExpense = (expense) => ({
   type: 'ADD_EXPENSE',
@@ -12,11 +13,12 @@ export const startAddExpense = (expenseData = {}) => {
       business='',
       note = '',
       amount = 0,
-      purchaseDate = 0
+      purchaseDate = 0,
+      createdAt = moment().valueOf(),
+      updatedAt = moment().valueOf()
     } = expenseData;
-    const expense = {category, business, note, purchaseDate, amount};
+    const expense = {category, business, note, purchaseDate, amount, createdAt, updatedAt};
     const uid = getState().auth.uid;
-    console.log(expense);
     return database.ref(`users/${uid}/expenses`).push(expense).then((ref) => {
       dispatch(addExpense({
         id: ref.key,
@@ -49,6 +51,7 @@ export const editExpense = (id, updates) => ({
 export const startEditExpense = (id, updates) => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
+    updates.updatedAt=moment().valueOf();
     return database.ref(`users/${uid}/expenses/${id}`).update(updates)
     .then(()=> {
       dispatch(editExpense(id, updates));

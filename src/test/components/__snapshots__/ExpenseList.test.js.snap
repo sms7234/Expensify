@@ -71,24 +71,30 @@ exports[`should render ExpenseList with expenses 1`] = `
       id="1"
       key="1"
       note=""
+      purchaseDate={0}
+      updatedAt={0}
     />
     <ExpenseListItem
       amount={109500}
       business=""
       category="Rent"
-      createdAt={-345600000}
+      createdAt={500}
       id="2"
       key="2"
       note=""
+      purchaseDate={-345600000}
+      updatedAt={700}
     />
     <ExpenseListItem
       amount={4500}
       business=""
       category="Credit Card"
-      createdAt={345600000}
+      createdAt={1000}
       id="3"
       key="3"
       note=""
+      purchaseDate={345600000}
+      updatedAt={5000}
     />
   </div>
 </div>

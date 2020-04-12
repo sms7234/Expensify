@@ -24,9 +24,11 @@ exports[`should render EditExpensePage 1`] = `
           "amount": 4500,
           "business": "",
           "category": "Credit Card",
-          "createdAt": 345600000,
+          "createdAt": 1000,
           "id": "3",
           "note": "",
+          "purchaseDate": 345600000,
+          "updatedAt": 5000,
         }
       }
       onSubmit={[Function]}

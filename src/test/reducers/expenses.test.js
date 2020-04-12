@@ -1,5 +1,6 @@
 import expensesReducer from '../../reducers/expenses';
 import expenses from '../fixtures/expenses';
+import moment from 'moment';
 
 test('should set default state', () => {
   const state = expensesReducer(undefined, {type: '@@INIT'});
@@ -31,7 +32,9 @@ test('should add an expense', () => {
     business: '',
     note:'',
     amount: 15,
-    purchaseDate: 10
+    purchaseDate: 10,
+    createdAt: 0,
+    updatedAt: 0
   };
   const action = {
     type: 'ADD_EXPENSE',
@@ -48,7 +51,9 @@ test('should edit an existing expense', () => {
     business: 'hallmark',
     note:'',
     amount: 195,
-    purchaseDate: 0
+    purchaseDate: 0,
+    createdAt: 0,
+    updatedAt: 0
   }
   const action = {
     type: 'EDIT_EXPENSE',
@@ -60,6 +65,7 @@ test('should edit an existing expense', () => {
   };
   const state = expensesReducer(expenses,action);
   expect(state).toEqual([newObj, expenses[1],expenses[2]])
+  expect(expenses[0].updatedAt).toBe(moment().valueOf())
 })
 
 test('should not alter array when invalid id is used', () => {
