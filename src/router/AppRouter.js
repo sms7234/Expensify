@@ -7,6 +7,7 @@ import LoginPage from '../components/LoginPage';
 import DashboardPage from '../components/DashboardPage';
 import AddExpensePage from '../components/AddExpensePage';
 import AddCategoryPage from '../components/AddCategoryPage';
+import AddAccountPage from '../components/AddAccountPage';
 import EditExpensePage from '../components/EditExpensePage';
 import EditCategoryPage from '../components/EditCategoryPage';
 import ImportExpensesPage from '../components/ImportExpensesPage';
@@ -25,6 +26,8 @@ const AppRouter = () => (
         <PrivateRoute path="/dashboard" component={DashboardPage}/>
         <PrivateRoute path="/expenses" component={ExpenseDashboardPage}/>
         <PrivateRoute path="/categories" component={CategoryDashboardPage}/>
+        <PrivateRoute path="/accounts" component={CategoryDashboardPage}/>
+        <PrivateRoute path="/createAccount" component={AddAccountPage} />
         <PrivateRoute path="/createExpense" component={AddExpensePage} />
         <PrivateRoute path="/createCategory" component={AddCategoryPage} />
         <PrivateRoute path="/editExpense/:id" component={EditExpensePage} />

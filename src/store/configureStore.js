@@ -4,6 +4,7 @@ import expensesReducer from '../reducers/expenses';
 import filterReducer from '../reducers/filters';
 import authReducer from '../reducers/auth';
 import categoryReducer from '../reducers/categories';
+import accountsReducer from '../reducers/accounts';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -14,6 +15,7 @@ export default() => {
     combineReducers({
       expenses: expensesReducer,
       categories: categoryReducer,
+      accounts: accountsReducer,
       filters: filterReducer,
       auth: authReducer
     }),
