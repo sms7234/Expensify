@@ -1,3 +1,8 @@
+export const setAccountFilter = (account='') => ({
+  type: 'SET_ACCOUNT',
+  account
+});
+
 export const setCategoryFilter = (category='') => ({
   type: 'SET_CATEGORY',
   category

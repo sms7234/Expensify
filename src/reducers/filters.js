@@ -1,6 +1,7 @@
 import moment from 'moment';
 
 const filtersReducersDefaultState = {
+  account:'',
   category: '',
   business: '',
   note: '',
@@ -10,6 +11,8 @@ const filtersReducersDefaultState = {
 };
 export default (state=filtersReducersDefaultState,action) => {
   switch(action.type){
+    case 'SET_ACCOUNT':
+      return {...state, account: action.account}
     case 'SET_CATEGORY':
       return { ...state, category: action.category}
     case 'SET_BUSINESS':

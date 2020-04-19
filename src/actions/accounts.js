@@ -8,14 +8,14 @@ export const setAccounts = (accounts) => ({
 export const startSetAccounts = () => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
-    return database.ref(`user/${uid}/accounts`)
+    return database.ref(`users/${uid}/accounts`)
       .once('value')
       .then((snapshot) => {
         const accounts = [];
         snapshot.forEach((child) => {
-          categories.push({
+          accounts.push({
             id: child.key,
-            ...child.value()
+            ...child.val()
           });
         });
         dispatch(setAccounts(accounts));
@@ -41,6 +41,35 @@ export const startAddAccount = (accountData={}) => {
         id: ref.key,
         ...accountItem
       }));
+    });
+  };
+};
+
+export const editAccount = (id, updates) => ({
+  type: 'EDIT_ACCOUNT',
+  id,
+  updates
+});
+
+export const startEditAccount = (id, updates) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/accounts/${id}`).update(updates).then(()=>{
+      dispatch(editAccount(id,updates));
+    });
+  };
+};
+
+export const removeAccount = (id) => ({
+  type: 'REMOVE_ACCOUNT',
+  id
+});
+
+export const startRemoveAccount = ({ id } = {}) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/accounts/${id}`).remove().then(()=>{
+      dispatch(removeAccount(id));
     });
   };
 };

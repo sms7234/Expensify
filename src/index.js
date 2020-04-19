@@ -5,6 +5,7 @@ import AppRouter, {history} from './router/AppRouter';
 import configureStore from './store/configureStore';
 import {startSetExpenses} from './actions/expenses';
 import {startSetCategories} from './actions/categories';
+import {startSetAccounts} from './actions/accounts';
 import {login, logout} from './actions/auth';
 import getVisibleExpenses from './selectors/expenses';
 import LoadingPage from './components/LoadingPage';
@@ -37,6 +38,7 @@ firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user.uid));
     store.dispatch(startSetCategories());
+    store.dispatch(startSetAccounts());
     store.dispatch(startSetExpenses()).then(() => {
       renderApp();
       if (history.location.pathname === '/') {
