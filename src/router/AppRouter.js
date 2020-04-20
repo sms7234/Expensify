@@ -14,6 +14,7 @@ import EditAccountPage from '../components/pages/EditAccountPage';
 import ExpenseDashboardPage from '../components/pages/ExpenseDashboardPage';
 import ImportExpensesPage from '../components/pages/ImportExpensesPage';
 import ImportCategoriesPage from '../components/pages/ImportCategoriesPage';
+import ImportAccountsPage from '../components/pages/ImportAccountsPage';
 import NotFoundPage from '../components/pages/NotFoundPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
@@ -39,6 +40,7 @@ const AppRouter = () => (
         <PrivateRoute path="/editAccount/:id" component={EditAccountPage} />
         <PrivateRoute path="/importExpenses" component={ImportExpensesPage} />
         <PrivateRoute path="/importCategories" component={ImportCategoriesPage} />
+        <PrivateRoute path="/importAccounts" component={ImportAccountsPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

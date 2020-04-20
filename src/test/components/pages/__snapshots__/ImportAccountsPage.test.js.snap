@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render page with no data 1`] = `
+<div>
+  <div
+    className="page-header"
+  >
+    <div
+      className="content-container"
+    >
+      <h1
+        className="page-header__title"
+      >
+         Import Accounts 
+      </h1>
+      <h2
+        className="page-header__subtitle"
+      >
+        Manually input or import csv data to add multiple accounts simultaneously
+      </h2>
+      <ImportSummary
+        className="page-header__subtitle"
+        qty={Array []}
+        wordPlural="accounts"
+        wordSingular="account"
+      />
+    </div>
+  </div>
+  <_default
+    dataFormat={
+      Array [
+        "Account",
+        "Description",
+      ]
+    }
+  />
+  <ImportUploadAccounts
+    data={Array []}
+    onDataUpload={[Function]}
+    validation={Array []}
+  />
+  <div
+    className="content-container"
+  >
+    <div
+      className="list-header"
+    >
+      <h4
+        className="show-for-mobile"
+      >
+        Account List 
+      </h4>
+      <h4
+        className="show-for-desktop"
+      >
+        Account
+      </h4>
+      <h4
+        className="show-for-desktop"
+      >
+        Description
+      </h4>
+    </div>
+    <div
+      className="list-body"
+    />
+    <div
+      className="content-container--buttons"
+    >
+      <button
+        className="button"
+        onClick={[Function]}
+      >
+        Add Data
+      </button>
+      <button
+        className="button--check"
+        disabled={true}
+        onClick={[Function]}
+      >
+        Check Data
+      </button>
+      <button
+        className="button"
+        disabled={true}
+        onClick={[Function]}
+      >
+        Submit Data
+      </button>
+    </div>
+  </div>
+</div>
+`;

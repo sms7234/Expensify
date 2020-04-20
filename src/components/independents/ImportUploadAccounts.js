@@ -3,7 +3,7 @@ import Papa from 'papaparse';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card'
 
-class ImportUploadCategories extends React.Component {
+class ImportUploadAccounts extends React.Component {
   constructor(props){
     super(props);
     this.state={
@@ -38,7 +38,7 @@ class ImportUploadCategories extends React.Component {
           const data = this.state.data;
           const validation = this.state.validation;
           results.data.forEach((item) => {
-            item.Category = item.Category ? item.Category:'';
+            item.Account = item.Account ? item.Account:'';
             item.Description = item.Description ? item.Description:'';
             data.push(item);
             validation.push(null);
@@ -84,4 +84,4 @@ class ImportUploadCategories extends React.Component {
   }
 }
 
-export default ImportUploadCategories;
+export default ImportUploadAccounts;
