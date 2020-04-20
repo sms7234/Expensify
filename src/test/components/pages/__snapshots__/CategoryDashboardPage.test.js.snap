@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the dashboard page 1`] = `
+<div>
+  <Connect(CategorySummary) />
+  <Connect(CategoryListFilters) />
+  <Connect(CategoryList) />
+</div>
+`;

@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`match snapshot of instructions page 1`] = `
+<div
+  className="content-container--subHeader"
+>
+  <ForwardRef>
+    <Card
+      body={false}
+    >
+      <ForwardRef
+        as={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": undefined,
+            "displayName": "CardHeader",
+            "render": [Function],
+          }
+        }
+        className="accordion__header"
+        eventKey="0"
+      >
+        How to instructions
+      </ForwardRef>
+      <AccordionCollapse
+        eventKey="0"
+      >
+        <CardBody
+          className="content-container accordion__message"
+        >
+          <h3>
+            Step 1: Setup & Save Local CSV file
+          </h3>
+          <p>
+            Be sure the csv file has the following headers: 
+          </p>
+          <ul>
+            <li
+              key="0"
+            >
+              data1
+            </li>
+            <li
+              key="1"
+            >
+              data2
+            </li>
+          </ul>
+          <h3>
+            Step 2: Upload the .csv file
+          </h3>
+          <h3>
+            Step 3: Click import
+          </h3>
+          <h3>
+            Step 4: Ensure integrity of information by updating the populated fields
+          </h3>
+          <ul>
+            <li>
+              All fieds must be completed, with the exception of note
+            </li>
+            <li>
+              Any edits on an expense item must be saved before moving to the next line item.  Otherwise the changes will be lost
+            </li>
+            <li>
+              Click on "Check Data" button to ensure all fields are correctly populated.  Be sure to update & save any line items that are highlighted in red.
+            </li>
+          </ul>
+          <h3>
+            Step 5: Once all line items are green click the submit button
+          </h3>
+        </CardBody>
+      </AccordionCollapse>
+    </Card>
+  </ForwardRef>
+</div>
+`;

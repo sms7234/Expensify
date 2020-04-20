@@ -8,7 +8,7 @@ import {startSetCategories} from './actions/categories';
 import {startSetAccounts} from './actions/accounts';
 import {login, logout} from './actions/auth';
 import getVisibleExpenses from './selectors/expenses';
-import LoadingPage from './components/LoadingPage';
+import LoadingPage from './components/pages/LoadingPage';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
