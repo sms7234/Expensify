@@ -26,23 +26,26 @@ exports[`should render AccountList with accounts 1`] = `
   <div
     className="list-body"
   >
-    <AccountListItem
-      account="BoA"
+    <CategoryListItem
       description="dog costs"
       id="1"
       key="1"
+      location="editAccount"
+      value="BoA"
     />
-    <AccountListItem
-      account="Citi Bank"
+    <CategoryListItem
       description=""
       id="2"
       key="2"
+      location="editAccount"
+      value="Citi Bank"
     />
-    <AccountListItem
-      account="Chase Bank"
+    <CategoryListItem
       description="credit card"
       id="3"
       key="3"
+      location="editAccount"
+      value="Chase Bank"
     />
   </div>
 </div>

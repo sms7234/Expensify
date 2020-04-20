@@ -1,6 +1,6 @@
 import React from  'react';
 import {connect} from 'react-redux';
-import AccountListItem from '../items/AccountListItem';
+import TwoDataFieldListItem from '../items/TwoDataFieldListItem';
 import selectAccounts from '../../selectors/accounts';
 
 
@@ -18,7 +18,12 @@ export const AccountList = (props) => (
           <span>No accounts to show</span>
         </div>
       ): (
-        props.accounts.map((item) => {return <AccountListItem key={item.id}{...item}/>;})
+        props.accounts.map((item) => {return <TwoDataFieldListItem
+       key={item.id}
+       id={item.id}
+       value={item.account}
+       description={item.description}
+       location={'editAccount'}/>;})
       )
     }
     </div>

@@ -27,22 +27,25 @@ exports[`should render CategoryList with categories 1`] = `
     className="list-body"
   >
     <CategoryListItem
-      category="Dog"
       description="dog costs"
       id="1"
       key="1"
+      location="editCategory"
+      value="Dog"
     />
     <CategoryListItem
-      category="Groceries"
       description="food costs"
       id="2"
       key="2"
+      location="editCategory"
+      value="Groceries"
     />
     <CategoryListItem
-      category="Car"
       description="car costs"
       id="3"
       key="3"
+      location="editCategory"
+      value="Car"
     />
   </div>
 </div>

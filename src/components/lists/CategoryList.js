@@ -1,6 +1,6 @@
 import React from  'react';
 import {connect} from 'react-redux';
-import CategoryListItem from '../items/CategoryListItem';
+import TwoDataFieldListItem from '../items/TwoDataFieldListItem';
 import selectCategories from '../../selectors/categories';
 
 
@@ -18,7 +18,12 @@ export const CategoryList = (props) => (
           <span>No categories to show</span>
         </div>
       ): (
-        props.categories.map((item) => {return <CategoryListItem key={item.id}{...item}/>;})
+        props.categories.map((item) => {return <TwoDataFieldListItem
+          key={item.id}
+          id={item.id}
+          value={item.category}
+          description={item.description}
+          location={'editCategory'}/>;})
       )
     }
     </div>

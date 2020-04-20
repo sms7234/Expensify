@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class ImportCategoryListItem extends React.Component {
+export class ImportExpenseListItem extends React.Component {
   constructor(props){
     super(props);
     this.state={
@@ -65,4 +65,4 @@ export class ImportCategoryListItem extends React.Component {
   }
 }
 
-export default ImportCategoryListItem;
+export default ImportExpenseListItem;
