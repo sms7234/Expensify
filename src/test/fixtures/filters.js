@@ -1,6 +1,7 @@
 import moment from 'moment';
 
 const filters = {
+  account:'',
   category: '',
   business:'',
   note:'',
@@ -10,6 +11,7 @@ const filters = {
 };
 
 const altFilters = {
+  account: 'BoA',
   category: 'Gum',
   business: 'walmart',
   note: '',

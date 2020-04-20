@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render AccountListItem with one item 1`] = `
+<Link
+  className="list-item"
+  to="/editAccount/1"
+>
+  <div>
+    <h3
+      className="list-item__title"
+    >
+      BoA
+    </h3>
+  </div>
+  <h3
+    className="list-item__data"
+  >
+    dog costs
+  </h3>
+</Link>
+`;

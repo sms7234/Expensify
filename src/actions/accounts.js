@@ -23,7 +23,7 @@ export const startSetAccounts = () => {
   };
 };
 
-const addAccount = (account) =>({
+export const addAccount = (account) =>({
   type: "ADD_ACCOUNT",
   account
 });
