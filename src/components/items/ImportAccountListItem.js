@@ -20,6 +20,9 @@ export class ImportAccountListItem extends React.Component {
   onDescriptionChange = (e) => {
     const description = e.target.value;
     this.setState(()=>({description}));
+    if (this.state.buttonSave){
+      this.setState(()=>({buttonSave:false}))
+    };
   };
   onRemove = () => {
     this.props.onRemove(this.state.index);

@@ -6,6 +6,7 @@ import configureStore from './store/configureStore';
 import {startSetExpenses} from './actions/expenses';
 import {startSetCategories} from './actions/categories';
 import {startSetAccounts} from './actions/accounts';
+import {startSetTags} from './actions/tags';
 import {login, logout} from './actions/auth';
 import getVisibleExpenses from './selectors/expenses';
 import LoadingPage from './components/pages/LoadingPage';
@@ -39,6 +40,7 @@ firebase.auth().onAuthStateChanged((user) => {
     store.dispatch(login(user.uid));
     store.dispatch(startSetCategories());
     store.dispatch(startSetAccounts());
+    store.dispatch(startSetTags());
     store.dispatch(startSetExpenses()).then(() => {
       renderApp();
       if (history.location.pathname === '/') {

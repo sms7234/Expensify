@@ -1,18 +1,18 @@
 import React from 'react';
 
-export class ImportCategoryListItem extends React.Component {
+export class ImportTagListItem extends React.Component {
   constructor(props){
     super(props);
     this.state={
       index: props.id,
-      category: props.Category ? props.Category : '',
+      tag: props.Tag ? props.Tag : '',
       description:props.Description ? props.Description:'',
       buttonSave: true
     }
   }
-  onCategoryChange = (e) => {
-    const category = e.target.value;
-    this.setState(() => ({category}));
+  onTagChange = (e) => {
+    const tag = e.target.value;
+    this.setState(() => ({tag}));
     if (this.state.buttonSave){
       this.setState(()=>({buttonSave:false}))
     };
@@ -29,7 +29,7 @@ export class ImportCategoryListItem extends React.Component {
   }
   onSave=() => {
     const update = {
-      Category: this.state.category,
+      Tag: this.state.tag,
       Description: this.state.description,
     }
     this.props.onSave(update, this.state.index);
@@ -41,14 +41,14 @@ export class ImportCategoryListItem extends React.Component {
         <div className={"group-listing " + (this.props.validation===false ? "list-item--invalid ":"")+ (this.props.validation===true ? "list-item--valid ":"")}>
           <input
             type="text"
-            placeholder="category name"
+            placeholder="tag name"
             className="text-input"
-            value={this.state.category}
-            onChange={this.onCategoryChange}
+            value={this.state.tag}
+            onChange={this.onTagChange}
             autoFocus
           />
           <textarea
-            placeholder="Add description for your category"
+            placeholder="Add description for your tag"
             className="textarea--multiple"
             value={this.state.description}
             onChange={this.onDescriptionChange}
@@ -68,4 +68,4 @@ export class ImportCategoryListItem extends React.Component {
   }
 }
 
-export default ImportCategoryListItem;
+export default ImportTagListItem;

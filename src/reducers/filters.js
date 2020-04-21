@@ -4,6 +4,7 @@ const filtersReducersDefaultState = {
   account:'',
   category: '',
   business: '',
+  tag: '',
   note: '',
   sortBy: 'date',
   startDate: moment().startOf('month'),
@@ -17,6 +18,8 @@ export default (state=filtersReducersDefaultState,action) => {
       return { ...state, category: action.category}
     case 'SET_BUSINESS':
       return { ...state, business: action.business}
+    case 'SET_TAG':
+      return { ...state, tag: action.tag}
     case 'SET_NOTE':
       return { ...state, note: action.note}
     case 'SET_SORTBY':

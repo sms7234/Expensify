@@ -1,3 +1,8 @@
+export const setTagFilter = (tag='') => ({
+  type: 'SET_TAG',
+  tag
+});
+
 export const setAccountFilter = (account='') => ({
   type: 'SET_ACCOUNT',
   account

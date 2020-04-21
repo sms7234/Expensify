@@ -5,6 +5,7 @@ import filterReducer from '../reducers/filters';
 import authReducer from '../reducers/auth';
 import categoryReducer from '../reducers/categories';
 import accountsReducer from '../reducers/accounts';
+import tagsReducer from '../reducers/tags';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -16,6 +17,7 @@ export default() => {
       expenses: expensesReducer,
       categories: categoryReducer,
       accounts: accountsReducer,
+      tags: tagsReducer,
       filters: filterReducer,
       auth: authReducer
     }),
