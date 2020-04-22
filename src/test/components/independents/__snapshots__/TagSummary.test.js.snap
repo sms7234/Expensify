@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should correctly render tag summary with multiple expenses 1`] = `
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h1
+      className="page-header__title"
+    >
+       Tag List 
+    </h1>
+    <h2
+      className="page-header__subtitle"
+    >
+      Total number of tags: 
+      <span>
+        47
+      </span>
+    </h2>
+    <div
+      className="page-header__actions"
+    >
+      <Link
+        className="button"
+        to="/createTag"
+      >
+        Add Tag
+      </Link>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should correctly render tag summary with no expenses 1`] = `
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h1
+      className="page-header__title"
+    >
+       Tag List 
+    </h1>
+    <h2
+      className="page-header__subtitle"
+    >
+      Total number of tags: 
+      <span>
+        0
+      </span>
+    </h2>
+    <div
+      className="page-header__actions"
+    >
+      <Link
+        className="button"
+        to="/createTag"
+      >
+        Add Tag
+      </Link>
+    </div>
+  </div>
+</div>
+`;

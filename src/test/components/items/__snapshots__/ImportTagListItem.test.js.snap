@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test that list item renders correctly 1`] = `
+<div>
+  <div
+    className="group-listing "
+  >
+    <input
+      autoFocus={true}
+      className="text-input"
+      onChange={[Function]}
+      placeholder="tag name"
+      type="text"
+      value="Groceries"
+    />
+    <textarea
+      className="textarea--multiple"
+      onChange={[Function]}
+      placeholder="Add description for your tag"
+      value="Text"
+    />
+    <button
+      className="button--group button--secondary"
+      onClick={[Function]}
+    >
+      Remove
+    </button>
+    <button
+      className="button button--group"
+      disabled={true}
+      onClick={[Function]}
+    >
+      Save
+    </button>
+  </div>
+</div>
+`;

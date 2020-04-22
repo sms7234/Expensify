@@ -39,3 +39,23 @@ exports[`should render TwoDataFieldListItem with one item from category 1`] = `
   </h3>
 </Link>
 `;
+
+exports[`should render TwoDataFieldListItem with one item from tags 1`] = `
+<Link
+  className="list-item"
+  to="/editTag/1"
+>
+  <div>
+    <h3
+      className="list-item__title"
+    >
+      tax-deductible
+    </h3>
+  </div>
+  <h3
+    className="list-item__data"
+  >
+    tax docs
+  </h3>
+</Link>
+`;

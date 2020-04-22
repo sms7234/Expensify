@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render TagList with no tags 1`] = `
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Tags
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Tags
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Description
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <div
+      className="list-item--message"
+    >
+      <span>
+        No tags to show
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render TagList with tags 1`] = `
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Tags
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Tags
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Description
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <CategoryListItem
+      description="tax docs"
+      id="1"
+      key="1"
+      location="editTag"
+      value="tax-deductible"
+    />
+    <CategoryListItem
+      description=""
+      id="2"
+      key="2"
+      location="editTag"
+      value="warranty"
+    />
+    <CategoryListItem
+      description="where vacation was"
+      id="3"
+      key="3"
+      location="editTag"
+      value="location - COS"
+    />
+  </div>
+</div>
+`;

@@ -1,5 +1,5 @@
 import moment from 'moment';
-import {setStartDate, setEndDate, sortByAmount, sortByDate, setAccountFilter, setCategoryFilter, setBusinessFilter, setNoteFilter} from '../../actions/filters';
+import {setStartDate, setEndDate, sortByAmount, sortByDate, setAccountFilter, setCategoryFilter, setBusinessFilter, setNoteFilter, setTagFilter} from '../../actions/filters';
 
 test('should generate set start date action object', () => {
   const action = setStartDate(moment(0));
@@ -58,6 +58,14 @@ test('should generate search business object with text input', () => {
   })
 });
 
+test('should generate search tag object with text input', () => {
+  const action = setTagFilter('thisText');
+  expect(action).toEqual({
+    type: 'SET_TAG',
+    tag: 'thisText'
+  })
+});
+
 test('should generate search note object with text input', () => {
   const action = setNoteFilter('thisText');
   expect(action).toEqual({
@@ -67,7 +75,7 @@ test('should generate search note object with text input', () => {
 });
 
 //text searches without input
-test('should generate search account object for category with NO input', () => {
+test('should generate search account object for account with NO input', () => {
   const action = setAccountFilter();
   expect(action).toEqual({
     type: 'SET_ACCOUNT',
@@ -88,6 +96,14 @@ test('should generate search business object with NO input', () => {
   expect(action).toEqual({
     type: 'SET_BUSINESS',
     business: ''
+  })
+});
+
+test('should generate search account object for tag with NO input', () => {
+  const action = setTagFilter();
+  expect(action).toEqual({
+    type: 'SET_TAG',
+    tag: ''
   })
 });
 

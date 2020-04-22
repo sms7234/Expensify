@@ -5,6 +5,7 @@ test('should setup default filter values', () => {
   const state = filtersReducer(undefined, {type: '@@INIT'});
   expect(state).toEqual({
     account: '',
+    tag: '',
     category:'',
     business:'',
     note:'',
@@ -30,6 +31,12 @@ test('should set sortBy to date', () => {
   const state = filtersReducer(currentState,action);
   expect(state.sortBy).toBe('date');
 })
+
+test('should set tag text filter', () => {
+  const action = {type: 'SET_TAG', tag: 'hi'}
+  const state = filtersReducer(undefined, action);
+  expect(state.tag).toBe('hi');
+});
 
 test('should set account text filter', () => {
   const action = {type: 'SET_ACCOUNT', account: 'hi'}
