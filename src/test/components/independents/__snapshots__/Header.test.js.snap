@@ -37,29 +37,77 @@ exports[`should render Header correctly 1`] = `
             fill={false}
             justify={false}
           >
-            <Link
-              className="header__item"
-              to="/dashboard"
+            <div
+              className="header__item--container"
             >
-              Dashboard
-            </Link>
-            <Link
-              className="header__item"
-              to="/expenses"
+              <Link
+                className="header__item"
+                to="/dashboard"
+              >
+                Dashboard
+              </Link>
+            </div>
+            <DropdownButton
+              className="dropdown--header"
+              title="View"
+              variant="link"
             >
-              Expenses
-            </Link>
-            <Link
-              className="header__item"
-              to="/categories"
-            >
-              Categories
-            </Link>
+              <div
+                className="header__dropdown--area"
+              >
+                <Link
+                  className="header__dropdown--item"
+                  to="/accounts"
+                >
+                  Accounts
+                </Link>
+              </div>
+              <div
+                className="header__dropdown--area"
+              >
+                <Link
+                  className="header__dropdown--item"
+                  to="/categories"
+                >
+                  Categories
+                </Link>
+              </div>
+              <div
+                className="header__dropdown--area"
+              >
+                <Link
+                  className="header__dropdown--item"
+                  to="/expenses"
+                >
+                  Expenses
+                </Link>
+              </div>
+              <div
+                className="header__dropdown--area"
+              >
+                <Link
+                  className="header__dropdown--item"
+                  to="/tags"
+                >
+                  Tags
+                </Link>
+              </div>
+            </DropdownButton>
             <DropdownButton
               className="dropdown--header"
               title="Import"
               variant="link"
             >
+              <div
+                className="header__dropdown--area"
+              >
+                <Link
+                  className="header__dropdown--item"
+                  to="/importAccounts"
+                >
+                  Accounts
+                </Link>
+              </div>
               <div
                 className="header__dropdown--area"
               >
@@ -80,13 +128,27 @@ exports[`should render Header correctly 1`] = `
                   Expenses
                 </Link>
               </div>
+              <div
+                className="header__dropdown--area"
+              >
+                <Link
+                  className="header__dropdown--item"
+                  to="/importTags"
+                >
+                  Tags
+                </Link>
+              </div>
             </DropdownButton>
-            <button
-              className="header__item--button"
-              onClick={[MockFunction]}
+            <div
+              className="header__item--container"
             >
-              Logout
-            </button>
+              <button
+                className="header__item--button"
+                onClick={[MockFunction]}
+              >
+                Logout
+              </button>
+            </div>
           </Nav>
         </NavbarCollapse>
       </Navbar>

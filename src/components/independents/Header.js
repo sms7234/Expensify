@@ -17,26 +17,45 @@ export const Header = (props) => (
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav className="ml-auto">
-              <Link to="/dashboard" className="header__item">
+              <div className="header__item--container">
+                <Link to="/dashboard" className="header__item">
                 Dashboard
-              </Link>
-              <Link to="/expenses" className="header__item">
-                Expenses
-              </Link>
-              <Link to="/categories" className="header__item">
-                Categories
-              </Link>
+                </Link>
+              </div>
+              <DropdownButton title="View" variant="link" className="dropdown--header">
+                <div className="header__dropdown--area">
+                  <Link to="/accounts" className="header__dropdown--item">Accounts</Link>
+                </div>
+                <div className="header__dropdown--area">
+                  <Link to="/categories" className="header__dropdown--item">Categories</Link>
+                </div>
+                <div className="header__dropdown--area">
+                  <Link to="/expenses" className="header__dropdown--item">Expenses</Link>
+                </div>
+                <div className="header__dropdown--area">
+                  <Link to="/tags" className="header__dropdown--item">Tags</Link>
+                </div>
+              </DropdownButton>
               <DropdownButton title="Import" variant="link" className="dropdown--header">
+                <div className="header__dropdown--area">
+                  <Link to="/importAccounts" className="header__dropdown--item">Accounts</Link>
+                </div>
                 <div className="header__dropdown--area">
                   <Link to="/importCategories" className="header__dropdown--item">Categories</Link>
                 </div>
                 <div className="header__dropdown--area">
                   <Link to="/importExpenses" className="header__dropdown--item">Expenses</Link>
                 </div>
+                <div className="header__dropdown--area">
+                  <Link to="/importTags" className="header__dropdown--item">Tags</Link>
+                </div>
               </DropdownButton>
-              <button className="header__item--button" onClick={props.startLogout}>
-                Logout
-              </button>
+              <div className="header__item--container">
+                <button className="header__item--button" onClick={props.startLogout}>
+                  Logout
+                </button>
+              </div>
+
             </Nav>
           </Navbar.Collapse>
         </Navbar>
