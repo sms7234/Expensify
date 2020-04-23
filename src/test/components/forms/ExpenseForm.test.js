@@ -4,6 +4,8 @@ import moment from 'moment';
 import ExpenseForm from '../../../components/forms/ExpenseForm';
 import expenses from '../../fixtures/expenses';
 import categories from '../../fixtures/categories';
+import accounts from '../../fixtures/accounts';
+import tags from '../../fixtures/tags';
 
 
 test('should render ExpenseForm with no data correctly', () =>{
@@ -29,7 +31,17 @@ test('should render error for invalid form submission', () => {
 //testing for category select
 test('should set category from dropdown', () =>{
   const wrapper = shallow(<ExpenseForm categoryList={categories}/>);
-  expect(wrapper.find('StateManager').prop('options')).toHaveLength(3);
+  expect(wrapper.find('StateManager').at(0).prop('options')).toHaveLength(3);
+});
+
+test('should set account from dropdown', () =>{
+  const wrapper = shallow(<ExpenseForm accountList={accounts}/>);
+  expect(wrapper.find('StateManager').at(1).prop('options')).toHaveLength(3);
+});
+
+test('should set category from dropdown', () =>{
+  const wrapper = shallow(<ExpenseForm tagList={tags}/>);
+  expect(wrapper.find('StateManager').at(2).prop('options')).toHaveLength(3);
 });
 
 test('should set business on input change', () => {
@@ -77,6 +89,8 @@ test('should call onSubmit prop for valid form submission', () => {
   expect(wrapper.state('error')).toBe('');
   expect(onSubmitSpy).toHaveBeenLastCalledWith({
     category: expenses[0].category,
+    account: expenses[0].account,
+    tag: expenses[0].tag,
     business: expenses[0].business,
     amount: expenses[0].amount,
     note: expenses[0].note,

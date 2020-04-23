@@ -4,10 +4,12 @@ import moment from 'moment';
 import {ExpenseListFilters} from '../../../components/filters/ExpenseListFilters';
 import {filters, altFilters} from '../../fixtures/filters';
 
-let setCategoryFilter, setBusinessFilter, setNoteFilter, sortByDate, sortByAmount, setStartDate, setEndDate, wrapper;
+let setCategoryFilter, setAccountFilter, setTagFilter, setBusinessFilter, setNoteFilter, sortByDate, sortByAmount, setStartDate, setEndDate, wrapper;
 
 beforeEach(() => {
   setCategoryFilter = jest.fn();
+  setAccountFilter = jest.fn();
+  setTagFilter = jest.fn();
   setBusinessFilter=jest.fn();
   setNoteFilter= jest.fn();
   sortByDate = jest.fn();
@@ -18,6 +20,8 @@ beforeEach(() => {
     <ExpenseListFilters
       filters={filters}
       setCategoryFilter={setCategoryFilter}
+      setAccountFilter={setAccountFilter}
+      setTagFilter={setTagFilter}
       setBusinessFilter={setBusinessFilter}
       setNoteFilter={setNoteFilter}
       sortByDate={sortByDate}
@@ -38,9 +42,17 @@ test('should render ExpenseListFilters with alt data correctly', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-test('should handle category text filter change', () => {
+test('should handle account text filter change', () => {
   const value = 'newish'
   wrapper.find('input').at(0).simulate('change', {
+    target: {value}
+  });
+  expect(setAccountFilter).toHaveBeenLastCalledWith(value);
+});
+
+test('should handle category text filter change', () => {
+  const value = 'newish'
+  wrapper.find('input').at(1).simulate('change', {
     target: {value}
   });
   expect(setCategoryFilter).toHaveBeenLastCalledWith(value);
@@ -48,15 +60,23 @@ test('should handle category text filter change', () => {
 
 test('should handle business text filter change', () => {
   const value = 'newish'
-  wrapper.find('input').at(1).simulate('change', {
+  wrapper.find('input').at(3).simulate('change', {
     target: {value}
   });
   expect(setBusinessFilter).toHaveBeenLastCalledWith(value);
 });
 
-test('should handle note text filter change', () => {
+test('should handle tag text filter change', () => {
   const value = 'newish'
   wrapper.find('input').at(2).simulate('change', {
+    target: {value}
+  });
+  expect(setTagFilter).toHaveBeenLastCalledWith(value);
+});
+
+test('should handle note text filter change', () => {
+  const value = 'newish'
+  wrapper.find('input').at(4).simulate('change', {
     target: {value}
   });
   expect(setNoteFilter).toHaveBeenLastCalledWith(value);

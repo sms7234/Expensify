@@ -19,8 +19,8 @@ const createMockStore = configureMockStore([thunk]);
 
 beforeEach((done)=>{
   const expensesData = {};
-  expenses.forEach(({id, category, business, note, amount, purchaseDate, createdAt, updatedAt})=>{
-    expensesData[id] = {category, business, note, amount, purchaseDate, createdAt, updatedAt}
+  expenses.forEach(({id, category, business, note, amount, account, tag, purchaseDate, createdAt, updatedAt})=>{
+    expensesData[id] = {category, business, note, account, tag, amount, purchaseDate, createdAt, updatedAt}
   });
   database.ref(`users/${uid}/expenses`).set(expensesData).then(()=>done());
 });
@@ -39,6 +39,8 @@ test('should add expense 0 to db and store', (done) => {
     category: 'Mouse',
     business: '',
     amount: 3000,
+    account: "Bank of America",
+    tag: '',
     note: 'this note',
     purchaseDate: 1000,
     createdAt: 100,
@@ -66,6 +68,8 @@ test('should add expense with defaults to db and store', (done) => {
     category: '',
     business: '',
     note: '',
+    account: '',
+    tag: '',
     amount:0,
     purchaseDate: 0,
     createdAt: 0,

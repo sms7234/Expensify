@@ -76,6 +76,16 @@ exports[`render page with no data 1`] = `
       <h4
         className="show-for-desktop"
       >
+        Account
+      </h4>
+      <h4
+        className="show-for-desktop"
+      >
+        Tag
+      </h4>
+      <h4
+        className="show-for-desktop"
+      >
         Note
       </h4>
     </div>

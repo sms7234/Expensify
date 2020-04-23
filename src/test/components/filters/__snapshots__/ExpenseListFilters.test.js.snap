@@ -145,7 +145,29 @@ exports[`should render ExpenseListFilters correctly 1`] = `
                 <input
                   className="text-input--filters"
                   onChange={[Function]}
+                  placeholder="search accounts"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                className="input-group__item"
+              >
+                <input
+                  className="text-input--filters"
+                  onChange={[Function]}
                   placeholder="search categories"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                className="input-group__item"
+              >
+                <input
+                  className="text-input--filters"
+                  onChange={[Function]}
+                  placeholder="search tags"
                   type="text"
                   value=""
                 />
@@ -350,9 +372,31 @@ exports[`should render ExpenseListFilters with alt data correctly 1`] = `
                 <input
                   className="text-input--filters"
                   onChange={[Function]}
+                  placeholder="search accounts"
+                  type="text"
+                  value="Bank"
+                />
+              </div>
+              <div
+                className="input-group__item"
+              >
+                <input
+                  className="text-input--filters"
+                  onChange={[Function]}
                   placeholder="search categories"
                   type="text"
                   value="Gum"
+                />
+              </div>
+              <div
+                className="input-group__item"
+              >
+                <input
+                  className="text-input--filters"
+                  onChange={[Function]}
+                  placeholder="search tags"
+                  type="text"
+                  value=""
                 />
               </div>
               <div

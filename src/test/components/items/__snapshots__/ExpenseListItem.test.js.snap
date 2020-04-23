@@ -13,6 +13,12 @@ exports[`render ExpenseListItem with one item 1`] = `
        - 
       walmart
     </h3>
+    <h4
+      className="list-item__title"
+    >
+      Bank of America
+       - 
+    </h4>
     <span
       className="list-item__sub-title"
     >

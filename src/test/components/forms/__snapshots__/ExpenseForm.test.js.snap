@@ -124,6 +124,24 @@ exports[`should render ExpenseForm with expense data 1`] = `
     type="text"
     value="walmart"
   />
+  <StateManager
+    className="dropdown"
+    defaultInputValue="Bank of America"
+    defaultMenuIsOpen={false}
+    defaultValue={null}
+    isClearable={true}
+    onChange={[Function]}
+    placeholder="select account"
+  />
+  <StateManager
+    className="dropdown"
+    defaultInputValue=""
+    defaultMenuIsOpen={false}
+    defaultValue={null}
+    isClearable={true}
+    onChange={[Function]}
+    placeholder="select tag"
+  />
   <textarea
     className="textarea"
     onChange={[Function]}
@@ -263,6 +281,24 @@ exports[`should render ExpenseForm with no data correctly 1`] = `
     placeholder="Business"
     type="text"
     value=""
+  />
+  <StateManager
+    className="dropdown"
+    defaultInputValue=""
+    defaultMenuIsOpen={false}
+    defaultValue={null}
+    isClearable={true}
+    onChange={[Function]}
+    placeholder="select account"
+  />
+  <StateManager
+    className="dropdown"
+    defaultInputValue=""
+    defaultMenuIsOpen={false}
+    defaultValue={null}
+    isClearable={true}
+    onChange={[Function]}
+    placeholder="select tag"
   />
   <textarea
     className="textarea"
@@ -404,6 +440,24 @@ exports[`should render error for invalid form submission 1`] = `
     type="text"
     value=""
   />
+  <StateManager
+    className="dropdown"
+    defaultInputValue=""
+    defaultMenuIsOpen={false}
+    defaultValue={null}
+    isClearable={true}
+    onChange={[Function]}
+    placeholder="select account"
+  />
+  <StateManager
+    className="dropdown"
+    defaultInputValue=""
+    defaultMenuIsOpen={false}
+    defaultValue={null}
+    isClearable={true}
+    onChange={[Function]}
+    placeholder="select tag"
+  />
   <textarea
     className="textarea"
     onChange={[Function]}
@@ -428,7 +482,7 @@ exports[`should render error for invalid form submission 2`] = `
   <p
     className="form__error"
   >
-    Please provide amount, business & category
+    Please provide account, amount, business & category
   </p>
   <withStyles(SingleDatePicker)
     anchorDirection="left"
@@ -548,6 +602,24 @@ exports[`should render error for invalid form submission 2`] = `
     placeholder="Business"
     type="text"
     value=""
+  />
+  <StateManager
+    className="dropdown"
+    defaultInputValue=""
+    defaultMenuIsOpen={false}
+    defaultValue={null}
+    isClearable={true}
+    onChange={[Function]}
+    placeholder="select account"
+  />
+  <StateManager
+    className="dropdown"
+    defaultInputValue=""
+    defaultMenuIsOpen={false}
+    defaultValue={null}
+    isClearable={true}
+    onChange={[Function]}
+    placeholder="select tag"
   />
   <textarea
     className="textarea"

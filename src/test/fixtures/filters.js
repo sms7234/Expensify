@@ -5,15 +5,17 @@ const filters = {
   category: '',
   business:'',
   note:'',
+  tag:'',
   sortBy: 'date',
   startDate: undefined,
   endDate: undefined
 };
 
 const altFilters = {
-  account: 'BoA',
+  account: 'Bank',
   category: 'Gum',
   business: 'walmart',
+  tag:'',
   note: '',
   sortBy: 'amount',
   startDate: moment(),

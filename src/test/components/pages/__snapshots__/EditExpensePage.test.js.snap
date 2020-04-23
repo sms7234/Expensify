@@ -21,6 +21,7 @@ exports[`should render EditExpensePage 1`] = `
     <ExpenseForm
       expense={
         Object {
+          "account": "Chase",
           "amount": 4500,
           "business": "",
           "category": "Credit Card",
@@ -28,6 +29,7 @@ exports[`should render EditExpensePage 1`] = `
           "id": "3",
           "note": "",
           "purchaseDate": 345600000,
+          "tag": "warranty",
           "updatedAt": 5000,
         }
       }

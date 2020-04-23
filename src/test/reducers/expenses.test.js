@@ -30,6 +30,8 @@ test('should add an expense', () => {
     id:'4',
     category: 'blah',
     business: '',
+    tag:'',
+    account:'Chase',
     note:'',
     amount: 15,
     purchaseDate: 10,
@@ -49,6 +51,8 @@ test('should edit an existing expense', () => {
     id:'1',
     category: 'random',
     business: 'hallmark',
+    account:'Chase',
+    tag:'',
     note:'',
     amount: 195,
     purchaseDate: 0,
@@ -60,7 +64,8 @@ test('should edit an existing expense', () => {
     id:expenses[0].id,
     updates: {
       category: 'random',
-      business: 'hallmark'
+      business: 'hallmark',
+      account: 'Chase'
     }
   };
   const state = expensesReducer(expenses,action);

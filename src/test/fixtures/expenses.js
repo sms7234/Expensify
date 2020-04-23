@@ -6,6 +6,8 @@ export default [{
   business:'walmart',
   note:'',
   amount: 195,
+  account: 'Bank of America',
+  tag: '',
   purchaseDate: 0,
   createdAt: 0,
   updatedAt: 0
@@ -16,6 +18,8 @@ export default [{
   business:'',
   note:'',
   amount: 109500,
+  account: 'Bank of America',
+  tag: '',
   purchaseDate: moment(0).subtract(4,'days').valueOf(),
   createdAt: 500,
   updatedAt: 700
@@ -25,6 +29,8 @@ export default [{
   business:'',
   note:'',
   amount: 4500,
+  account: 'Chase',
+  tag: 'warranty',
   purchaseDate: moment(0).add(4, 'days').valueOf(),
   createdAt: 1000,
   updatedAt: 5000

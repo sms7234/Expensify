@@ -64,6 +64,7 @@ exports[`should render ExpenseList with expenses 1`] = `
     className="list-body"
   >
     <ExpenseListItem
+      account="Bank of America"
       amount={195}
       business="walmart"
       category="Gum"
@@ -72,9 +73,11 @@ exports[`should render ExpenseList with expenses 1`] = `
       key="1"
       note=""
       purchaseDate={0}
+      tag=""
       updatedAt={0}
     />
     <ExpenseListItem
+      account="Bank of America"
       amount={109500}
       business=""
       category="Rent"
@@ -83,9 +86,11 @@ exports[`should render ExpenseList with expenses 1`] = `
       key="2"
       note=""
       purchaseDate={-345600000}
+      tag=""
       updatedAt={700}
     />
     <ExpenseListItem
+      account="Chase"
       amount={4500}
       business=""
       category="Credit Card"
@@ -94,6 +99,7 @@ exports[`should render ExpenseList with expenses 1`] = `
       key="3"
       note=""
       purchaseDate={345600000}
+      tag="warranty"
       updatedAt={5000}
     />
   </div>

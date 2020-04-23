@@ -139,6 +139,48 @@ exports[`test that list item renders correctly 1`] = `
       type="text"
       value="Walmart"
     />
+    <StateManager
+      className="dropdown"
+      defaultInputValue="Bank of America"
+      defaultMenuIsOpen={false}
+      defaultValue={null}
+      isClearable={true}
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "label": "Bank of America",
+            "value": "Bank of America",
+          },
+          Object {
+            "label": "Chase",
+            "value": "Chase",
+          },
+        ]
+      }
+      placeholder="select account"
+    />
+    <StateManager
+      className="dropdown"
+      defaultInputValue=""
+      defaultMenuIsOpen={false}
+      defaultValue={null}
+      isClearable={true}
+      onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "label": "tax-deductible",
+            "value": "tax-deductible",
+          },
+          Object {
+            "label": "warranty",
+            "value": "warranty",
+          },
+        ]
+      }
+      placeholder="select tag"
+    />
     <textarea
       className="textarea--multiple"
       onChange={[Function]}
