@@ -26,17 +26,25 @@ export class ImportExpensesPage extends React.Component {
   onDataCheck = () => {
     const val= this.state.validation;
     const categories = [];
+    const accounts = [];
+    const tags = [];
     this.props.categoryList.forEach((item) => {
       categories.push(item.label);
     })
+    this.props.accountList.forEach((item) => {
+      accounts.push(item.label);
+    })
     this.state.data.forEach((item,index) => {
-      if(!item.Amount ||!item.Business ||!item.Category){
+      if(!item.Amount ||!item.Business ||!item.Category ||!item.Account){
         val[index]=false;
       } else if (item.Amount.length===0 || item.Business.length===0) {
         val[index]=false;
       } else if (!categories.includes(item.Category)) {
         val[index]=false;
-      } else {
+      }else if (!accounts.includes(item.Account)) {
+        val[index]=false;
+      }
+      else {
         val[index]=true;
       }
     });
@@ -53,8 +61,10 @@ export class ImportExpensesPage extends React.Component {
     const newData = {
       Date: moment(),
       Amount: '',
+      Account: '',
       Category: '',
       Business: '',
+      Tag:'',
       Note: ''
     };
     const data = this.state.data;
@@ -81,6 +91,8 @@ export class ImportExpensesPage extends React.Component {
       convertedData.push({
         amount: parseInt(item.Amount)*100,
         business: item.Business,
+        account: item.Account,
+        tag: item.Tag,
         category: item.Category,
         note: item.Note,
         purchaseDate: item.Date.valueOf()
@@ -117,6 +129,8 @@ export class ImportExpensesPage extends React.Component {
             <h4 className="show-for-desktop">Amount</h4>
             <h4 className="show-for-desktop">Category</h4>
             <h4 className="show-for-desktop">Business</h4>
+            <h4 className="show-for-desktop">Account</h4>
+            <h4 className="show-for-desktop">Tag</h4>
             <h4 className="show-for-desktop">Note</h4>
           </div>
           <div className="list-body">
@@ -132,7 +146,9 @@ export class ImportExpensesPage extends React.Component {
                   {...item}
                   id={index}
                   dateKey={uuidv4()}
+                  accountList={this.props.accountList}
                   categoryList={this.props.categoryList}
+                  tagList={this.props.tagList}
                   validation={this.state.validation[index]}
                   onRemove={this.onItemRemove}
                   onSave={this.onItemSave}
@@ -154,8 +170,9 @@ export class ImportExpensesPage extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    categoryList: state.categories.map((item)=>{return({label: item.category, value: item.category})
-    })
+    categoryList: state.categories.map((item)=>{return({label: item.category, value: item.category})}),
+    accountList: state.accounts.map((item)=>{return({label: item.account, value: item.account})}),
+    tagList: state.tags.map((item)=>{return({label: item.tag, value: item.tag})})
   };
 };
 

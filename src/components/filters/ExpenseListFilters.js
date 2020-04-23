@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
-import {setCategoryFilter, setBusinessFilter, setNoteFilter} from '../../actions/filters';
+import {setAccountFilter, setTagFilter, setCategoryFilter, setBusinessFilter, setNoteFilter} from '../../actions/filters';
 import {sortByAmount, sortByDate, setStartDate, setEndDate} from '../../actions/filters';
 import {DateRangePicker} from 'react-dates';
 
@@ -24,8 +24,14 @@ export class ExpenseListFilters extends React.Component {
       this.props.sortByDate();
     }
   };
+  onAccountChange = (e) => {
+    this.props.setAccountFilter(e.target.value);
+  };
   onCategoryChange = (e) => {
     this.props.setCategoryFilter(e.target.value);
+  };
+  onTagChange = (e) => {
+    this.props.setTagFilter(e.target.value);
   };
   onBusinessChange = (e) => {
     this.props.setBusinessFilter(e.target.value);
@@ -62,8 +68,20 @@ export class ExpenseListFilters extends React.Component {
                   <div className="input-group__item">
                     <input type = "text"
                       className="text-input--filters"
+                      placeholder="search accounts"
+                      value={this.props.filters.account} onChange={this.onAccountChange}/>
+                  </div>
+                  <div className="input-group__item">
+                    <input type = "text"
+                      className="text-input--filters"
                       placeholder="search categories"
                       value={this.props.filters.category} onChange={this.onCategoryChange}/>
+                  </div>
+                  <div className="input-group__item">
+                    <input type = "text"
+                      className="text-input--filters"
+                      placeholder="search tags"
+                      value={this.props.filters.tag} onChange={this.onTagChange}/>
                   </div>
                   <div className="input-group__item">
                     <input type = "text"
@@ -108,7 +126,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  setAccountFilter: (text) => dispatch(setAccountFilter(text)),
   setCategoryFilter: (text) => dispatch(setCategoryFilter(text)),
+  setTagFilter: (text) => dispatch(setTagFilter(text)),
   setBusinessFilter: (text) => dispatch(setBusinessFilter(text)),
   setNoteFilter: (text) => dispatch(setNoteFilter(text)),
   sortByDate: () => dispatch(sortByDate()),

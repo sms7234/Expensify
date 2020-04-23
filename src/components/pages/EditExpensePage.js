@@ -24,6 +24,8 @@ export class EditExpensePage extends React.Component{
           <ExpenseForm
             expense={this.props.expense}
             categoryList = {this.props.categoryList}
+            accountList = {this.props.accounList}
+            tagList = {this.props.tagList}
             onSubmit={this.onSubmit}
           />
           <button className="button--secondary" onClick={this.onRemove}>Remove Expense</button>
@@ -36,7 +38,9 @@ export class EditExpensePage extends React.Component{
 const mapStateToProps = (state, props) => {
   return {
     expense: state.expenses.find((item) => item.id === props.match.params.id),
-    categoryList: state.categories.map((item)=>{return({label: item.category, value: item.category})})
+    accountList: state.accounts.map((item)=>{return({label: item.account, value: item.acount})}),
+    categoryList: state.categories.map((item)=>{return({label: item.category, value: item.category})}),
+    tagList: state.tags.map((item)=>{return({label: item.tag, value: item.tag})})
   };
 };
 

@@ -3,10 +3,11 @@ import moment from 'moment';
 import numeral from 'numeral';
 import {Link} from 'react-router-dom';
 
-const ExpenseListItem = ({dispatch, id, category, business, amount, note, purchaseDate}) => (
+const ExpenseListItem = ({dispatch, id, account, category, business, amount, note, purchaseDate, tag}) => (
     <Link className="list-item" to={`/editExpense/${id}`}>
     <div>
       <h3 className="list-item__title">{category} - {business}</h3>
+      <h4 className="list-item__title">{account} - {tag}</h4>
       <span className="list-item__sub-title">{moment(purchaseDate).format("MMMM Do, YYYY")}</span>
     </div>
     <div>

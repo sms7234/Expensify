@@ -9,13 +9,17 @@ export default class ExpenseForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      account: props.expense ? props.expense.account:'',
       category: props.expense ? props.expense.category:'',
+      tag: props.expense ? props.expense.tag:'',
       business: props.expense ? props.expense.business:'',
       amount: props.expense ? (props.expense.amount/100).toString():'',
       note:props.expense ? props.expense.note:'',
       purchaseDate: props.expense ? moment(props.expense.purchaseDate) : moment(),
       calendarFocused: false,
+      accountList: props.accountList,
       categoryList: props.categoryList,
+      tagList: props.tagList,
       error:''
     };
   }
@@ -25,9 +29,17 @@ export default class ExpenseForm extends React.Component {
       this.setState(()=> ({amount}));
     }
   };
+  onAccountChange = (opt) => {
+    const account = opt.value;
+    this.setState(() => ({account}));
+  };
   onCategoryChange = (opt) => {
     const category = opt.value;
     this.setState(() => ({category}));
+  };
+  onTagChange = (opt) => {
+    const tag = opt.value;
+    this.setState(() => ({tag}));
   };
   onBusinessChange = (e) => {
     const business = e.target.value;
@@ -47,12 +59,14 @@ export default class ExpenseForm extends React.Component {
   };
   onSubmit = (e) => {
     e.preventDefault();
-    if (!this.state.category ||!this.state.business || !this.state.amount) {
-      this.setState(()=> ({error:'Please provide amount, business & category'}));
+    if (!this.state.category ||!this.state.business || !this.state.amount || !this.state.account) {
+      this.setState(()=> ({error:'Please provide account, amount, business & category'}));
     }else {
       this.setState(()=> ({error:''}));
       this.props.onSubmit({
+        account: this.state.account,
         category: this.state.category,
+        tag: this.state.tag,
         business: this.state.business,
         amount: parseFloat(this.state.amount, 10)*100,
         purchaseDate: this.state.purchaseDate.valueOf(),
@@ -94,6 +108,22 @@ export default class ExpenseForm extends React.Component {
           className="text-input"
           value={this.state.business}
           onChange={this.onBusinessChange}
+        />
+        <Select
+          placeholder="select account"
+          className="dropdown"
+          isClearable
+          defaultInputValue={this.state.account}
+          options={this.state.accountList}
+          onChange={this.onAccountChange}
+        />
+        <Select
+          placeholder="select tag"
+          className="dropdown"
+          isClearable
+          defaultInputValue={this.state.tag}
+          options={this.state.tagList}
+          onChange={this.onTagChange}
         />
         <textarea
           placeholder= "Add a note for your expense (optional)"

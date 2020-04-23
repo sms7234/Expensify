@@ -16,6 +16,8 @@ export class ImportExpenseListItem extends React.Component {
       purchaseDate: props.Date ? props.Date : moment(),
       amount:props.Amount? numeral(props.Amount).format('0,0.00'):'',
       category:props.Category ? props.Category: '',
+      account:props.Account ? props.Account: '',
+      tag:props.Tag ? props.Tag: '',
       business:props.Business? props.Business:'',
       note:props.Note? props.Note:'',
       calendarFocused: false,
@@ -50,6 +52,20 @@ export class ImportExpenseListItem extends React.Component {
       this.setState(()=>({buttonSave:false}))
     };
   };
+  onAccountChange = (opt) => {
+    const account = opt.value;
+    this.setState(() => ({account}));
+    if (this.state.buttonSave){
+      this.setState(()=>({buttonSave:false}))
+    };
+  };
+  onTagChange = (opt) => {
+    const tag = opt.value;
+    this.setState(() => ({tag}));
+    if (this.state.buttonSave){
+      this.setState(()=>({buttonSave:false}))
+    };
+  };
   onBusinessChange = (e) => {
     const business = e.target.value;
     this.setState(() => ({business}));
@@ -71,6 +87,8 @@ export class ImportExpenseListItem extends React.Component {
     const update = {
       Amount: this.state.amount,
       Category: this.state.category,
+      Account: this.state.account,
+      Tag: this.state.tag,
       Business: this.state.business,
       Note: this.state.note,
       Date: this.state.purchaseDate
@@ -112,6 +130,22 @@ export class ImportExpenseListItem extends React.Component {
             className="text-input"
             value={this.state.business}
             onChange={this.onBusinessChange}
+          />
+          <Select
+            placeholder="select account"
+            className="dropdown"
+            isClearable
+            defaultInputValue={this.state.account}
+            options={this.props.accountList}
+            onChange={this.onAccountChange}
+          />
+          <Select
+            placeholder="select tag"
+            className="dropdown"
+            isClearable
+            defaultInputValue={this.state.tag}
+            options={this.props.tagList}
+            onChange={this.onTagChange}
           />
           <textarea
             placeholder= "Add a note (optional)"

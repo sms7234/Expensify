@@ -20,6 +20,8 @@ export class AddExpensePage extends React.Component{
           <ExpenseForm
             onSubmit = {this.onSubmit}
             categoryList = {this.props.categoryList}
+            accountList = {this.props.accountList}
+            tagList = {this.props.tagList}
           />
         </div>
       </div>
@@ -29,7 +31,9 @@ export class AddExpensePage extends React.Component{
 
 const mapStateToProps=(state) => {
   return {
-    categoryList: state.categories.map((item)=>{return({label: item.category, value: item.category})})
+    accountList: state.accounts.map((item)=>{return({label: item.account, value: item.account})}),
+    categoryList: state.categories.map((item)=>{return({label: item.category, value: item.category})}),
+    tagList: state.tags.map((item)=>{return({label: item.tag, value: item.tag})})
   };
 };
 
