@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Chart from 'react-google-charts';
 import {Doughnut, Line} from 'react-chartjs-2';
 import moment from 'moment';
 import selectExpenses from '../../selectors/expenses'
@@ -17,28 +16,11 @@ export const DashboardPage = ({income, expenses, pieData, lineData, donutData}) 
         <Doughnut
           data={donutData}
         />
+        <span />
+        <h1> Remaining Funds (in $) by Date </h1>
         <Line
           data={lineData}
         />
-        <h1> Remaining Funds (in $) by Date </h1>
-        {/* <Chart
-          chartType="LineChart"
-          height={400}
-          loader={<div>Loading Chart</div>}
-          data={lineData}
-          options={{
-            legend: {
-              position: "none"
-            },
-            hAxis: {
-              title: 'Remaining Funds',
-            },
-            vAxis: {
-              title: 'Date',
-            },
-          }}
-          rootProps={{ 'data-testid': '1' }}
-        /> */}
       </div>
     </div>
   </div>
@@ -81,26 +63,23 @@ const mapStateToProps=(state)=>{
   };
 
   const FilterDoughnut = (arr) => {
-    const labelHolder = [];
-    const dataHolder = [];
+    const labelHolder = {};
+
+    //generate labels
     arr.forEach((item) => {
-      if(!labelHolder.includes(item.category) && item.category!=="Income") {
-        labelHolder.push(item.category)
+      if(!labelHolder.hasOwnProperty(item.category) && item.category!=="Income") {
+        labelHolder[item.category]=0;
       }
     });
-    //assign colors
-    const colorHolder = colorAssign(labelHolder);
+    //sum up values for each label
+    arr.forEach((item) => {
+      labelHolder[item.category] += item.amount/100;
+    })
+    //generate colors
+    const colorHolder = colorAssign(Object.keys(labelHolder));
 
-    labelHolder.forEach((item) => {
-      let sum = 0;
-      arr.forEach((subItem,index) => {
-        if(subItem.category===item) {
-          sum = sum + subItem.amount;
-        }
-      });
-      dataHolder.push(sum/100);
-    });
-    const donutData = {datasets:[{data: dataHolder, backgroundColor: colorHolder}], labels:labelHolder}
+    //reformat & returndata
+    const donutData = {datasets:[{data: Object.values(labelHolder), backgroundColor: colorHolder}], labels:Object.keys(labelHolder)}
     return donutData;
   };
 
@@ -167,52 +146,11 @@ const mapStateToProps=(state)=>{
 
   }
 
-  const filterLine = (arr) => {
-    const lineData=[['Date', 'Remaining Funds']];
-    const originalData = arr.sort((a,b) => {
-      return a.purchaseDate < b.purchaseDate ? -1: 1;
-    });
-    const len = originalData.length;
-    let total=0;
-
-    for (let i=0; i<len; i++){
-      const firstDate = moment(originalData[i].purchaseDate).format("MM/DD/YY");
-      if(i<(len-1)) { //be sure i isn't last item
-        for(let j=1;j<=len;j++){
-          if(j+i<len){ //be sure not to overrun the array length
-            const secondDate = moment(originalData[i+j].purchaseDate).format("MM/DD/YY");
-            if(firstDate === secondDate) {
-              if(originalData[i].category === 'Income'){
-                total = total + originalData[i].amount
-              } else {
-                total = total - originalData[i].amount
-              }
-            } else {
-              lineData.push([firstDate, total/100])
-              i=i+(j-1);
-              break;
-            }
-          } else {
-            break;
-          }
-        }
-      } else { //if last item in array push info to array
-        if(originalData[i].category === 'Income'){
-          total = total + originalData[i].amount
-        } else {
-          total = total - originalData[i].amount
-        }
-        lineData.push([firstDate,total/100])
-      }
-    }
-    return lineData;
-  }
   // actual data
     let visibleExpenses = selectExpenses(state.expenses, state.filters);
     let selectedExpenses = sumItems(filterExpenses(visibleExpenses));
 
   return {
-    a: selectExpenses(state.expenses, state.filters),
     expenses: sumItems(filterExpenses(visibleExpenses)),
     income: sumItems(filterIncome(visibleExpenses)),
     lineData: filterLineData(selectExpenses(state.expenses, state.filters)),
