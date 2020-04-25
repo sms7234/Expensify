@@ -41,7 +41,6 @@ class ImportUploadExpenses extends React.Component {
           results.data.forEach((item) => {
             item.Date = item.Date ? moment(item.Date):moment();
             item.Note = item.Note ? item.Note:'';
-            data.push(item);
             item.Tag = item.Tag ? item.Tag:'';
             data.push(item);
             validation.push(null);
