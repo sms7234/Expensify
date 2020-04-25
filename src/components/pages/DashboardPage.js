@@ -34,7 +34,7 @@ const mapStateToProps=(state)=>{
   const colorAssign = (desiredQty) => {
     const max = colors.length;
     const holder = [];
-    const n=0;
+    let n=0;
     desiredQty.forEach((item,index) => {
       if (index === max*(n+1)){n = n+1}
       holder.push(colors[index-(n*max)])
@@ -73,7 +73,9 @@ const mapStateToProps=(state)=>{
     });
     //sum up values for each label
     arr.forEach((item) => {
-      labelHolder[item.category] += item.amount/100;
+      if(item.category !== "Income") {
+        labelHolder[item.category] += item.amount/100;
+      }
     })
     //generate colors
     const colorHolder = colorAssign(Object.keys(labelHolder));
