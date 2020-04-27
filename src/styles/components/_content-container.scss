@@ -18,11 +18,11 @@
 .content-container--charts {
   display: flex;
   flex-direction: column;
-  >div {
-    margin-bottom: $m-size;
-  }
+  align-items: center;
+  margin: $m-size;
   >h1 {
     text-align: center;
+    margin: $m-size;
   }
 
 }

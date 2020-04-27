@@ -1,30 +1,55 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Doughnut, Line} from 'react-chartjs-2';
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
 import moment from 'moment';
 import selectExpenses from '../../selectors/expenses'
 import DashboardSummary from '../independents/DashboardSummary';
 import ExpenseListFilters from '../filters/ExpenseListFilters';
 
-export const DashboardPage = ({income, expenses, pieData, lineData, donutData}) => (
-  <div>
-    <DashboardSummary income={income} expenses={expenses} />
-    <div className="content-container">
-      <ExpenseListFilters />
-      <div className="content-container--charts">
-        <h1> Purchases by Category </h1>
-        <Doughnut
-          data={donutData}
-        />
-        <span />
-        <h1> Remaining Funds (in $) by Date </h1>
-        <Line
-          data={lineData}
-        />
+export class DashboardPage extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={
+      legends: false
+    };
+  }
+  onToggle = () => {
+    (this.state.legends) ? this.setState({legends:false}) : this.setState({legends:true});
+  }
+  render() {
+    return (
+      <div>
+        <DashboardSummary income={this.props.income} expenses={this.props.expenses} />
+        <div className="content-container">
+          <ExpenseListFilters />
+          <div className="content-container">
+
+            <button className="button--toggle" onClick={this.onToggle}> Toggle Legends
+            </button>
+
+            <Tabs defaultActiveKey="pie" id="uncontrolled-tab-example" className="tabs">
+              <Tab eventKey="pie" title="Expenses Breakdown">
+                <div className="content-container--charts">
+
+                  <h1> Purchases by Category </h1>
+                  <Doughnut data={this.props.donutData} options={{legend: {display: this.state.legends, position: 'right'}}}/>
+                </div>
+              </Tab>
+              <Tab eventKey="line" title="Account Breakdown">
+                <div className="content-container--charts">
+                  <h1> Remaining Funds (in $) by Date </h1>
+                  <Line data={this.props.lineData} options={{legend: {display:this.state.legends}}} />
+                </div>
+              </Tab>
+            </Tabs>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-)
+    )
+  }
+};
 
 const mapStateToProps=(state)=>{
   //color array
