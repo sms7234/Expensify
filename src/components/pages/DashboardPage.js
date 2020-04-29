@@ -123,6 +123,7 @@ const mapStateToProps=(state)=>{
       if (index === max*(n+1)){n = n+1}
       holder.push(colors[index-(n*max)])
     })
+    //returns [color1, color2, color3]
     return holder;
   }
 
@@ -157,6 +158,7 @@ const mapStateToProps=(state)=>{
     categoryList.forEach((item) => {
       categoryObj.push({label: item, value: item})
     })
+    // returns [{label: cat1, value: cat1}, {...}]
     return categoryObj;
   }
 
@@ -180,6 +182,8 @@ const mapStateToProps=(state)=>{
 
     //reformat & returndata
     const donutData = {datasets:[{data: Object.values(labelHolder), backgroundColor: colorHolder}], labels:Object.keys(labelHolder)}
+
+    //returns data:{labels:[a,b,c], dataset:[{label: 'a', data:[1,2,3], backgroundColor:[]}]}
     return donutData;
   };
 
@@ -235,6 +239,7 @@ const mapStateToProps=(state)=>{
 
     const masterData = {labels, datasets}
 
+    //returns data:{labels:[04/20,05/20,06/20], dataset:[{label: 'expenses', data:[1,2,3], backgroundColor:'blue'},{label: income, ...}]}
     return masterData;
   }
 
@@ -294,6 +299,8 @@ const mapStateToProps=(state)=>{
     //reformat data for chart
     const datasets = [];
     accountList.forEach((item, index) => datasets.push({label: item, data: accounts[item], backgroundColor: colorHolder[index], borderColor: colorHolder[index], fill: false}))
+
+    //returns data:{labels:['04/01/20',b,c], dataset:[{label: 'a', data:[1,2,3], backgroundColor:'blue'},{...}]}
     return {labels, datasets}
   }
 

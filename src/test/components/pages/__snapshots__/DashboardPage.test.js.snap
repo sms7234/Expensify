@@ -11,152 +11,224 @@ exports[`should render page with fake data 1`] = `
   >
     <Connect(ExpenseListFilters) />
     <div
-      className="content-container--charts"
+      className="content-container"
     >
-      <h1>
-         Purchases by Category 
-      </h1>
-      <Chart
-        chartActions={null}
-        chartEvents={null}
-        chartType="PieChart"
-        chartWrapperParams={Object {}}
-        className=""
-        columns={null}
-        controls={null}
-        data={
-          Array [
-            Array [
-              "Category",
-              "Cost",
-            ],
-            Array [
-              "Groceries",
-              500,
-            ],
-            Array [
-              "Eating Out",
-              500,
-            ],
-            Array [
-              "Dog",
-              500,
-            ],
-          ]
-        }
-        diffdata={null}
-        formatters={null}
-        getChartEditor={null}
-        getChartWrapper={[Function]}
-        graphID={null}
-        graph_id={null}
-        height={400}
-        legendToggle={false}
-        legend_toggle={false}
-        loader={
-          <div>
-            Loading Chart
+      <button
+        className="button--toggle"
+        onClick={[Function]}
+      >
+         Toggle Legends
+      </button>
+      <Tabs
+        className="tabs"
+        defaultActiveKey="pie"
+        id="uncontrolled-tab-example"
+        mountOnEnter={false}
+        unmountOnExit={false}
+        variant="tabs"
+      >
+        <Tab
+          eventKey="pie"
+          title="Expenses Breakdown"
+        >
+          <div
+            className="content-container--charts"
+          >
+            <h1>
+               Purchases by Category 
+            </h1>
+            <Doughnut
+              data={
+                Object {
+                  "datasets": Array [
+                    Object {
+                      "data": Array [
+                        500,
+                        100,
+                      ],
+                      "label": "a",
+                    },
+                  ],
+                  "labels": Array [
+                    "Groceries",
+                    "Eating Out",
+                  ],
+                }
+              }
+              options={
+                Object {
+                  "legend": Object {
+                    "display": false,
+                    "position": "right",
+                  },
+                }
+              }
+            />
           </div>
-        }
-        options={
-          Object {
-            "is3D": true,
-          }
-        }
-        render={null}
-        rootProps={
-          Object {
-            "data-testid": "2",
-          }
-        }
-        rows={null}
-        spreadSheetQueryParameters={
-          Object {
-            "gid": 1,
-            "headers": 1,
-          }
-        }
-        spreadSheetUrl={null}
-        style={Object {}}
-        toolbarID={null}
-        toolbarItems={null}
-      />
-      <h1>
-         Remaining Funds (in $) by Date 
-      </h1>
-      <Chart
-        chartActions={null}
-        chartEvents={null}
-        chartType="LineChart"
-        chartWrapperParams={Object {}}
-        className=""
-        columns={null}
-        controls={null}
-        data={
-          Array [
-            Array [
-              "Date",
-              "Remaining Funds",
-            ],
-            Array [
-              "04/01/2020",
-              500,
-            ],
-            Array [
-              "04/02/2020",
-              300,
-            ],
-            Array [
-              "04/03/2020",
-              0,
-            ],
-          ]
-        }
-        diffdata={null}
-        formatters={null}
-        getChartEditor={null}
-        getChartWrapper={[Function]}
-        graphID={null}
-        graph_id={null}
-        height={400}
-        legendToggle={false}
-        legend_toggle={false}
-        loader={
-          <div>
-            Loading Chart
+        </Tab>
+        <Tab
+          eventKey="line"
+          title="Account Breakdown"
+        >
+          <div
+            className="content-container--charts"
+          >
+            <h1>
+               Remaining Funds (in $) by Date 
+            </h1>
+            <Line
+              data={
+                Object {
+                  "datasets": Array [
+                    Object {
+                      "data": Array [
+                        150,
+                        200,
+                        300,
+                      ],
+                      "label": "BoA",
+                    },
+                    Object {
+                      "data": Array [
+                        300,
+                        200,
+                        100,
+                      ],
+                      "label": "Chase",
+                    },
+                  ],
+                  "labels": Array [
+                    "04/01/20",
+                    "04/02/20",
+                    "04/03/20",
+                  ],
+                }
+              }
+              options={
+                Object {
+                  "legend": Object {
+                    "display": false,
+                  },
+                }
+              }
+            />
           </div>
-        }
-        options={
-          Object {
-            "hAxis": Object {
-              "title": "Remaining Funds",
-            },
-            "legend": Object {
-              "position": "none",
-            },
-            "vAxis": Object {
-              "title": "Date",
-            },
-          }
-        }
-        render={null}
-        rootProps={
-          Object {
-            "data-testid": "1",
-          }
-        }
-        rows={null}
-        spreadSheetQueryParameters={
-          Object {
-            "gid": 1,
-            "headers": 1,
-          }
-        }
-        spreadSheetUrl={null}
-        style={Object {}}
-        toolbarID={null}
-        toolbarItems={null}
-      />
+        </Tab>
+        <Tab
+          eventKey="bar"
+          title="Income vs Expense"
+        >
+          <div
+            className="content-container--charts"
+          >
+            <h1>
+               Monthly Summary 
+            </h1>
+            <Bar
+              data={
+                Object {
+                  "datasets": Array [
+                    Object {
+                      "data": Array [
+                        500,
+                        700,
+                      ],
+                      "label": "expenses",
+                    },
+                    Object {
+                      "data": Array [
+                        1000,
+                        1000,
+                      ],
+                      "label": "income",
+                    },
+                  ],
+                  "labels": Array [
+                    "03/20",
+                    "04/20",
+                  ],
+                }
+              }
+              options={
+                Object {
+                  "legend": Object {
+                    "display": false,
+                  },
+                }
+              }
+            />
+          </div>
+        </Tab>
+        <Tab
+          eventKey="variable-bar"
+          title="Category History"
+        >
+          <div
+            className="content-container--charts"
+          >
+            <h1>
+               Category History 
+            </h1>
+            <h3>
+              add/remove desired categories
+            </h3>
+            <p>
+              ***Warning*** Information only updates when categories are change
+            </p>
+            <p>
+              There is no auto-update when dates change
+            </p>
+            <StateManager
+              className="dropdown"
+              defaultInputValue=""
+              defaultMenuIsOpen={false}
+              defaultValue={null}
+              isClearable={true}
+              isMulti={true}
+              onChange={[Function]}
+              options={
+                Array [
+                  Object {
+                    "label": "Groceries",
+                    "value": "Groceries",
+                  },
+                  Object {
+                    "label": "Eating Out",
+                    "value": "Eating Out",
+                  },
+                ]
+              }
+              placeholder="Select Categories to show"
+            />
+            <p>
+              Chart HERE 
+            </p>
+            <Bar
+              data={
+                Object {
+                  "datasets": Array [
+                    Object {
+                      "data": Array [
+                        0,
+                      ],
+                    },
+                  ],
+                  "labels": Array [
+                    "no data",
+                  ],
+                }
+              }
+              options={
+                Object {
+                  "legend": Object {
+                    "display": false,
+                  },
+                }
+              }
+            />
+          </div>
+        </Tab>
+      </Tabs>
     </div>
   </div>
 </div>
@@ -170,114 +242,144 @@ exports[`should render page with no data 1`] = `
   >
     <Connect(ExpenseListFilters) />
     <div
-      className="content-container--charts"
+      className="content-container"
     >
-      <h1>
-         Purchases by Category 
-      </h1>
-      <Chart
-        chartActions={null}
-        chartEvents={null}
-        chartType="PieChart"
-        chartWrapperParams={Object {}}
-        className=""
-        columns={null}
-        controls={null}
-        data={null}
-        diffdata={null}
-        formatters={null}
-        getChartEditor={null}
-        getChartWrapper={[Function]}
-        graphID={null}
-        graph_id={null}
-        height={400}
-        legendToggle={false}
-        legend_toggle={false}
-        loader={
-          <div>
-            Loading Chart
+      <button
+        className="button--toggle"
+        onClick={[Function]}
+      >
+         Toggle Legends
+      </button>
+      <Tabs
+        className="tabs"
+        defaultActiveKey="pie"
+        id="uncontrolled-tab-example"
+        mountOnEnter={false}
+        unmountOnExit={false}
+        variant="tabs"
+      >
+        <Tab
+          eventKey="pie"
+          title="Expenses Breakdown"
+        >
+          <div
+            className="content-container--charts"
+          >
+            <h1>
+               Purchases by Category 
+            </h1>
+            <Doughnut
+              options={
+                Object {
+                  "legend": Object {
+                    "display": false,
+                    "position": "right",
+                  },
+                }
+              }
+            />
           </div>
-        }
-        options={
-          Object {
-            "is3D": true,
-          }
-        }
-        render={null}
-        rootProps={
-          Object {
-            "data-testid": "2",
-          }
-        }
-        rows={null}
-        spreadSheetQueryParameters={
-          Object {
-            "gid": 1,
-            "headers": 1,
-          }
-        }
-        spreadSheetUrl={null}
-        style={Object {}}
-        toolbarID={null}
-        toolbarItems={null}
-      />
-      <h1>
-         Remaining Funds (in $) by Date 
-      </h1>
-      <Chart
-        chartActions={null}
-        chartEvents={null}
-        chartType="LineChart"
-        chartWrapperParams={Object {}}
-        className=""
-        columns={null}
-        controls={null}
-        data={null}
-        diffdata={null}
-        formatters={null}
-        getChartEditor={null}
-        getChartWrapper={[Function]}
-        graphID={null}
-        graph_id={null}
-        height={400}
-        legendToggle={false}
-        legend_toggle={false}
-        loader={
-          <div>
-            Loading Chart
+        </Tab>
+        <Tab
+          eventKey="line"
+          title="Account Breakdown"
+        >
+          <div
+            className="content-container--charts"
+          >
+            <h1>
+               Remaining Funds (in $) by Date 
+            </h1>
+            <Line
+              options={
+                Object {
+                  "legend": Object {
+                    "display": false,
+                  },
+                }
+              }
+            />
           </div>
-        }
-        options={
-          Object {
-            "hAxis": Object {
-              "title": "Remaining Funds",
-            },
-            "legend": Object {
-              "position": "none",
-            },
-            "vAxis": Object {
-              "title": "Date",
-            },
-          }
-        }
-        render={null}
-        rootProps={
-          Object {
-            "data-testid": "1",
-          }
-        }
-        rows={null}
-        spreadSheetQueryParameters={
-          Object {
-            "gid": 1,
-            "headers": 1,
-          }
-        }
-        spreadSheetUrl={null}
-        style={Object {}}
-        toolbarID={null}
-        toolbarItems={null}
-      />
+        </Tab>
+        <Tab
+          eventKey="bar"
+          title="Income vs Expense"
+        >
+          <div
+            className="content-container--charts"
+          >
+            <h1>
+               Monthly Summary 
+            </h1>
+            <Bar
+              options={
+                Object {
+                  "legend": Object {
+                    "display": false,
+                  },
+                }
+              }
+            />
+          </div>
+        </Tab>
+        <Tab
+          eventKey="variable-bar"
+          title="Category History"
+        >
+          <div
+            className="content-container--charts"
+          >
+            <h1>
+               Category History 
+            </h1>
+            <h3>
+              add/remove desired categories
+            </h3>
+            <p>
+              ***Warning*** Information only updates when categories are change
+            </p>
+            <p>
+              There is no auto-update when dates change
+            </p>
+            <StateManager
+              className="dropdown"
+              defaultInputValue=""
+              defaultMenuIsOpen={false}
+              defaultValue={null}
+              isClearable={true}
+              isMulti={true}
+              onChange={[Function]}
+              placeholder="Select Categories to show"
+            />
+            <p>
+              Chart HERE 
+            </p>
+            <Bar
+              data={
+                Object {
+                  "datasets": Array [
+                    Object {
+                      "data": Array [
+                        0,
+                      ],
+                    },
+                  ],
+                  "labels": Array [
+                    "no data",
+                  ],
+                }
+              }
+              options={
+                Object {
+                  "legend": Object {
+                    "display": false,
+                  },
+                }
+              }
+            />
+          </div>
+        </Tab>
+      </Tabs>
     </div>
   </div>
 </div>
